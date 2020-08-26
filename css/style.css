@@ -69,6 +69,8 @@ box-shadow: 0 2px #999;
     border: none;
     border-radius: 15px;
     box-shadow: 0px 1px 14px 0px #999;  
+
+
 }
 
 #content .navbar .abtn:hover{
@@ -153,8 +155,11 @@ box-shadow: 0 2px #999;
 #sidebar.active {
     left: 0;
 }
-
-/*#dismiss {
+#sidebarCollapse
+{
+    float:left;
+}
+#dismiss {
     width: 35px;
     height: 35px;
     line-height: 35px;
@@ -172,7 +177,7 @@ box-shadow: 0 2px #999;
     background: #fff;
     color: #7386D5;
 }
-*/
+
 .overlay {
     position: fixed;
     width: 100vw;
