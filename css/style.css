@@ -7,8 +7,14 @@ body {
     font-family: 'Poppins', sans-serif;
     padding-top: 90px;
     background: #fafafa;
+    overflow-x: hidden;/*To hide scrollbar for small screen size*/
 }
-
+a:hover{
+	text-decoration: none;
+}
+.wrapper{
+	height: 100%;
+}
 p {
     font-size: 1.2em;
     line-height: 1.8em;
@@ -22,9 +28,9 @@ strong {
     color: #333;
 }
 
-.content {
+.main-content {
     padding: 50px 0;
-}
+ }
 
 .line {
     width: 100%;
@@ -43,7 +49,13 @@ strong {
     transition: all 0.3s;
     z-index: 997;
 }
-
+.navbar-header button{
+	background:#333;
+}
+#sidebarCollapse
+{
+    margin-left: 15px;
+}
 @media(min-width: 768px){
 #content .navbar .abtn {
 color: #fff !important;
@@ -57,6 +69,11 @@ border: none;
 border-radius: 15px;
 box-shadow: 0 2px #999;
 }
+#sidebarCollapse
+{
+    margin-right: 15px;
+    margin-left: 0px;;
+}
 }
 #content .navbar-brand .abtn{
     color: #fff !important;
@@ -65,10 +82,12 @@ box-shadow: 0 2px #999;
     text-align: center;
     cursor: pointer;
     outline: none;
-    color: #fff;
+    
     border: none;
     border-radius: 15px;
     box-shadow: 0px 1px 14px 0px #999;  
+
+
 }
 
 #content .navbar .abtn:hover{
@@ -81,11 +100,26 @@ box-shadow: 0 2px #999;
   transform: translateY(4px);
 }
 
-.navbar button {
-    background-color: #5bc0de;
+.navbar .navbar-header button {
+    /*background-color: #6dbecc;
     border-color: #46b8da;
-    color: white;
-    
+    color: white;*/
+    height: 40px;
+    width: 30px;
+    font-weight: bold;
+    color: #fff !important;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    box-shadow: 0px 1px 14px 0px #999;
+}
+.navbar .navbar-header button:hover{
+    background-color: #333;
+}
 }
 .navbar-header button{
     width: 35px;
@@ -104,26 +138,114 @@ box-shadow: 0 2px #999;
 }
 #navComponents .nav .abtn{
     padding: 5px 10px;
+    /*background: #6dbecc;*/
+    color: #fff !important;
+    text-decoration: none;
+    
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 1px 14px 0px #999;
+    font-weight: bold;
+}
+
+ #navComponents #signup button{
+        background: transparent;
+        box-shadow: 0px 1px 14px 0px #999;
+        color:#fff;
+        text-decoration: none;
+    
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+        font-weight: bold;
+        margin:0;
 }
 .navbar-right {
     margin: 0px;
     padding: 6px 12px;
 }
+
+
 #content .compressed {
     padding-top: 10px;
     padding-bottom: 10px;
     background: #6dcc7c;
     color: #6dcc7c;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
 }
 
-@media(max-width:1048px)
+.navbar-inverse .navbar-nav>li>a{
+	color: #fff;
+}
+@media(max-width:1058px)
 {
     #navComponents .navbar-form{
-        margin-right: 10%;
+        
+        width:100%
+    }
+    #navComponents .navbar-form .form-group{
+        width: 88%;
+    }
+    #navComponents .navbar-form .form-control{
+        width: 100%;
+    
+    }#navComponents .navbar-form button{
+   
     }
 }
+@media(max-width:768px)
 
+{
+    .navbar-brand{
+        float:none;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    #navComponents .nav .abtn
+    {
+        box-shadow: none;
+    }
+    #navComponents #signup .btn{
+        padding: 5px 10px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.3em;
+    }
+    #navComponents #signup .btn:hover{
+        background:darkgrey;
+    }
+    #navComponents #signup{
+        padding: 0px inherit;
+    }
+    /*#navComponents .navbar-form {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }*/
+    #navComponents .navbar-form .form-group{
+        width: 85%;
+        display: inline-block;
+    }
+    #navComponents .navbar-form button{
+        display: inline-block;    
+        
+    }
+}
+@media(max-width:314px){
+    #content .navbar-brand .abtn{
+        display: none;
+    }
+}
 /*
     DEMO STYLE
 */
@@ -143,7 +265,7 @@ box-shadow: 0 2px #999;
     left: -250px;
     height: 100vh;
     z-index: 999;
-    background: #7386D5;
+    background: #333;
     color: #fff;
     transition: all 0.3s;
     overflow-y: scroll;
@@ -153,13 +275,16 @@ box-shadow: 0 2px #999;
 #sidebar.active {
     left: 0;
 }
-
-/*#dismiss {
+#sidebarCollapse
+{
+    float:left;
+}
+#dismiss {
     width: 35px;
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background: #7386D5;
+    background: #333;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -172,7 +297,7 @@ box-shadow: 0 2px #999;
     background: #fff;
     color: #7386D5;
 }
-*/
+
 .overlay {
     position: fixed;
     width: 100vw;
@@ -184,7 +309,7 @@ box-shadow: 0 2px #999;
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #333;
 }
 
 #sidebar ul.components {
@@ -204,6 +329,7 @@ box-shadow: 0 2px #999;
 }
 #sidebar ul li a:hover {
     color: #7386D5;
+    font-weight: bolder;
     background: #fff;
 }
 
@@ -232,8 +358,11 @@ box-shadow: 0 2px #999;
 
 #sidebar ul ul a {
     font-size: 0.9em !important;
+    color: white;
+    font-weight: bolder;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: gray;
+
 }
 
 #sidebar ul.CTAs {
@@ -247,23 +376,59 @@ box-shadow: 0 2px #999;
     border-radius: 5px;
     margin-bottom: 5px;
 }
+/* ---------------------------------------------------
+    FOOTER STYLE
+----------------------------------------------------- */
 
-
+footer
+{
+	background:black;
+	padding: -20px;
+    margin: auto;
+	
+}
+footer li{
+	list-style: none;
+}
+footer ul>a{
+	font-size:1.5em;
+	color:white;
+	line-height: 2em;
+}
+footer li>a{
+    color:#dea4f5;
+    font-size: 1.2em;
+}
+footer li>a:hover{
+    color:#fff;
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px 0px 0px;
     min-height: 100vh;
     transition: all 0.3s;
     position: relative;
 
 }
-.content{
-    position: absolute;
-    top: 5px;
+.main-content{
+    
     color: black;
     width: 100%;
     margin: 0px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

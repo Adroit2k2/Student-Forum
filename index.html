@@ -13,7 +13,17 @@
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="css/style.css">
         <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    
+        <script src="js/script.js"></script>
+
 
     </head>
     
@@ -37,7 +47,7 @@
                         <a href="#">Home</a>
                     </li>
 
-                    <li class="active">
+                    <li >
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Public</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="#">Forum</a></li>
@@ -64,8 +74,8 @@
                     <li><a href="" class="download">Download source</a></li>
                 </ul>
             </nav><!-- End of sidebar-->
-        </div>
 
+        
     <!-- Page Content Holder -->
             <div id="content">
 
@@ -87,7 +97,7 @@
 
                             <!-- Navbar Brand -->
                             <div class="navbar-brand text-center">
-                                <a class="abtn" href="">Student Forum</a>
+                                <a class="abtn" href="#">Student Forum</a>
                             </div>
                         </div>
 
@@ -97,7 +107,6 @@
 
                             <!-- Navbar Links -->
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#" class="abtn">Home</a></li>
 
                                 <li><a href="#" class="abtn">About Us</a></li>
                                 
@@ -106,26 +115,30 @@
 
                             <!-- Navbar Button -->
                             <div id="signup" class="navbar-right">
-                                <button type="button" class="btn btn-default navbar-btn ">Sign Up</button>
+                            	<div class="row">
+                                <button type="button" class="btn btn-default navbar-btn col-xs-6">Sign Up</button>
 
-                                <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+                                <button type="button" class="btn btn-default navbar-btn col-xs-6">Sign in</button>
+                            	</div>
                             </div>
 
                             <!-- Navbar Form -->
                             <form action="#" class="navbar-form navbar-right">
+                            	
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Search">
                                 </div>
                                 
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>
+
                         </div>
                             
 
                     </div><!--End of container-fluid-->
 
                 </nav><!--End of navbar-->
-                <div class="content">
+                <div class="main-content">
                     <div class="container">
                         <h1 class="text-center">Main Heading</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit repudiandae sapiente explicabo aperiam veritatis adipisci, omnis debitis sint quaerat soluta necessitatibus, dolore accusamus aut neque ab? Non praesentium maxime perferendis!</p>
@@ -193,7 +206,65 @@
                             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique iusto aspernatur eius a blanditiis eveniet ullam et itaque, esse rem fuga voluptate voluptatibus voluptatum, tempore obcaecati praesentium ad quo sunt.</span><span>Velit optio quidem qui nam quia eius obcaecati dolor eligendi facere tempore, ratione rem inventore nobis maxime sit reiciendis placeat dolores ad recusandae porro. Omnis rerum similique quo voluptate incidunt!</span>
                         </p>
                     </div>
-                </div>
+
+
+
+                </div><!-- End of class="main-content" -->
+                <footer class="container-fluid">
+	                <div class="row">
+	                	<ul class="col-xs-6 col-sm-4">
+
+	                		<a href="">Student Forum</a>
+	                		
+	                		<li>
+	                			<a href="">Forum</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Tags</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Users</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Search</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Cart</a>
+	                		</li>	
+	                	</ul>
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="">About Us</a>
+	                		<li>
+	                			<a href="">GitHub Repository</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Facebook Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Instagram Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">GitHub Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">LinkedIn Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Owners' Profiles</a>
+	                		</li>
+	                	</ul >
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="">Contact Us</a>
+	                		<li>
+	                			<a href="">E-Mail</a>
+	                		</li>
+	                	</ul>
+	                </div>
+
+                	<p>Copyright &copy; 2020</p>
+                </footer>
 
             </div><!--End of id="content"-->
         </div><!--End of class="wrapper"-->
@@ -204,15 +275,7 @@
         </div><!--End of class="overlay"-->
 
 
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- Bootstrap Js CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     
-    <script src="js/script.js"></script>
-
     </body>
 </html>
