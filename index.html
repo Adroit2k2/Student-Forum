@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Student Forum</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    
+        <script src="js/script.js"></script>
+
+
+    </head>
+    
+    <body>
+
+        <div class="wrapper">
+        <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3></h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+
+                    <li >
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Public</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Forum</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Users</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Find A Book</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">Book Cart</a></li> 
+                        </ul>
+                        <a href="#">About Us</a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="" class="download">Download source</a></li>
+                </ul>
+            </nav><!-- End of sidebar-->
+
+        
+    <!-- Page Content Holder -->
+            <div id="content">
+
+
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+
+                    <!-- Navbar Header [collects both toggle button and navbar brand] -->
+                        <div class="navbar-header">
+                            <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+
+                            </button>
+                            
+                            <button type="button" class="navbar-toggle collapsed btn btn-info navbar-btn" data-toggle="collapse" data-target="#navComponents" aria-expanded="false">
+                                <i class="glyphicon glyphicon-align-center"></i>
+                            </button>
+
+                            <!-- Navbar Brand -->
+                            <div class="navbar-brand text-center">
+                                <a class="abtn" href="#">Student Forum</a>
+                            </div>
+                        </div>
+
+
+                        <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
+                        <div class="collapse navbar-collapse" id="navComponents">
+
+                            <!-- Navbar Links -->
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a href="#" class="abtn">About Us</a></li>
+                                
+                                <li><a href="#" class="abtn">Contact Us</a></li>
+                            </ul>
+
+                            <!-- Navbar Button -->
+                            <div id="signup" class="navbar-right">
+                            	<div class="row">
+                                <button type="button" class="btn btn-default navbar-btn col-xs-6">Sign Up</button>
+
+                                <button type="button" class="btn btn-default navbar-btn col-xs-6">Sign in</button>
+                            	</div>
+                            </div>
+
+                            <!-- Navbar Form -->
+                            <form action="#" class="navbar-form navbar-right">
+                            	
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+
+                        </div>
+                            
+
+                    </div><!--End of container-fluid-->
+
+                </nav><!--End of navbar-->
+                <div class="main-content">
+                    <div class="container">
+                        <h1 class="text-center">Main Heading</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit repudiandae sapiente explicabo aperiam veritatis adipisci, omnis debitis sint quaerat soluta necessitatibus, dolore accusamus aut neque ab? Non praesentium maxime perferendis!</p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique iusto aspernatur eius a blanditiis eveniet ullam et itaque, esse rem fuga voluptate voluptatibus voluptatum, tempore obcaecati praesentium ad quo sunt.</span><span>Velit optio quidem qui nam quia eius obcaecati dolor eligendi facere tempore, ratione rem inventore nobis maxime sit reiciendis placeat dolores ad recusandae porro. Omnis rerum similique quo voluptate incidunt!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nam voluptate sed explicabo, ut adipisci dolore omnis. Facilis veniam natus quae, alias sapiente. Explicabo maxime eligendi maiores quisquam ipsam, omnis!</span>
+                            <span>Consequuntur odit, assumenda soluta voluptatibus earum quasi, ipsa est natus quae facilis aliquid sint. Fugiat illum eum quis fuga id totam molestiae, itaque reprehenderit et iusto voluptatum similique facilis doloremque.</span>
+                            <span>Pariatur quibusdam nesciunt explicabo ea saepe, at atque aut iste vel quis et, quos nam itaque magni assumenda libero amet corrupti architecto doloremque voluptatem neque doloribus qui non unde. Doloribus.</span>
+                            <span>Architecto id, error nobis. Vel quibusdam, eius aut deserunt sed omnis necessitatibus ab iusto eveniet, tenetur tempore a nobis illum quia optio est excepturi adipisci doloribus quidem? Animi, officiis repellendus!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit repudiandae sapiente explicabo aperiam veritatis adipisci, omnis debitis sint quaerat soluta necessitatibus, dolore accusamus aut neque ab? Non praesentium maxime perferendis!</p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique iusto aspernatur eius a blanditiis eveniet ullam et itaque, esse rem fuga voluptate voluptatibus voluptatum, tempore obcaecati praesentium ad quo sunt.</span><span>Velit optio quidem qui nam quia eius obcaecati dolor eligendi facere tempore, ratione rem inventore nobis maxime sit reiciendis placeat dolores ad recusandae porro. Omnis rerum similique quo voluptate incidunt!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nam voluptate sed explicabo, ut adipisci dolore omnis. Facilis veniam natus quae, alias sapiente. Explicabo maxime eligendi maiores quisquam ipsam, omnis!</span>
+                            <span>Consequuntur odit, assumenda soluta voluptatibus earum quasi, ipsa est natus quae facilis aliquid sint. Fugiat illum eum quis fuga id totam molestiae, itaque reprehenderit et iusto voluptatum similique facilis doloremque.</span>
+                            <span>Pariatur quibusdam nesciunt explicabo ea saepe, at atque aut iste vel quis et, quos nam itaque magni assumenda libero amet corrupti architecto doloremque voluptatem neque doloribus qui non unde. Doloribus.</span>
+                            <span>Architecto id, error nobis. Vel quibusdam, eius aut deserunt sed omnis necessitatibus ab iusto eveniet, tenetur tempore a nobis illum quia optio est excepturi adipisci doloribus quidem? Animi, officiis repellendus!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit repudiandae sapiente explicabo aperiam veritatis adipisci, omnis debitis sint quaerat soluta necessitatibus, dolore accusamus aut neque ab? Non praesentium maxime perferendis!</p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique iusto aspernatur eius a blanditiis eveniet ullam et itaque, esse rem fuga voluptate voluptatibus voluptatum, tempore obcaecati praesentium ad quo sunt.</span><span>Velit optio quidem qui nam quia eius obcaecati dolor eligendi facere tempore, ratione rem inventore nobis maxime sit reiciendis placeat dolores ad recusandae porro. Omnis rerum similique quo voluptate incidunt!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nam voluptate sed explicabo, ut adipisci dolore omnis. Facilis veniam natus quae, alias sapiente. Explicabo maxime eligendi maiores quisquam ipsam, omnis!</span>
+                            <span>Consequuntur odit, assumenda soluta voluptatibus earum quasi, ipsa est natus quae facilis aliquid sint. Fugiat illum eum quis fuga id totam molestiae, itaque reprehenderit et iusto voluptatum similique facilis doloremque.</span>
+                            <span>Pariatur quibusdam nesciunt explicabo ea saepe, at atque aut iste vel quis et, quos nam itaque magni assumenda libero amet corrupti architecto doloremque voluptatem neque doloribus qui non unde. Doloribus.</span>
+                            <span>Architecto id, error nobis. Vel quibusdam, eius aut deserunt sed omnis necessitatibus ab iusto eveniet, tenetur tempore a nobis illum quia optio est excepturi adipisci doloribus quidem? Animi, officiis repellendus!</span>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit repudiandae sapiente explicabo aperiam veritatis adipisci, omnis debitis sint quaerat soluta necessitatibus, dolore accusamus aut neque ab? Non praesentium maxime perferendis!</p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique iusto aspernatur eius a blanditiis eveniet ullam et itaque, esse rem fuga voluptate voluptatibus voluptatum, tempore obcaecati praesentium ad quo sunt.</span><span>Velit optio quidem qui nam quia eius obcaecati dolor eligendi facere tempore, ratione rem inventore nobis maxime sit reiciendis placeat dolores ad recusandae porro. Omnis rerum similique quo voluptate incidunt!</span>
+                        </p>
+                    </div>
+
+
+
+                </div><!-- End of class="main-content" -->
+                <footer class="container-fluid">
+	                <div class="row">
+	                	<ul class="col-xs-6 col-sm-4">
+
+	                		<a href="">Student Forum</a>
+	                		
+	                		<li>
+	                			<a href="">Forum</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Tags</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Users</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Search</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Cart</a>
+	                		</li>	
+	                	</ul>
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="">About Us</a>
+	                		<li>
+	                			<a href="">GitHub Repository</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Facebook Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Instagram Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">GitHub Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">LinkedIn Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Owners' Profiles</a>
+	                		</li>
+	                	</ul >
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="">Contact Us</a>
+	                		<li>
+	                			<a href="">E-Mail</a>
+	                		</li>
+	                	</ul>
+	                </div>
+
+                	<p>Copyright &copy; 2020</p>
+                </footer>
+
+            </div><!--End of id="content"-->
+        </div><!--End of class="wrapper"-->
+
+
+        <div class="overlay">
+            
+        </div><!--End of class="overlay"-->
+
+
+    
+    
+    </body>
+</html>
