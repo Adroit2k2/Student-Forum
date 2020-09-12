@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Student Forum</title>
+    <style>
+      body {
+        background: url(https://source.unsplash.com/user/erondu/1600x900);
+        background-size: cover;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .title h1 {
+        color: #fff;
+        font-size: 70px;
+      }
+
+      .button {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .btn {
+        border: 1px solid #fff;
+        padding: 10px 30px;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.6s ease;
+      }
+
+      .btn:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="title">
+      <h1>BULLSHIT PROJECT</h1>
+    </div>
+    <div class="button">
+      <a href={% url 'home:content' %} class="btn">Click Here</a>
+    </div>
+  </body>
+</html>
