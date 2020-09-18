@@ -1,45 +1,32 @@
 
+              <div class="modal-body login">
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="card-header card-header-primary text-center">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
-                        <h4 class="card-title">Log in</h4>
-                        <div class="social-line">
-                          <a href="#pablo" class="btn btn-just-icon btn-link">
-                            <i class="fa fa-facebook-square"></i>
-                          </a>
-                          <a href="#pablo" class="btn btn-just-icon btn-link">
-                            <i class="fa fa-twitter"></i>
-                          </a>
-                          <a href="#pablo" class="btn btn-just-icon btn-link">
-                            <i class="fa fa-google-plus"></i>
-                          </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body login" >
                     <div class="myform form ">
+
+
                             <div class="logo mb-3">
                                 <div class="col-md-12 text-center">
                                     <h1>Login</h1>
                                 </div>
                             </div>
+                            {% if form.errors %}
+                                <p>Your username and password didn't match. Please try again.</p>
+                            {% endif %}
                             <form action="" method="post" name="login">
+                                {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        aria-describedby="emailHelp" placeholder="Enter email">
+                                    <label for="id_username">Username</label>
+                                    <input type="text" name="username" class="form-control" required id="id_username"
+                                        aria-describedby="emailHelp" autocomplete="username" placeholder="Enter username">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control"
+                                    <label for="id_password">Password</label>
+                                    <input type="password" name="password" required id="id_password" autocomplete="current-password" class="form-control"
                                         aria-describedby="emailHelp" placeholder="Enter Password">
                                 </div>
                                 <div class="col-md-12 text-center ">
-                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" >Login</button>
+                                    <input type="hidden" name="next" value="/home" />
                                 </div>
                                 <div class="col-md-12 ">
                                     <div class="login-or">
@@ -62,8 +49,6 @@
                                     <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
                                 </div>
                             </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
+
+                        </div>
+              </div>

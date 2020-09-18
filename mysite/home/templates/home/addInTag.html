@@ -1,0 +1,61 @@
+   <!--<head>-->
+   <!--     <style>-->
+   <!--         form{-->
+   <!--             border:4px solid black;-->
+   <!--             margin: 0 auto;-->
+   <!--             padding: 40px;-->
+   <!--             width: fit-content;-->
+   <!--         }-->
+   <!--     </style>-->
+   <!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>-->
+
+   <!-- </head>-->
+   <!-- <form action="" method="POST">-->
+   <!--     {% csrf_token %}-->
+   <!--     {{form.as_p}}-->
+   <!--     <input type="submit" class="btn btn-success" value="submit">-->
+   <!-- </form>-->
+
+
+
+<div class="modal-body">
+    <script>
+    $(document).ready(function () {
+        $(function () {
+               console.log("hello")
+                $('#id_tags_forum').selectpicker('reload');
+                console.log("hello")
+        });
+
+    });
+
+    </script>
+
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <datalist id='tags'>
+                {% for forum in forums%}
+                            {% for tag in forum.access.all %}
+                                <option type="text" style="color:black;">{{tag.tags_forum}}</option>
+                            {% endfor %}
+                {% endfor %}
+
+
+        </datalist>
+        <label class="screen-reader-text" for="id_tag">Enter some tags</label>
+                    <!--<select  required id="id_tags_forum" name='tags_forum' class="selectpicker" data-live-search="true" data-live-search-placeholder="Enter tags" data-style="bg-white rounded-pill px-4 py-3 shadow-sm ">-->
+
+                    <!--    {% for forum in forums%}-->
+                    <!--        {% for tag in forum.access.all %}-->
+                    <!--            <option type="text" style="color:black;">{{tag.tags_forum}}</option>-->
+                    <!--        {% endfor %}-->
+                    <!--    {% endfor %}-->
+
+
+                    <!--</select>-->
+                    <input type="text" required id="id_tags_forum" name="tags_forum" list="tags">
+        <input type="submit" class="btn btn-success" value="submit">
+    </form>
+
+</div>

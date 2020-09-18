@@ -6,7 +6,7 @@ $(document).ready(function () {
                 $('#dismiss,.overlay2').on('click', function () {
                     $('#sidebar').removeClass('active');
                     $('.overlay2').removeClass('active');
-                    
+
                 });
 
                 $('#sidebarCollapse').on('click', function () {
@@ -26,10 +26,10 @@ $(document).ready(function () {
                 // $(".overlay").on('click',function(){
 
                 //     $('.wrapper').removeClass('overlay');
-                //     $('.login').css('display',"none");        
-                //     console.log("hello");           
+                //     $('.login').css('display',"none");
+                //     console.log("hello");
                 // });
-         
+
 });
 $(document).ready(function () {
     $(window).on('scroll',function () {
@@ -49,69 +49,40 @@ $(document).ready(function () {
        for(i=0;i<Links.length;i++){
         var ln=Links[i].href.split('/');
         if(ln[ln.length-1]==current){
-            
+
             Links[i].className+=(' active');
         }
        }
-       
-
-});
-
-
-$(document).ready(function () {
-
-
-const resetDisplay = () => {
-        $("#Facebook").hide()
-        
-        $("#Instagram").hide()
-        $("#GitHub").hide()
-        
-        $("#LinkedIn").hide()
-        $("#Owners").hide()
-
-
-}
-resetDisplay();
-
-    
-    $('#Facebookc').on('click',function(){
-        resetDisplay();
-        $("#main").fadeOut();
-        $("#Facebook").fadeIn();
-
-        
-    })
-
-    $('#Ownersc').on('click',function(){
-        resetDisplay();
-        $("#main").fadeOut();
-        $("#Owners").fadeIn();
-
-        
-    })
-
-    $('#GitHubc').on('click',function(){
-        resetDisplay();
-        $("#main").fadeOut();
-        $("#GitHub").fadeIn()
-        
-    })
-    
-$('#LinkedInc').on('click',function(){
-        resetDisplay();
-        $("#main").fadeOut();
-        $("#LinkedIn").fadeIn();
-    })
-
-    
-        $('#Instagramc').on('click',function(){
-          resetDisplay();    
-          $("#main").fadeOut();
-          $("#Instagram").fadeIn();   
-    })
-    
-
 
 
 });
+
+// src="~/assets/js/bootstrap-select.min.js"
+// $(document).ready(function () {
+
+
+
+// });
+// $(function () {
+//       console.log("hello")
+//         $('.selectpicker').selectpicker('render');
+//         console.log("hello")
+//         $('.selectpicker').change(function () {
+// 		$('.output').html($(this).val());
+// 	});
+
+        // $(document).ready(function () {
+
+
+//       $('.form-control').('keyup',function(e){
+//           if(e.keyCode == 13){
+//               $('.form-control').value=''
+//           }
+//         });
+// });
+
+
+
+
+
+

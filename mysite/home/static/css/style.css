@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    
+
     background: #fafafa;
     overflow-x: hidden;/*To hide scrollbar for small screen size*/
 }
@@ -14,7 +14,7 @@ a:hover{
 }
 .wrapper{
 	height: 100%;
-    padding-top: 90px;
+    /*padding-top: 90px;*/
     z-index: 125;
 }
 p {
@@ -84,17 +84,17 @@ box-shadow: 0 2px #999;
     text-align: center;
     cursor: pointer;
     outline: none;
-    
+
     border: none;
     border-radius: 15px;
-    box-shadow: 0px 1px 14px 0px #999;  
+    box-shadow: 0px 1px 14px 0px #999;
 
 
 }
 
 #content .navbar .abtn:hover{
     background-color: darkgrey;
-    
+
 }
 #content .navbar .abtn:active {
   background-color: darkgrey;
@@ -135,7 +135,7 @@ box-shadow: 0 2px #999;
 }
 
 
-#signup .navbar-btn{
+#signup .navbar-btn,#user .navbar-btn{
     margin: 0px 5px 5px;
 }
 #navComponents .nav .abtn{
@@ -143,7 +143,7 @@ box-shadow: 0 2px #999;
     /*background: #6dbecc;*/
     color: #fff !important;
     text-decoration: none;
-    
+
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -153,12 +153,12 @@ box-shadow: 0 2px #999;
     font-weight: bold;
 }
 
- #navComponents #signup button{
+ #navComponents #signup button, #navComponents #user button{
         background: transparent;
         box-shadow: 0px 1px 14px 0px #999;
         color:#fff;
         text-decoration: none;
-    
+
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -167,7 +167,7 @@ box-shadow: 0 2px #999;
         font-weight: bold;
         margin:0;
 }
-#navComponents #signup button a{
+#navComponents #signup button a,#navComponents #user button a{
     color: #fff;
 }
 .navbar-right {
@@ -191,7 +191,7 @@ box-shadow: 0 2px #999;
 @media(max-width:1058px)
 {
     #navComponents .navbar-form{
-        
+
         width:100%
     }
     #navComponents .navbar-form .form-group{
@@ -199,9 +199,9 @@ box-shadow: 0 2px #999;
     }
     #navComponents .navbar-form .form-control{
         width: 100%;
-    
+
     }#navComponents .navbar-form button{
-   
+
     }
 }
 @media(max-width:768px)
@@ -216,7 +216,7 @@ box-shadow: 0 2px #999;
     {
         box-shadow: none;
     }
-    #navComponents #signup .btn{
+    #navComponents #signup .btn,#navComponents #user .btn{
         padding: 5px 10px;
         text-decoration: none;
         text-align: center;
@@ -226,10 +226,10 @@ box-shadow: 0 2px #999;
         border-radius: 15px;
         font-size: 1.3em;
     }
-    #navComponents #signup .btn:hover{
+    #navComponents #signup .btn:hover,#navComponents #user .btn:hover{
         background:darkgrey;
     }
-    #navComponents #signup{
+    #navComponents #signup,#navComponents #user{
         padding: 0px inherit;
     }
     /*#navComponents .navbar-form {
@@ -242,8 +242,8 @@ box-shadow: 0 2px #999;
         display: inline-block;
     }
     #navComponents .navbar-form button{
-        display: inline-block;    
-        
+        display: inline-block;
+
     }
 }
 @media(max-width:314px){
@@ -407,7 +407,7 @@ footer
 	background:black;
 	padding: -20px;
     margin: auto;
-	
+
 }
 footer li{
 	list-style: none;
@@ -429,14 +429,14 @@ footer li>a:hover{
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 20px 0px 0px 0px;
+    padding: 180px 0px 0px 0px;
     min-height: 100vh;
     transition: all 0.3s;
     position: relative;
 
 }
 .main-content{
-    
+
     color: black;
     width: 100%;
     margin: 0px;
@@ -456,6 +456,7 @@ footer li>a:hover{
 .login {
             padding-top: 4.2rem;
             padding-bottom: 4.2rem;
+            z-index: 200;
             position: fixed;
             top: 60px;
         }
@@ -470,14 +471,14 @@ footer li>a:hover{
             font-family: 'Kaushan Script', cursive;
         }
 
-        .login .myform ,.modal-content{
+        .login .myform {
             position: relative;
             display: -ms-flexbox;
             display: flex;
-            padding: 0rem 1rem;
+            padding: 1rem;
             -ms-flex-direction: column;
             flex-direction: column;
-            width: 80%;
+            width: 100%;
             pointer-events: auto;
             background-color: #fff;
             background-clip: padding-box;
@@ -485,11 +486,6 @@ footer li>a:hover{
             border-radius: 1.1rem;
             outline: 0;
             max-width: 500px;
-        }
-        .modal-content{
-            position: fixed;
-            
-            top: 50px;
         }
 
         .login .tx-tfm {
@@ -507,10 +503,6 @@ footer li>a:hover{
             margin-bottom: 10px;
             padding-top: 10px;
             padding-bottom: 10px;
-        }
-        .login p{
-            margin-top: 0;
-            margin-bottom: 1rem;
         }
 
         .login .span-or {
@@ -570,10 +562,20 @@ footer li>a:hover{
             display: none;
         }
 
+/* ---------------------------------------------------
+    FORM DROPDOWN STYLE
+----------------------------------------------------- */
 
+.bootstrap-select .bs-ok-default::after {
+    width: 0.3em;
+    height: 0.6em;
+    border-width: 0 0.1em 0.1em 0;
+    transform: rotate(45deg) translateY(0.5rem);
+}
 
-
-
+.selectpicker:focus {
+    outline: none !important;
+}
 
 
 
