@@ -1,0 +1,239 @@
+{% extends "index.html" %}
+
+{% block profile %}
+
+<!--<h4 style="display:inline;"><span id="firstName">{{user.profile.first_name}}</span> <span id="lastName">{{user.profile.last_name}}</span></h4>-->
+<!--<h2 style="display:inline;">@{{user.get_username}}</h2>-->
+<!--<img style="float:right; max-width:50%;" src="{% url 'home:dp' user.profile.id  %}" onclick="document.getElementById('overlay').style.display = 'block';">-->
+<!--<div>-->
+<!--    <a href={% url "home:editprofile" user.profile.id %}>Edit Profile</a>-->
+<!--</div>-->
+<script>
+    $(document).ready(function(){
+      var firstName = $('#firstName').text();
+      var lastName = $('#lastName').text();
+      var initials = $('#firstName').text().charAt(0) + $('#lastName').text().charAt(0);
+      var img= new Image();
+      img.src=$("#profileImage").attr('src');
+
+      img.onerror=function(){
+
+      document.getElementById('profileImage').setAttribute('alt',initials);
+      document.getElementById('profileImage').setAttribute('src'," ");
+      }
+    });
+
+</script>
+
+<style>
+/*#profileImage {*/
+/*  width: 150px;*/
+/*  height: 150px;*/
+/*  border-radius: 50%;*/
+/*  background: #512DA8;*/
+/*  font-size: 35px;*/
+/*  color: #fff;*/
+/*  text-align: center;*/
+/*  line-height: 150px;*/
+/*  margin: 20px 0;*/
+/*}*/
+</style>
+
+
+<div class="profile">
+		<div class="container-fluid">
+			<div class="row myrow_1">
+				<div class="col activity_bar">
+					<ul>
+					  <li><a href="#">Profile</a></li>
+					  <li><a href="#">Activity</a></li>
+					  <li><a href="{% url "home:editprofile" user.profile.id %}">Edit Profile</a></li>
+					  <li><a href="{% url "home:change_password" %}">Edit Password</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+    <div class="flexbox d-flex flex-column align-items-center">
+
+	      <div class="d-flex flex-column  flex-md-row myrow_2">
+
+	        <div class="flex-fill align-self-center">
+	          <div class="image">
+	            <input type="image" id="profileImage" src="{% url 'home:dp' user.profile.id  %}" alt="" >
+	          </div>
+	        </div>
+
+	        <div class="details ml-5 flex-fill align-self-end">
+	          <div class="name">
+	            <h2><span id="firstName">{{user.profile.first_name}}</span> <span id="lastName">{{user.profile.last_name}}</span><a class="col" href="#"> @{{user.get_username}}</a></h2>
+	          </div>
+	         <div class="occupation">
+	            <h4>Student</h4>
+	          </div>
+	          <div  class="random_link d-flex flex-column  flex-lg-row">
+
+	            <div>
+		            <i class="material-icons">&#xe567;</i><a href="#">location_country_city</a>
+		            <i class="fa fa-linkedin" style="color: #007bb5;"></i><a href="#">linkdein_handle</a>
+	            </div>
+	            <div>
+		            <i class="fa fa-twitter" style="color: #55ACEE;"></i><a href="#">twitter_handle</a>
+		            <i class="fa fa-facebook" style="color: #3B5998;"></i><a href="#">facebook_handle</a>
+				</div>
+	          </div>
+	        </div>
+
+	      </div>
+
+
+        <div class="content d-flex  mt-5 flex-column flex-md-row myrow_3 Community">
+          	<div class="content d-flex  mt-auto flex-column flex-md-row myrow_3 Community ">
+            	<h2>Community</h2>
+            	<ul type="square">
+              		  <a href="#">
+                		<li>BSDK-1</li>
+		              </a>
+			          <a href="#">
+			            <li>BSDK-2</li>
+			          </a>
+			          <a href="#">
+			            <li>BSDK-3</li>
+			          </a>
+			          <a href="#">
+			            <li>BSDK-4</li>
+			          </a>
+            	</ul>
+            </div>
+
+            <div class=" Bio">
+              <h2>Here_is_something_about_me</h2>
+              <textarea name="MyBio" id="" cols="60" rows="4" class="mybio"></textarea>
+            </div>
+
+            <div class=" personal_info">
+              <h2>Personal_info</h2>
+              <ul type="square">
+                <li>
+                  Email
+                </li>
+                <li>
+                  Phone_number
+                </li>
+              </ul>
+            </div>
+
+
+        </div>
+    	</div>
+  </div>
+
+</div>
+
+<style>
+    .profile {
+      background-image: url(https://source.unsplash.com/random/1600x270);
+      background-repeat: no-repeat;
+      background-position:top;
+      background-position-y: 40px;
+      height:100vw;
+    }
+
+    .profile .activity_bar {
+      background-color: rgb(133, 163, 133, 0.4);
+      height: 42px;
+    }
+
+    .profile .activity_bar li {
+      list-style: none;
+      display: inline-block;
+      margin: 0px 10px 5px 10px;
+    }
+
+    .profile .col {
+      padding: 0px;
+    }
+
+    .profile .activity_bar li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.2rem;
+      transition: 0.6s ease-in;
+      padding: 0px 8px 4px 8px;
+      border-radius: 4px;
+      float: left;
+      position: relative;
+      top: 2px;
+    }
+
+    .profile .activity_bar li a:hover {
+      color: white;
+      background-color: black;
+    }
+
+    .profile .activity_bar li a:active {
+      color: orange;
+    }
+    .profile .flexbox{
+    	position: relative;
+    	    top: 130px;
+    		left: 20px;
+    }
+
+    #profileImage {
+      border-radius: 50%;
+      border: 3px solid black;
+      border-radius: 50%;
+      background: #512DA8;
+      font-size: 7em;
+      color: #fff;
+      text-align: center;
+      outline:none;
+      height:206px;
+      width:206px;
+    }
+
+    .profile .name h2 a {
+      text-decoration: none;
+      font-size: medium;
+    }
+
+
+    .profile .random_link a {
+      text-decoration: none;
+      margin: 0px 20px 0px 3px;*/
+      color: black;
+    }
+
+
+    .myrow_3 {
+      background-color: floralwhite;
+    }
+
+
+
+    .profile .Community ul a {
+      text-decoration: none;
+      color: lightcoral;
+    }
+
+    .profile .Community h2 {
+      color: lightgrey;
+    }
+
+    .profile i {
+      margin: 0px 2px 0px 5px;
+
+    }
+    @media(min-width: 768px){
+    	.profile .details{
+    		margin-top: 115px;
+    	}
+    }
+
+  </style>
+
+
+{% endblock %}
+
+

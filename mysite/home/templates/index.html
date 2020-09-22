@@ -5,13 +5,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+        <link rel="shortcut icon" href="../../static/images/books.gif" type="image/gif">
         <title>Student Forum</title>
 
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="../../static/css/style.css">
+        <link rel="stylesheet" href="../../static/css/login.css">
+        <link rel="stylesheet" href="../../static/css/content.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="../../static/css/jquery.mCustomScrollbar.min.css">
         <!-- jQuery CDN -->
@@ -19,21 +21,14 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="../../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- POPPER JS CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <!-- Bootstrap Multi select Dropdown CDN -->
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+`       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Bootstrap Js CDN -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <!-- Our Custom JS -->
         <script src="../../static/js/script.js"></script>
-        <script>
 
-        </script>
 
 
 
@@ -112,8 +107,8 @@
                             </button>
 
                             <!-- Navbar Brand -->
-                            <div class="navbar-brand text-center">
-                                <a class="abtn" href="index.html">Student Forum</a>
+                            <div class="navbar-brand text-center ">
+                                <a class="abtn" href={% url 'home:content' %}>Student Forum</a>
                             </div>
                         </div>
 
@@ -124,17 +119,17 @@
                             <!-- Navbar Links -->
                             <ul class="nav navbar-nav navbar-right">
 
-                                <li><a href="#" class="abtn">About Us</a></li>
+                                <li><a href="#" class="abtn navbtn">About Us</a></li>
 
-                                <li><a href="#" class="abtn">Contact Us</a></li>
+                                <li><a href="#" class="abtn navbtn">Contact Us</a></li>
                             </ul>
 
                             <!-- Navbar Button -->
                             {% if user.is_authenticated %}
                                 <div id="user" class="navbar-right">
                                 	<div class="row">
-                                        <button type="button" class="btn btn-default navbar-btn col-xs-6">{{ user.get_username }}</button>
-                                        <button type="button"class=" btn btn-default navbar-btn col-xs-6"><a href={% url 'home:logout' %}>Logout</a></button>
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:profile' %}>{{ user.get_username }}</a></button>
+                                        <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logout' %}>Logout</a></button>
                                 	</div>
                                 </div>
 
@@ -144,9 +139,9 @@
                             {% else %}
                                 <div id="signup" class="navbar-right">
                                 	<div class="row">
-                                        <button type="button" class="btn btn-default navbar-btn col-xs-6"><a href={% url 'home:signup' %} >Sign Up</a></button>
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:signup' %} >Sign Up</a></button>
 
-                                        <button type="button" id="login" class=" btn btn-default navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a></button>
+                                        <button type="button" id="login" class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a></button>
                                 	</div>
                                 </div>
 
@@ -161,10 +156,14 @@
                             <form action="#" class="navbar-form navbar-right">
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" placeholder="Search" name="search"
+                                    {% if search %}
+                                        value="{{ search }}"
+                                    {% endif %}
+                                    >
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn navbtn btn-default"><i class="fa fa-search">Search</i></button>
                             </form>
 
                         </div>
@@ -180,6 +179,10 @@
                         {% block content %}
                         {% endblock %}
                     </div>
+                    {% block profile %}
+                        {% endblock %}
+                    {% block editprofile %}
+                        {% endblock %}
                 </div><!-- End of class="main-content" -->
                  <!--End of Page content-->
 

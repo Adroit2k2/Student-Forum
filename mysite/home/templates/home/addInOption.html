@@ -1,0 +1,11 @@
+<div class="modal-body">
+    <form action={% url 'home:option' pk %} method=post>
+        {% csrf_token %}
+
+        <input type="text" name="option" maxlength="300" required id="id_option"></div>
+
+        <input type="submit" class="btn btn-success" name="Add" value="Add Another Option">
+
+        <input type="submit" class="btn btn-success" value="Save Options">
+    </form>
+</div>

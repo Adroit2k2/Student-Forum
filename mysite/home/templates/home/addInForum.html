@@ -1,52 +1,125 @@
-<!--<div class="modal-header">-->
-<!--        <h5 class="modal-title">Modal title</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--</div>-->
 <div class="modal-body">
 
-    <form  method="POST">
+    <form action="{% url 'home:addForum'  %}" method="POST">
         {% csrf_token %}
-        <div id="setup">
-            <label for="id_type_code">What type of question you wish to ask?</label>
-                <select required_id="id_type_code" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="form-control">
-                    <option type="text" value="1" required id="id_type_code">One Word</option>
-                    <option type="text" value="2"  required id="id_type_code">MCQ</option>
-                    <option type="text" value="3"  required id="id_type_code">Long Answer</option>
-                </select>
+
+        <label for="id_type_code">What type of question you wish to ask?</label>
+        <select  type="text" required="" id="id_type_code" name="type_code" maxlength="1"  data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="form-control">
+            <option type="text" value="1" >MCQ</option>
+            <option type="text" value="2"  >One Word</option>
+            <option type="text" value="3"  >Long Answer</option>
+        </select>
+
+            <div><label for="id_topic">Topic:</label> <input type="text" name="topic" maxlength="300" required="" id="id_topic"></div>
+
+            <div>
+                <label for="id_description">Description:</label>
+                <textarea type="text" name="description" maxlength="1000" required="" id="id_description" rows="10" cols="50" style="resize:none;"></textarea>
+            </div>
+            <div id="ask">
+                <label for="id_ask">How many options you want to give?</label>
+                <input type="number"name="ask"  maxlength="1" id="id_ask"></div>
+            <div>
 
 
+                    <script>
+                         $(document).on('change','#id_type_code',function(){
+
+                            var id=document.getElementById('id_type_code');
+                            var result=id.options[id.selectedIndex].value;
+
+                            if(result !="1"){
+                                var option = $('.mcq');
+                                for (var i=0;i<option.length;i+=1){
+                                  option[i].style.display = 'none';
+                                }
+                                var ask = $('#ask');
+                                for (var i=0;i<ask.length;i+=1){
+                                  ask[i].style.display = 'none';
+                                }
+                            }
+                            if(result =="1"){
+                                var option = $('.mcq');
+                                for (var i=0;i<option.length;i+=1){
+                                  option[i].style.display = 'inline-block';
+                                }
+                                var ask = $('#ask');
+                                for (var i=0;i<ask.length;i+=1){
+                                  ask[i].style.display = 'inline-block';
+                                }
+                            }
+                        });
+                        $(document).on('change','#id_ask',function(){
+
+                            var id=document.getElementById('id_ask');
+                            var result=id.value;
+                            var i=0;
+                            if(result>4 || result<0){
+                                id.value=4;
+                                result=id.value;
+                                alert("Only 4 options are allowed!")
+                            }
+                            var option = $('.mcq');
+                                for (i;i<result;i+=1){
+                                  option[i].style.display = 'inline-block';
+                                }
+                                for(i;i<option.length;i+=1){
+                                    option[i].style.display = 'none';
+                                }
 
 
+                        });
+                    </script>
+                    {{ form3.management_form }}
 
-            <!--<script type="text/javascript"> -->
-            <!--    for(i=0;i<$('.form-control').length;i++-->
-            <!--    function(){-->
+                    {% for form in form3 %}
+                    {% with i=forloop.counter %}
+                        <input class='mcq' type="text" name="form-{{i|add:"-1"}}-option" maxlength="300" id="id_form-{{i|add:"-1"}}-option">
+                    {% endwith %}
+                    {% endfor %}
 
-            <!--        optionText = 'Premium'; -->
-            <!--        optionValue = 'premium'; -->
+            <datalist id='tags'>
+                {% for forum in forums%}
+                            {% for tag in forum.access.all %}
+                                <option type="text" style="color:black;">{{tag.tags_forum}}</option>
+                            {% endfor %}
+                {% endfor %}
+            </datalist>
 
-            <!--        $('#select1').append(`<option value="${optionValue}"> -->
-            <!--                                   ${optionText} -->
-            <!--                              </option>`); -->
-            <!--    } -->
-            <!--</script> -->
-            <!--<input type="text" list="tags" required id="id_tag" name=tag>-->
-            <button class="next-btn next-btn1" type="button">Next</button>
-        </div>
-        <div id="question">
-            <div><label for="id_topic">Topic:</label> <input type="text" name="topic" maxlength="300" required id="id_topic"></div>
+            <label class="screen-reader-text" for="id_tags_forum">Enter some tags</label>
 
-            <div><label for="id_description">Description:</label> <textarea type="text" name="description" maxlength="1000" id="id_description" rows="10" cols="50" style="resize:none;"></textarea></div>
-
-            <input type="submit" class="btn btn-success" value="submit">
-        </div>
+            <input type="text" id="id_tags_forum" name="tags_forum" list="tags">
+                    <div>
+                        <span>Tags:</span>
+                            {%for tag in viewtags.access.all %}
+                                <span> {{tag.tags_forum}} </span>
+                            {% endfor %}
+                    </div>
+            <button type="submit" class="btn btn-success">Submit Question</button>
 
     </form>
 
+
+    <!--<div class="modal fade" id="Option" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">-->
+    <!--    <div class="modal-dialog modal-dialog-centered" role="document">-->
+    <!--        <div class="modal-content ">-->
+
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+    <!--<script>-->
+
+    <!--//     $('.option-modal').on('click',function(e){-->
+    <!--//     e.preventDefault();-->
+    <!--//     var data_id = $(this).attr("data-id");-->
+    <!--//     var url=$('.option-modal').href;-->
+    <!--//     console.log(data_id);-->
+    <!--//     url=url+'/'+data_id;-->
+    <!--//     $('.option-modal').attr.href=url;-->
+    <!--//     console.log($('.option-modal').attr.href);-->
+    <!--//     $('#Option').modal('show').find('.modal-content').load($(this).attr('href'));-->
+
+    <!--// });-->
+    <!--// </script>-->
 </div>
-<!--<div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--</div>-->
