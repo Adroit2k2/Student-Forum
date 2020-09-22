@@ -226,7 +226,7 @@ pep8==1.7.1
 persistent==4.5.0
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==6.2.1
+
 Pint==0.9
 plaster==1.0
 plaster-pastedeploy==0.7
