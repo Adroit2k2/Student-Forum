@@ -1,0 +1,25 @@
+<div class="modal-body">
+    <form class="form" action={% url 'home:tags' pk %} method="POST">
+        {% csrf_token %}
+        <datalist id='tags'>
+                {% for forum in forums%}
+                            {% for tag in forum.access.all %}
+                                <option type="text" style="color:black;">{{tag.tags_forum}}</option>
+                            {% endfor %}
+                {% endfor %}
+        </datalist>
+
+        <label class="screen-reader-text" for="id_tag">Enter some tags</label>
+                    <input type="text" required id="id_tags_forum" name="tags_forum" list="tags">
+        <input type="submit" class="btn btn-success" value="Save tags">
+        <input type="submit" class="btn btn-success" name="Add" value="Add More">
+
+        <div>
+            <span>Tags:</span>
+                {%for tag in viewtags.access.all %}
+                    <span> {{tag.tags_forum}} </span>
+                {% endfor %}
+        </div>
+    </form>
+
+</div>

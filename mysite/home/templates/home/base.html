@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="../../static/images/books.gif" type="image/gif">
+    <title>Student Forum</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="../../static/css/login.css">
+    <style>
+        body {
+            background-image: url(https://www.shipnet.no/wp-content/uploads/2019/04/abstract-background-dark.png);
+
+        }
+
+
+        input {
+            cursor: default;
+        }
+
+        .row-flex {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+
+        /* vertical spacing between columns */
+
+        [class*="col-"] {
+          margin-bottom: 30px;
+        }
+
+        .content {
+          height: 100%;
+          padding: 50px 50px 10px;
+          color: #fff;
+        }
+
+
+        /* Demo backgrounds and styling*/
+
+
+
+
+
+
+        .content h3 {
+          margin-top: 0px;
+          font-weight: 300;
+        }
+
+
+        .title_1 h1 {
+            font-size: 70px;
+            text-align: center;
+            color: black;
+        }
+
+        .subsection_1 p {
+            position: relative;
+            overflow: hidden;
+            height: 95%;
+            font-size: 20px;
+            background-color: black;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            border: 15px solid #B88846;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23B88846' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3Cpath d='M8 8h16v16H8zM51 8h16v16H51zM51 51h16v16H51zM8 51h16v16H8z'/%3E%3C/g%3E%3Cg fill='%23B88846'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='59' cy='16' r='2'/%3E%3Ccircle cx='59' cy='59' r='2'/%3E%3Ccircle cx='16' cy='59' r='2'/%3E%3C/g%3E%3C/svg%3E") 25;
+
+        }
+
+        .subsection_1_link {
+            margin: 0px 0px 15px 180px;
+            padding: 5px;
+            text-decoration: none;
+            transition: 0.6s ease;
+            color: white;
+        }
+
+
+        .subsection_1_link:hover {
+            color: rgb(red, rgb(105, 178, 221), blue);
+            text-decoration: none;
+        }
+
+        .login-btns {
+            position: relative;
+            top: 150px;
+        }
+
+        .login_1 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-btns .btn {
+            border: 2px solid #e55743;
+            padding: 10px 30px;
+            color: black;
+            text-decoration: none;
+            transition: 0.6s ease;
+            align-self: center;
+            margin: 20px 20px;
+        }
+
+        .login-btns .btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        @media (min-width: 940px) and (max-width: 1140px){
+          .mid_size_1{
+
+
+          }
+          .mid_size_2{
+
+          }
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>)
+    <div class="section_1">
+        <div class="container-fluid title_1">
+            <h1>Title_1</h1>
+        </div>
+     <body>
+  <div class="container-fluid">
+
+    <div class="row row-flex">
+      <div class="col-xs-12 col-md-6 col-xl-4  subsection_1 ">
+        <div class="content colour-1">
+          <h3>What is lorem ipsum?</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        </div>
+         <a href={% url 'home:content' %} class="button btn btn-default navbar-btn col-xs-6">Questions</a>
+      </div>
+      <div class="col-xs-12 col-md-6 col-xl-4 subsection_1 " >
+        <div class="content colour-2">
+          <h3>Why do we use it?</h3>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+
+        </div>
+        <a href="#" class="button btn btn-default navbar-btn col-xs-6">Blog</a>
+      </div>
+      <div class="col-xs-12 col-md-12 col-xl-4 subsection_1 ">
+        <div class="content colour-3">
+          <h3>Where does it come from</h3>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+        </div>
+        <a href="#" class="button btn btn-default navbar-btn col-xs-6">Books</a>
+          </div>
+
+
+
+  </div>
+</body>
+
+
+
+
+    <div class="login-btns">
+        <div class="container-fluid">
+            <div class="row login_1">
+                <button type="button" class="button btn btn-default navbar-btn col-xs-6"><a href={% url 'home:signup' %} >Signup </a>
+
+                    <div class="button__horizontal"></div>
+	                <div class="button__vertical"></div>
+                </button>
+
+
+                <button type="button" id="login" class="button btn btn-default navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a>
+                    <div class="button__horizontal"></div>
+	                <div class="button__vertical"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.li-modal').on('click',function(e){
+        e.preventDefault();
+        $('#exampleModalCenter').modal('show').find('.modal-content').load($(this).attr('href'));
+        });
+    </script>
+
+
+
+    <style type="text/css">
+
+.button {
+    border-radius:2rem;
+
+	--offset: 10px;
+	--border-size: 2px;
+
+	display: block;
+	position: relative;
+
+	appearance: none;
+	background: transparent;
+	color: #e55743;
+	text-transform: uppercase;
+	letter-spacing: .25em;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+	transition: background .8s ease;
+	}
+	.button:hover {
+		background: rgba(100, 0, 0, .03);
+	}
+
+	.button__horizontal,
+	.button__vertical {
+		position: absolute;
+		top: var(--horizontal-offset, 0);
+		right: var(--vertical-offset, 0);
+		bottom: var(--horizontal-offset, 0);
+		left: var(--vertical-offset, 0);
+		transition: transform .8s ease;
+		will-change: transform;
+		}
+	.button__horizontal::before,
+	.button__vertical::before {
+			content: '';
+			position: absolute;
+			border: inherit;
+		}
+
+
+	.button__horizontal {
+		--vertical-offset: calc(var(--offset) * -1);
+		border-top: var(--border-size) dotted #e55743;
+		border-bottom: var(--border-size) dotted #e55743;
+		}
+	.button__horizontal::before {
+			top: calc(var(--vertical-offset) - var(--border-size));
+			bottom: calc(var(--vertical-offset) - var(--border-size));
+			left: calc(var(--vertical-offset) * -1);
+			right: calc(var(--vertical-offset) * -1);
+		}
+
+	.button:hover .button__horizontal {
+		transform: scaleX(0);
+	}
+
+	.button__vertical {
+		--horizontal-offset: calc(var(--offset) * -1);
+		border-left: var(--border-size) dotted #e55743;
+		border-right: var(--border-size) dotted #e55743;
+		}
+	.button__vertical::before {
+			left: calc(var(--horizontal-offset) - var(--border-size));
+			right: calc(var(--horizontal-offset) - var(--border-size));
+			top: calc(var(--horizontal-offset) * -1);
+			bottom: calc(var(--horizontal-offset) * -1);
+		}
+
+
+	.button:hover .button__vertical {
+		transform: scaleY(0);
+	}
+	a:hover{
+	    text-decoration:none;
+	}
+
+
+    </style>
+</body>
+
+</html>
