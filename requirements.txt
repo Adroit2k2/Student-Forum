@@ -22,7 +22,7 @@ sqlparse==0.3.1
 whitenoise==5.2.0
 
 GEOS==0.2.2
-PROJ==4.9.0
+PROJ==0.2.0
 
 absl-py==0.8.1
 aggdraw==1.3.11
