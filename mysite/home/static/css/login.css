@@ -1,0 +1,108 @@
+.login {
+            padding-top: 4.2rem;
+            padding-bottom: 4.2rem;
+            z-index: 200;
+            position: fixed;
+            top: 60px;
+        }
+
+        .login a {
+            text-decoration: none !important;
+        }
+
+        .login h1,
+        .login h2,
+        .login h3 {
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .login .myform {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 1rem;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 1.1rem;
+            outline: 0;
+            max-width: 500px;
+        }
+
+        .login .tx-tfm {
+            text-transform: uppercase;
+        }
+
+        .login .mybtn {
+            border-radius: 50px;
+        }
+
+        .login .login-or {
+            position: relative;
+            color: #aaa;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .login .span-or {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: -2px;
+            margin-left: -25px;
+            background-color: #fff;
+            width: 50px;
+            text-align: center;
+        }
+
+        .login .hr-or {
+            height: 1px;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+        }
+
+        .login .google {
+            color: #666;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            outline: none;
+            border: 1px solid lightgrey;
+            transition: 0.5s ease-in;
+        }
+
+        .login .github {
+            color: #666;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            outline: none;
+            border: 1px solid lightgrey;
+            margin: 10px 0px 0px 0px;
+            transition: 0.5s ease-in;
+        }
+
+        .login .google:hover {
+
+            color: #fff;
+            background-color: lightskyblue;
+        }
+
+        .login .github:hover {
+            color: #fff;
+            background-color: lightslategray;
+        }
+
+        .login form .error {
+            color: #ff0000;
+        }
+
+        .login #second {
+            display: none;
+        }

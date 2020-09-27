@@ -1,0 +1,92 @@
+{% extends "index.html" %}
+
+{% block content %}
+<button type="button" id="addForum" class=" btn btn-default col-xs-6"><h3><a href={% url 'home:addForum' %} class="forum-modal">Add Forum</a></h3></button>
+    <br><br>
+<div style="float:right">
+<form>
+  <!--<input type="text" placeholder="Search.." name="search"{% if search %} value="{{ search }}" {% endif %}>-->
+  <!--<button type="submit"><i class="fa fa-search"></i></button>-->
+<a href="{% url 'home:content' %}"><i class="fa fa-undo"></i></a>
+</form>
+</div>
+{% for topic in forums %}
+<div style="border:3px solid black;padding:10px;">
+<h4>{{topic.topic}}</h4>
+<p>{{topic.description}}</p>
+    <h5 style="display:inline;">Tags: </h5>
+    {%for tag in topic.tag_access.all%}
+        {% if tag.tags_forum != "None" %}
+            <span>{{tag.tags_forum}}>> </span>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <h5 style="display:inline;">Options: </h5>
+    {%for options in topic.option_access.all%}
+        {% if options.option != "None" %}
+            <span>{{ options.option }}>> </span>
+        {% endif %}
+    {% endfor %}
+    <hr>
+    <span style="float:right;">Posted By-{{topic.owner}} on {{topic.date_created}}</span>
+       <form method="POST" >
+            {% csrf_token %}
+            <button class="btn btn-success"><a data-id="{{topic.id}}"  style="color:white;" class="tag-modal" type='submit' href={%  url 'home:tags' topic.id %}>Add Tags</a></button>
+        </form>
+        <hr>
+    <br>
+</div>
+{% endfor %}
+
+
+
+
+<div class="modal fade" id="Forum" tabindex="-1" role="dialog" aria-labelledby="ForumTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+
+            </div>
+        </div>
+    </div>
+     <script>
+
+    //     $('.forum-modal').on('click',function(e){
+    //     e.preventDefault();
+    //     $('#Forum').modal('show').find('.modal-content').load($(this).attr('href'));
+    // });
+    // </script>
+
+<div class="modal fade" id="Tag" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $('.tag-modal').on('click',function(e){
+        e.preventDefault();
+        var data_id = $(this).attr("data-id");
+        var url=$('.tag-modal').href;
+        console.log(data_id);
+        url=url+'/'+data_id;
+        $('.tag-modal').attr.href=url;
+        console.log($('.tag-modal').attr.href);
+        $('#Tag').modal('show').find('.modal-content').load($(this).attr('href'));
+
+    });
+
+    </script>
+    <script>
+
+        $('.forum-modal').on('click',function(e){
+        e.preventDefault();
+        console.log($('.forum-modal').attr('href'));
+        // window.location.href=$('.forum-modal').attr('href');
+        $('#Forum').modal('show').find('.modal-content').load($('.forum-modal').attr('href'));
+
+
+    });
+    </script>
+{% endblock %}

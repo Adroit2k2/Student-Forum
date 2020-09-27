@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% block editprofile %}
+
+<p>
+  <form action="" method="post" id="upload_form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!--{{ form.as_table}}-->
+
+    <p><label for="id_username">Username:</label> <input type="text" value="{{user.username}}" name="username" maxlength="150" autofocus required id="id_username">
+    <p><label for="id_first_name">First name:</label> <input type="text" value="{{user.profile.first_name}}" name="first_name" maxlength="100" required id="id_first_name">
+
+    <p><label for="id_last_name">Last name:</label> <input type="text" value="{{user.profile.last_name}}" name="last_name" maxlength="100" required id="id_last_name">
+
+    <p><label for="id_email">Email:</label> <input type="email"  value="{{user.profile.email}}" name="email" maxlength="150" required id="id_email">
+
+    <p><label for="id_password1">Password:</label> <input type="password" value="{{user.profile.password1}}" name="password1" autocomplete="new-password" required id="id_password1">
+    <p><label for="id_password2">Password confirmation:</label> <input type="password" value="{{user.profile.password2}}" name="password2" autocomplete="new-password" required id="id_password2">
+    <p><label for="id_phone">Phone:</label> <input type="number" name="phone" step="any" value="{{user.profile.phone}}" required id="id_phone">
+    <p><label for="id_picture">File to Upload &lt;= 2.0MB:</label>
+    <input type="file" name="picture" id="id_picture">
+    <div style="background:url({% url 'home:dp' user.profile.id %});" id="p"></div>
+
+    <input type="image" id="profileImage" src="{% url 'home:dp' user.profile.id  %}" alt="Select an image"
+    style="border-radius: 50%;
+      border: 3px solid black;
+      background: #512DA8;
+      font-size: 7em;
+      color: #fff;
+      text-align: center;
+      outline:none;
+      height:206px;
+      width:206px;" onclick="document.getElementById('overlay').css('display','block');>
+     <!--onclick="document.getElementById('overlay').css('display','block');-->
+
+    <input type="submit" value="Submit">
+    <input type="submit" value="Cancel" onclick="window.location.href='{% url 'home:content' %}';return false;">
+  </form>
+</p>
+<script>
+$("#upload_form").submit(function() {
+    console.log('Checking file size');
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+      var file = $('#id_picture')[0].files[0];
+      if (file && file.size > {{ form.max_upload_limit }} ) {
+          alert("File " + file.name + " of type " + file.type + " must be < {{ form.max_upload_limit_text }}");
+      return false;
+    }
+  }
+});
+
+
+    $(document).ready(function(){
+      var firstName = $('#id_first_name').text();
+      var lastName = $('#id_last_name').text();
+      var intials = $('#id_first_name').text().charAt(0) + $('#id_last_name').text().charAt(0);
+      var img = $('#p');
+    // //     style = img.currentStyle || window.getComputedStyle(img, false),
+    // //     bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+    // //   alert(bi);
+    //   if($('#p').css('background-image') == "none"){
+
+    //         // $('#p').html(intials);
+    //   }
+    });
+
+</script>
+
+{% endblock %}

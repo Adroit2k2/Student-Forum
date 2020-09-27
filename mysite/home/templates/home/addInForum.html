@@ -1,0 +1,125 @@
+<div class="modal-body">
+
+    <form action="{% url 'home:addForum'  %}" method="POST">
+        {% csrf_token %}
+
+        <label for="id_type_code">What type of question you wish to ask?</label>
+        <select  type="text" required="" id="id_type_code" name="type_code" maxlength="1"  data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="form-control">
+            <option type="text" value="1" >MCQ</option>
+            <option type="text" value="2"  >One Word</option>
+            <option type="text" value="3"  >Long Answer</option>
+        </select>
+
+            <div><label for="id_topic">Topic:</label> <input type="text" name="topic" maxlength="300" required="" id="id_topic"></div>
+
+            <div>
+                <label for="id_description">Description:</label>
+                <textarea type="text" name="description" maxlength="1000" required="" id="id_description" rows="10" cols="50" style="resize:none;"></textarea>
+            </div>
+            <div id="ask">
+                <label for="id_ask">How many options you want to give?</label>
+                <input type="number"name="ask"  maxlength="1" id="id_ask"></div>
+            <div>
+
+
+                    <script>
+                         $(document).on('change','#id_type_code',function(){
+
+                            var id=document.getElementById('id_type_code');
+                            var result=id.options[id.selectedIndex].value;
+
+                            if(result !="1"){
+                                var option = $('.mcq');
+                                for (var i=0;i<option.length;i+=1){
+                                  option[i].style.display = 'none';
+                                }
+                                var ask = $('#ask');
+                                for (var i=0;i<ask.length;i+=1){
+                                  ask[i].style.display = 'none';
+                                }
+                            }
+                            if(result =="1"){
+                                var option = $('.mcq');
+                                for (var i=0;i<option.length;i+=1){
+                                  option[i].style.display = 'inline-block';
+                                }
+                                var ask = $('#ask');
+                                for (var i=0;i<ask.length;i+=1){
+                                  ask[i].style.display = 'inline-block';
+                                }
+                            }
+                        });
+                        $(document).on('change','#id_ask',function(){
+
+                            var id=document.getElementById('id_ask');
+                            var result=id.value;
+                            var i=0;
+                            if(result>4 || result<0){
+                                id.value=4;
+                                result=id.value;
+                                alert("Only 4 options are allowed!")
+                            }
+                            var option = $('.mcq');
+                                for (i;i<result;i+=1){
+                                  option[i].style.display = 'inline-block';
+                                }
+                                for(i;i<option.length;i+=1){
+                                    option[i].style.display = 'none';
+                                }
+
+
+                        });
+                    </script>
+                    {{ form3.management_form }}
+
+                    {% for form in form3 %}
+                    {% with i=forloop.counter %}
+                        <input class='mcq' type="text" name="form-{{i|add:"-1"}}-option" maxlength="300" id="id_form-{{i|add:"-1"}}-option">
+                    {% endwith %}
+                    {% endfor %}
+
+            <datalist id='tags'>
+                {% for forum in forums%}
+                            {% for tag in forum.access.all %}
+                                <option type="text" style="color:black;">{{tag.tags_forum}}</option>
+                            {% endfor %}
+                {% endfor %}
+            </datalist>
+
+            <label class="screen-reader-text" for="id_tags_forum">Enter some tags</label>
+
+            <input type="text" id="id_tags_forum" name="tags_forum" list="tags">
+                    <div>
+                        <span>Tags:</span>
+                            {%for tag in viewtags.access.all %}
+                                <span> {{tag.tags_forum}} </span>
+                            {% endfor %}
+                    </div>
+            <button type="submit" class="btn btn-success">Submit Question</button>
+
+    </form>
+
+
+    <!--<div class="modal fade" id="Option" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">-->
+    <!--    <div class="modal-dialog modal-dialog-centered" role="document">-->
+    <!--        <div class="modal-content ">-->
+
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+    <!--<script>-->
+
+    <!--//     $('.option-modal').on('click',function(e){-->
+    <!--//     e.preventDefault();-->
+    <!--//     var data_id = $(this).attr("data-id");-->
+    <!--//     var url=$('.option-modal').href;-->
+    <!--//     console.log(data_id);-->
+    <!--//     url=url+'/'+data_id;-->
+    <!--//     $('.option-modal').attr.href=url;-->
+    <!--//     console.log($('.option-modal').attr.href);-->
+    <!--//     $('#Option').modal('show').find('.modal-content').load($(this).attr('href'));-->
+
+    <!--// });-->
+    <!--// </script>-->
+</div>
