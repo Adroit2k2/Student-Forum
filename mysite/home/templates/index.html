@@ -13,21 +13,21 @@
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="../../static/css/style.css">
         <link rel="stylesheet" href="../../static/css/login.css">
-        <link rel="stylesheet" href="../../static/css/content.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="../../static/css/jquery.mCustomScrollbar.min.css">
         <!-- jQuery CDN -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script  src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <!-- jQuery Custom Scroller CDN -->
         <script src="../../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- POPPER JS CDN -->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
 `       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Bootstrap Js CDN -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <!-- Our Custom JS -->
-        <script src="../../static/js/script.js"></script>
+        <script  async src="../../static/js/script.js"></script>
+        <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
 
 
 
@@ -48,26 +48,30 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
+                    <h2>Dummy Heading</h2>
 
                     <li>
-                        <a class="click" href="index.html">Home</a>
+                        <a class="click" href="{% url 'home:content' %}">Home</a>
                     </li>
 
                     <li >
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Public</a>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Public
+                        <i class="fa fa-sort-down " style="position:absolute;right:20px;" ></i>
+                        </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a class="click" href="#">Forum</a></li>
-                            <li><a class="click" href="#">Tags</a></li>
-                            <li><a class="click" href="#">Users</a></li>
+                            <li><a class="click" href="{% url 'home:content' %}">Forum</a></li>
+                            <li><a class="click" href="{% url 'home:searchtags' %}">Tags</a></li>
+                            <li><a class="click" href="{% url 'home:users' %}">Users</a></li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Find A Book</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Find A Book
+                        <i class="fa fa-sort-down " style="position:absolute;right:20px;"></i>
+                        </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a class="click" href="#">Search</a></li>
-                            <li><a class="click" href="#">Book Cart</a></li>
+                            <li><a class="click" href="{% url 'books:search' %}">Search</a></li>
+                            <li><a class="click" href="{% url 'books:cart' %}">Book Cart</a></li>
                         </ul>
                         <a class="click" href="#">About Us</a>
                     </li>
@@ -89,7 +93,7 @@
                 <div class="overlay2"></div><!--For sidebar overlay-->
 
                 <!--Sidebar Holder-->
-                <nav class="navbar navbar-expand-md navbar-inverse fixed-top">
+                <nav class="navbar navbar-expand-md navbar-inverse fixed-top  pb-md-3 pb-sm-5 pt-sm-4">
 
                     <div class="container-fluid">
 
@@ -114,28 +118,25 @@
 
 
                         <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
-                        <div class="collapse navbar-collapse" id="navComponents">
+                        <div class="collapse d-md-flex flex-md-column align-items-sm-end navbar-collapse" id="navComponents">
 
                             <!-- Navbar Links -->
-                            <ul class="nav navbar-nav navbar-right">
-
-                                <li><a href="#" class="abtn navbtn">About Us</a></li>
-
-                                <li><a href="#" class="abtn navbtn">Contact Us</a></li>
-                            </ul>
+                            <div class="d-md-flex  flex-md-row">
+                                <div id="info" class="navbar-right">
+                                	<div class="row">
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="">About Us</a></button>
+                                        <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href="">Contact Us</a></button>
+                                	</div>
+                                </div>
 
                             <!-- Navbar Button -->
                             {% if user.is_authenticated %}
                                 <div id="user" class="navbar-right">
                                 	<div class="row">
-                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:profile' %}>{{ user.get_username }}</a></button>
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:searchprofile' user.get_username %}">{{ user.get_username }}</a></button>
                                         <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logout' %}>Logout</a></button>
                                 	</div>
                                 </div>
-
-
-
-
                             {% else %}
                                 <div id="signup" class="navbar-right">
                                 	<div class="row">
@@ -144,15 +145,10 @@
                                         <button type="button" id="login" class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a></button>
                                 	</div>
                                 </div>
-
-
-
-
                             {% endif %}
-
-
-
+                            </div>
                             <!-- Navbar Form -->
+                            <div>
                             <form action="#" class="navbar-form navbar-right">
 
                                 <div class="form-group">
@@ -162,10 +158,9 @@
                                     {% endif %}
                                     >
                                 </div>
-
                                 <button type="submit" class="btn navbtn btn-default"><i class="fa fa-search">Search</i></button>
                             </form>
-
+                            </div>
                         </div>
 
 
@@ -174,12 +169,30 @@
                 </nav><!--End of navbar-->
 
                 <!-- Page Content Holder -->
-                <div class="main-content">
+                <div class="main-content d-flex flex-column" style="min-height:82vh;">
                     <div class="container">
                         {% block content %}
                         {% endblock %}
+                        {% block discuss %}
+                        {% endblock %}
+                        {% block users %}
+                        {% endblock %}
+                        {% block tags %}
+                        {% endblock %}
+                        {% block tags_forum %}
+                        {% endblock %}
+                        {% block forum %}
+                        {% endblock %}
+                        {% block booksearch %}
+                        {% endblock %}
+                        {% block books %}
+                        {% endblock %}
+                        {% block bookview %}
+                        {% endblock %}
                     </div>
                     {% block profile %}
+                        {% endblock %}
+                    {% block password %}
                         {% endblock %}
                     {% block editprofile %}
                         {% endblock %}
@@ -240,7 +253,10 @@
 	                	</ul>
 	                </div>
 
-                	<p>Copyright &copy; 2020</p>
+                	<p style="  margin-bottom: 0;
+                                padding-bottom: 2em;
+                                font-size: 2em;
+                                ">Copyright &copy; 2020</p>
                 </footer>
                 <!--End of footer-->
 
@@ -259,6 +275,7 @@
     <script>
         $('.li-modal').on('click',function(e){
         e.preventDefault();
+        console.log($(this).attr('href'));
         $('#exampleModalCenter').modal('show').find('.modal-content').load($(this).attr('href'));
     });
   </script>

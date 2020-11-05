@@ -1,0 +1,920 @@
+{% extends "index.html" %}
+
+{% block profile %}
+<script>
+    $(document).ready(function () {
+        var img = new Image();
+        img.src=$('#dp').attr('src');
+        img.onerror=function(){
+            var s="https://ui-avatars.com/api/?name=" + "{{prof.first_name}}" + "+" + "{{prof.last_name}}" + "&size=256&rounded=true";
+            $('#dp').attr("src",s);
+        }
+    });
+
+
+    $(document).ready(function(){
+
+    if("{{prof}}"==="{{user}}"){
+        $('#CurrentUser').css('display',"inline-block");
+    }
+    else{
+        $('#CurrentUser').replaceWith('');
+    }
+    });
+    $(document).ready(function () {
+       var url=window.location.href.split('/');
+       var Links=document.getElementsByClassName('activity_bar')[0].getElementsByClassName('click');
+       var i=0;
+       var current=url[url.length-2];
+        console.log(current);
+       for(i=0;i<Links.length;i++){
+            var ln=Links[i].href.split('/');
+            console.log(ln[ln.length-2]);
+            if( ln[ln.length-2]==current ){
+
+            Links[i].className+=(' active');
+            }
+        }
+
+
+});
+
+</script>
+<div class="profile container-fluid">
+
+			<div class="pt-1 row myrow_1">
+				<div class="col activity_bar">
+					<ul>
+					  <li><a class="click" href="{% url 'home:searchprofile' user.get_username %}">Profile</a></li>
+					  <li><a class="click" href="#">Activity</a></li>
+					  <section id="CurrentUser">
+					        <li><a class="click" href="{% url "home:editprofile" user.profile.id %}">Edit Profile</a></li>
+					        <li><a class="click" href="{% url "home:change_password" %}">Edit Password</a></li>
+					  </section>
+
+
+					</ul>
+				</div>
+
+		    </div>
+
+
+
+	      <div class="flexbox d-flex flex-sm-row flex-column flexbox justify-content-sm-center  myrow_2">
+
+	        <div class=" ">
+	          <div class="image">
+	            <input type="image" id="dp" src="{% url 'home:dp' prof.profile.id  %}"  >
+	          </div>
+	        </div>
+
+	        <div class="details ml-2 ">
+	          <div class="name">
+	            <h4><span id="firstName">{{prof.first_name}}</span> <span id="lastName">{{prof.last_name}}</span><a class="col" href=""> @{{prof.get_username}}</a></h4>
+	          </div>
+	         <div class="occupation">
+	            <h5>Student</h5>
+	          </div>
+	          <div  class="random_link d-flex flex-column">
+
+	            <div>
+
+
+	                <a href="#"><i class="fa fa-map-marker fa-3x"></i>IN</a>
+	                {% if prof.profile.linkedin_link != "http://null.html" %}
+		                <a href="{{prof.profile.linkedin_link}}"><i class="fa fa-linkedin fa-3x" style="color: #007bb5;"></i></a>
+		            {% endif %}
+		            {% if prof.profile.github_link != "http://null.html" %}
+		                <a href="{{prof.profile.github_link}}"><i class="fa fa-github fa-3x" style="color: grey;"></i></a>
+		            {% endif %}
+		            {% if user == prof %}
+		                <a data-toggle="modal" data-target="#links"><i class="fa fa-edit fa-3x" style="color:black;"></i></a>
+		            {% endif %}
+	            </div>
+	            <div>
+		            <!--<i class="fa fa-github" style="color: grey;"></i><a href="#"></a>-->
+		            <!--{% if user == prof %}-->
+
+		            <!--<i class="fa fa-edit" style="color:black;"></i><a href="#"></a>-->
+		            <!--{% endif %}-->
+				</div>
+	          </div>
+	        </div>
+
+	      </div>
+
+        <div class="ml-md-5 ml-2 mr-2  mt-3  d-flex flex-md-row flex-column ">
+        <div class="ml-5 mt-3 content d-flex flex-column ">
+
+
+            <div class="personal ">
+                <div class=" Bio">
+                  <h4>About Me</h4>
+                  {% if user == prof %}
+                  <script>
+                      $(document).ready(function() {
+                          $('#id_bio').on('change', function(e) {
+                                var dataString = $("#id_form2").serialize();
+                                $.ajax({
+                                  type: "POST",
+                                  data: dataString,
+                                  success:function(){console.log("submitted");}
+
+                                });
+
+                                e.preventDefault();
+                              });
+                          });
+
+                  </script>
+                  <form name="form2" id="id_form2" method="POST">
+                      {% csrf_token %}
+                      <textarea name="bio" id="id_bio" value="{{prof.profile.bio}}" placeholder="{{prof.profile.bio}}" rows="3" cols="40" style="resize:none;font-size:15px"></textarea>
+                  </form>
+                  {% else %}
+                  <p style="    text-overflow: ellipsis;
+                                display: -webkit-box;
+                                font-size:2em;
+
+                                -webkit-box-orient: vertical;">{{prof.profile.bio}}
+                  </p>
+                  {% endif %}
+                  </div>
+
+                <div class=" personal_info">
+                  <h4>Personal_info</h4>
+                  <ul style="font-size:2em; list-style:none" type="square">
+                    <li >
+                        <i class="fa fa-envelope"></i>
+                      {{prof.email}}
+                    </li>
+
+                    <li>
+                      <i class="fa fa-phone-square"></i>
+                      {{prof.profile.phone}}
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="Community ">
+            	<h2>Community</h2>
+            	<ul style="font-size:3em; list-style:none" type="square">
+              		  <a href="#">
+                		<li>BK-1</li>
+		              </a>
+			          <a href="#">
+			            <li>BK-2</li>
+			          </a>
+			          <a href="#">
+			            <li>BK-3</li>
+			          </a>
+			          <a href="#">
+			            <li>BK-4</li>
+			          </a>
+            	</ul>
+            </div>
+        </div>
+<div class="flex-grow-1 forum-view pl-md-1 ml-md-2">
+    <h3>Forums</h3>
+{% for topic in forums%}
+        <div class="forum container-fluid">
+                <div class="row myrow_1">
+                    <div class="col-8">
+                        <form method="POST" >
+                        {% csrf_token %}
+                            <h2 class="forum_topic" ><a type='submit' href="{%  url 'home:comment' topic.id %}"><b>{{topic.topic}}</b></a></h2>
+                        </form>
+                    </div>
+                    <div class="dropdown col ">
+                        <button  id="dropbtn{{topic.id}}" class="dropbtn"><i class="fa fa-align-justify" style="
+                            position: absolute;
+                            right: 15px;top:5px;">
+
+                        </i></button>
+                        <div id="myDropdown{{topic.id}}" class="dropdown-content drop_{{topic.id}}" style="display: none;font-size: 0.8rem;position: absolute;
+                            right: 40px;top:5px;">
+                            <a href="#"><i class="fa fa-facebook" style="color: #3B5998;margin: 0px 16px 0px 0px;"></i>Share
+                                Link
+                            </a>
+                            <a href="#"><i class="fa fa-flag" style="margin: 0px 10px 0px 0px;
+                                color: red;
+                            "></i>Report Question</a>
+                        </div>
+                    </div>
+                    <script>
+                        $('#dropbtn{{topic.id}}').on('click',function() {
+                            $("#myDropdown{{topic.id}}").toggle();
+                        });
+                    </script>
+                </div>
+                <br>
+                <div class="row myrow_3">
+                    <div class="col">
+                        <p class="description">
+                            {{topic.description}}
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row ">
+                    <div class="col">
+                        {%for tag in topic.tag_access.all%}
+                            {% if tag.tags_forum != null %}
+                                <a href="#" class="tag">
+                                    <span class="arrow"></span>
+                                    {{tag.tags_forum}}
+                                </a>
+
+                            {% else %}
+                                <span>No Tags Available</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-5 col-md-3">
+                        <div class="vote roundrect">
+                            <form  method="POST" class="form">
+                                {% csrf_token %}
+                                <div class="increment up" onclick="javascript:this.parentNode.action='{% url 'home:upvote' topic.id %}';this.parentNode.submit();" id="uv"></div>
+                                <div class="increment down" id="dv" onclick="javascript:this.parentNode.action='{% url 'home:downvote' topic.id %}';this.parentNode.submit();" ></div>
+                                <div class="count">{{topic.total}}</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row-reverse myrow_4 ">
+
+<script>
+    $(document).ready(function () {
+        var img2 = new Image();
+        img2.src=$('#dp2').attr('src');
+        img2.onerror=function(){
+            var s2="https://ui-avatars.com/api/?name=" + "{{prof.first_name}}" + "+" + "{{prof.last_name}}" + "&size=256";
+            $('#dp2').attr("src",s2);
+        }
+ });
+</script>
+                    <div class="askedby mr-5 " >
+                        <input type="image" class='photo' id="dp2" src="{%  url 'home:dp' topic.owner.profile.id  %}" style=" outline:none;
+                          height:30px;
+                          width:30px;" >
+                        <div class="blah">
+                            <a href="#">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
+                        </div>
+                    </div>
+
+                    <div class='extra mr-5'>
+                    {% if user.is_authenticated %}
+                    <!-- Two hrefs with two stacked icons each - one showing and one hidden -->
+                    <a  href="#" onclick=
+                        "favPost('{% url 'home:forum_unfavorite' topic.id %}', {{ topic.id }} );return false;"
+                        id="favorite_star_{{topic.id}}"
+                        {% if topic.id not in favorites %}
+                            style="display:none;"
+                        {% endif %}>
+
+                            <span>
+
+                            <i class="fa fa-star-o fa-5x"  ></i>
+                            </span>
+
+                    </a>
+                    <!-- the second href -->
+                    <a href="#" onclick=
+                         "favPost('{% url 'home:forum_favorite' topic.id %}', {{ topic.id }} );return false;"
+                        id="unfavorite_star_{{topic.id}}"
+                        {% if topic.id in favorites %}
+                            style="display:none;"
+                        {% endif %}>
+
+                            <span>
+
+                            <i class="fa fa-star fa-5x" style="color: orange;"></i>
+                            </span>
+
+                    </a>
+                    {% endif %}
+                    <h5 style="display:inline-block;margin-left:10px;">{{topic.discuss_access.count}}</h5>
+                    {% if topic.owner == user %}
+                        <a href="{% url 'home:delete_forum' topic.id %}" style="display:inline-block;margin-left:10px;color:black"><i class="fa fa-trash fa-5x"></i></a>
+                        <a href="{% url 'home:forum_update' topic.id %}" style="display:inline-block;margin-left:10px;color:black"><i class="fa fa-edit fa-5x"></i></a>
+                    {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+    {% endfor %}
+    </div>
+    </div>
+
+    <div class="modal fade" id="links" tabindex="-1" role="dialog" aria-labelledby="linksLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form action="{% url 'home:searchprofile' user.get_username %}" onsubmit="flinks()" method="POST" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="linksLabel">Link Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="id_linkedin_link" class="col-form-label">LinkedIn:</label>
+            <input type="text" class="form-control" name="linkedin_link" value="{{prof.profile.linkedin_link}}" id="id_linkedin_link">
+          </div>
+          <div class="form-group">
+            <label for="id_github_link" class="col-form-label">Github:</label>
+            <input type="text" class="form-control" name="github_link" value="{{prof.profile.github_link}}" id="id_github_link"></input>
+          </div>
+            <script>
+                var git = document.getElementById("id_github_link");
+                var link = document.getElementById("id_linkedin_link");
+                console.log(git.value);
+                console.log(link.value);
+                if(git.value==="http://null.html"){
+                    git.value="";
+                }
+                if(link.value==="http://null.html"){
+                    link.value="";
+                }
+                function flinks(){
+                    console.log(git.value);
+                console.log(link.value);
+                    if(git.value===""){
+                        git.value="http://null.html";
+                    }
+                    if(link.value===""){
+                        link.value="http://null.html";
+                    }
+                }
+	        </script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+         </form>
+    </div>
+  </div>
+</div>
+
+
+
+                    {% block delete-topic.id %}
+                    {% endblock %}
+
+            <script>
+
+                $('.tag-modal').on('click',function(e){
+                e.preventDefault();
+                var data_id = $(this).attr("data-id");
+                var url=$('.tag-modal').href;
+                console.log(data_id);
+                url=url+'/'+data_id;
+                $('.tag-modal').attr.href=url;
+                console.log($('.tag-modal').attr.href);
+                $('#Tag').modal('show').find('.modal-content').load($(this).attr('href'));
+            });
+            </script>
+            <script>
+
+                function favPost(url, thing_id) {
+
+                    $.post(url, {},  function(rowz){
+                    $("#unfavorite_star_"+thing_id).toggle();
+                    $("#favorite_star_"+thing_id).toggle();
+
+                    }).fail(function(xhr) {
+                        alert('Url failed with '+xhr.status+' '+url);
+                        });
+                }
+            </script>
+
+
+  </div>
+
+</div>
+
+<style>
+    .profile {
+      background-image: url(https://source.unsplash.com/random/1600x270);
+      background-repeat: no-repeat;
+      background-position:top;
+      background-position-y: 40px;
+      width:100vw;
+      margin-top: -40px;
+    }
+
+    .profile .activity_bar {
+      background-color: rgb(133, 163, 133, 0.4);
+      position: relative;
+      height: 100px;
+      bottom: 64px;
+    }
+
+    .profile .activity_bar li {
+      list-style: none;
+      display: inline-block;
+      margin: 0px 10px 5px 10px;
+    }
+    .profile .activity_bar ul {
+
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0;
+    }
+    .profile .col {
+      padding: 0px;
+    }
+
+    .profile .activity_bar li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.2rem;
+      transition: 0.6s ease-in;
+      padding: 0px 8px 4px 8px;
+      border-radius: 4px;
+      float: left;
+      position: relative;
+      top: 2px;
+    }
+
+    .profile .activity_bar li a:hover {
+      color: white;
+      background-color: black;
+    }
+
+    .profile .activity_bar li a:active {
+      color: orange;
+    }
+    .profile .flexbox{
+    	margin-top:100px;
+    	    align-items:center;
+    }
+
+    #dp {
+      border-radius: 50%;
+      border: 3px solid black;
+
+      outline:none;
+      height:206px;
+      width:206px;
+    }
+
+    .profile .name h2 a {
+      text-decoration: none;
+      font-size: medium;
+    }
+
+
+    .profile .random_link a {
+      text-decoration: none;
+      margin: 0px 0px 0px 3px;*/
+      color: black;
+      font-size:2em;
+    }
+
+
+    .myrow_3 {
+      /*background-color: floralwhite;*/
+    }
+
+
+
+    .profile .Community ul a {
+      text-decoration: none;
+      color: lightcoral;
+    }
+
+    .profile .Community h2 {
+      color: lightgrey;
+    }
+    .profile .content ul{
+        padding-inline-start: 0px;
+    }
+    .profile i {
+      margin: 0px 2px 0px 5px;
+      font-size:2em;
+
+    }
+    @media(min-width: 576px){
+    	.profile .details{
+    		margin-top: 115px;
+    	}
+    }
+    @media(max-width:991px){
+        .profile .content{
+            align-items:center;
+        }
+        .profile .Community{
+            margin-left:-60px;
+        }
+    }
+
+    <style>
+        /*@media(max-width:768px){*/
+        /*    .fa-5x{*/
+        /*        font-size:3.5em;*/
+        /*    }*/
+        /*}*/
+        .fa-tag{
+            font-size:7em;
+        }
+        @media(min-width:768px){
+            .forum-view{
+                border-left:1px dotted black;
+            }
+        }
+        .forum-view h3{
+            text-align:center;
+        }
+        .forum {
+            font-family: 'Noto Sans JP', sans-serif;
+           background-color: white;
+           margin-bottom:20px;
+           padding-top:20px;
+           padding-bottom:20px;
+           border-style: solid;
+            border-width: 1px;
+            border-color: #dee0e1;
+            height:fit-content;
+        }
+
+        .forum .tag {
+            display: inline-block;
+            color: #fff;
+            position: relative;
+            padding: 5px 5px 5px 0px;
+            text-decoration: none;
+            -webkit-transition: right 0.2s ease-in;
+            -moz-transition: right 0.2s ease-in;
+            -ms-transition: right 0.2s ease-in;
+            background: rgb(92, 87, 87);
+            margin: 0px 0px 15px 18px;
+            font-size: 0.8rem;
+        }
+
+        .forum .tag:before {
+            background: #fff;
+            width: 10px;
+            height: 10px;
+            content: "";
+            display: inline-block;
+            border-radius: 20px;
+            box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 0 5px 0 5px;
+        }
+
+
+        .forum .tag:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0px 5px 40px rgba(255, 255, 255, 0), 0px 0px 10px rgba(0, 0, 0, 0);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .tag .arrow {
+            display: inline-block;
+            z-index: 25;
+            pointer-events: none;
+            position: absolute;
+            -webkit-transition: right 0.2s ease-in;
+            right: -20px;
+            top: -0.40px;
+            display: inline-block;
+
+            border-top: 15px solid transparent;
+            border-left: 20px solid rgb(92, 87, 87);
+            border-bottom: 15px solid transparent;
+            box-shadow: inset 0px 5px 40px rgb(92, 87, 87);
+        }
+
+        .forum .tag:hover {
+            position: relative;
+            right: 8px;
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            border-color: black;
+
+        }
+
+        .forum .tag:hover .arrow {
+            right: -20px;
+            border-left-color: black;
+        }
+
+
+        .forum .tag:active:after {
+            box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.3), 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+
+        /*.forum a,*/
+        /*.forum i{*/
+        /*    display: inline-block;*/
+        /*}*/
+
+        .forum .lower_option a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .forum .upvote {
+            border: 2px solid black;
+            border-radius: 8px;
+            padding: 20px 80px;
+            position: relative;
+
+        }
+
+
+        .forum .askedby {
+            height:30px;
+            font-size: 0.8rem;
+        }
+
+        .forum .dropbtn {
+            color: white;
+            cursor: pointer;
+            float: right;
+            border: none;
+            background: none;
+            outline: 0px;
+            font-size: 1.5rem;
+            float: left;
+        }
+
+        .forum .dropdown {
+            display: inline-block;
+            position: relative;
+            float: left;
+            bottom: 12px;
+        }
+
+        .forum .dropdown-content {
+
+            background-color: #f1f1f1;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            float: left;
+        }
+
+        .forum .dropdown-content a {
+            color: black;
+            padding: 5px 7px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .forum .dropdown a:hover {
+            background-color: rgb(92, 87, 87);
+            color: white;
+        }
+
+        .forum .show {
+            display: block;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
+
+        /* try 50% */
+
+
+        .forum .roundrect .up {
+            border-radius: 100px 100px 0 0;
+            height:50%;
+
+        }
+
+        .forum .roundrect .down {
+            border-radius: 0 0 100px 100px;
+            height:50%;
+        }
+
+        .forum .roundrect .count {
+            border-radius: 50%;
+            position: absolute;
+            left: 40%;
+            top: 37%;
+        }
+
+
+        .forum .vote {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            font-family: "Noto Sans";
+            width: 3.5rem;
+            height: 3.55rem;
+
+            margin: 0rem 1.25rem;
+        }
+        .forum .vote form{
+            height:100%;
+        }
+
+        .forum .increment {
+            flex: 1 0 0;
+            text-align: center;
+            opacity: .5;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .forum .increment.up {
+            background: rgba(86, 110, 146, 0.959);
+
+        }
+
+        .forum .increment.down {
+            background: rgb(31, 30, 30);
+
+        }
+
+        .forum .increment:hover {
+            opacity: 1;
+        }
+
+        .forum .count {
+            position: absolute;
+            border-radius: 0.1rem;
+            background: #F6F3E4;
+            width: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 0 0 0.5rem #F6F3E4;
+            pointer-events: none;
+            height: 0.75rem;
+        }
+
+        .forum .count.upvoted {
+            color: rgba(33, 43, 182, 0.219);
+        }
+
+        .forum .count.downvoted {
+            color: rgb(104, 99, 99);
+        }
+
+        .forum .bump {
+            -webkit-animation: bump 200ms;
+            animation: bump 200ms;
+        }
+
+        @-webkit-keyframes bump {
+            30% {
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes bump {
+            30% {
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+        }
+
+
+
+        /*.forum div {*/
+        /*    display: inline-block;*/
+        /*}*/
+
+        .forum .forum_topic {
+            margin: 12px 0px 0px 30px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .forum .description {
+            font-size: larger;
+            margin: 0px 30px 0px 30px;
+            font-size: 0.9rem;
+            overflow-x:hidden;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            -webkit-box-orient: vertical;
+        }
+
+
+
+        .forum .myrow_3 {
+            /*min-height: 40px;*/
+        }
+
+        .forum .button {
+            border-radius: 8px;
+            background-color: rgb(92, 87, 87);
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px 15px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px 0px 5px 10px;
+            font-size: 0.8rem;
+
+        }
+
+        .forum .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+
+        }
+
+        .forum .button:hover {
+            background-color: black;
+
+        }
+
+        .forum .dropbtn:focus {
+            outline: 0px;
+        }
+
+        .forum .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+
+        }
+
+        .forum .button:hover span {
+            padding-right: 25px;
+
+        }
+
+        .forum .button:hover span:after {
+            opacity: 1;
+            right: 0;
+
+        }
+
+
+        .forum .forum_topic a{
+            font-size: 1.5rem;
+            color:black;
+        }
+
+        .forum .photo {
+
+        }
+
+
+        .forum .myrow_1 {
+            max-height: 38px;
+        }
+
+        @media (max-width: 265px) {
+            .forum .dropdown {
+                position: relative;
+                bottom: 45px;
+            }
+        }
+
+        .forum .myrow_4 {
+            max-height: 60px;
+        }
+
+        .forum .blah {
+            font-size:0.5rem;
+            display:inline-block;
+
+        }
+        .forum .extra {
+            margin-left:20px;
+        }
+        @media(max-width:657px) {
+            .forum .vote {
+                margin: 0px 1.25rem 17px 1.25rem;
+            }
+        }
+    </style>
+
+  </style>
+
+
+{% endblock %}
+
+

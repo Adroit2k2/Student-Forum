@@ -1,0 +1,256 @@
+{% extends "index.html" %}
+{% block bookview %}
+
+<div class='mine'>
+    <div class='container contain '>
+
+        <div class="row row-flex">
+            <div class='cover col-md-3'>
+                <img class='size_im' src={{book.imagelink}} class='img_size' >
+            </div>
+            <div class="col-md-8">
+                <div class="info extra_title">
+                {{book.title}}
+                </div>
+                <div class="info extra_auth">
+                By - {{book.authors}}
+                </div>
+
+            </div>
+
+                <div class="info col-md-11">
+                {{book.description | safe }}
+                </div>
+                <br>
+                <div class="info extra_auth col-md-11">
+                {{book.categories | safe}}
+                </div>
+                <br>
+                <div class="info col-md-11">
+                    <div class="stars" style="color:{{book.starcolor}}">
+                       <div class="stars-ghost" style="width:{{book.averageRating}}px;">
+                          <div class="star"><i class="fa fa-star"></i></div>
+                          <div class="star"><i class="fa fa-star"></i></div>
+                          <div class="star"><i class="fa fa-star"></i></div>
+                          <div class="star"><i class="fa fa-star"></i></div>
+                          <div class="star"><i class="fa fa-star"></i></div>
+                       </div>
+                       <div class="star"><i class="fa fa-star-o"></i></div>
+                       <div class="star"><i class="fa fa-star-o"></i></div>
+                       <div class="star"><i class="fa fa-star-o"></i></div>
+                       <div class="star"><i class="fa fa-star-o"></i></div>
+                       <div class="star"><i class="fa fa-star-o"></i></div>
+                </div>
+
+
+                <div class='col-md-11'>
+                    {% if form != 0 %}
+                    <form method="post" class="form" action="{% url 'books:cart' %}">
+                        {% csrf_token %}
+                        <div hidden=''>
+                        {{form}}
+                        </div>
+                        <button type="submit">Add in Read List</button>
+                    </form>
+                    {% else %}
+                    <button onclick="location.href='{% url 'books:cart' %}'">Go to cart</button>
+
+
+                    {% endif %}
+                </div>
+
+
+
+                {% if saleable %}
+                <div class='info'>
+                    List Price - {{book.list_price}}
+                    Retail Price - {{book.re_price}}
+                    <button class='btn btn-primary' href=" {{book.buylink}} ">Purchase Book</a>
+                </div>
+                {% endif %}
+                <div class="info">
+                    {% if book.pdf == True %}
+                   <button class='btn btn-primary' onclick="location.href='{{book.dwnld_link_p}}'">Download Pdf</a>
+                    {% endif %}
+                    {% if book.epub == True %}
+                    <button class='btn btn-primary' onclick="location.href='{{book.dwnld_link_e}}'">Download Epub</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id ='extra_download' class='container contain ' style="display:none;">
+        <p id='searchp' class='info extra_auth'>Sorry,but we cant provide the facility for you to read the book here , To download the Book from external sources,Follow the link given below</p>
+        <button id ='searchb' class="button2 button_ex" type="button" onclick="location.href='{{searchb}}';">Redirect</button>
+    </div>
+    <div id="viewerCanvas"></div>
+
+</div>
+
+
+    <script type="text/javascript">
+      google.books.load({"language": "en"});
+
+      function initialize() {
+        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        viewer.load('{{code}}',alertNotFound,alertInitialized);
+
+      }
+      function nextStep(viewer) {
+        window.setTimeout(function() {
+          viewer.nextPage();
+          nextStep(viewer);
+        }, 3000);
+      }
+      function alertNotFound(viewer) {
+             document.getElementById("viewerCanvas").remove();
+             document.getElementById("extra_download").style.display = 'block';
+      }
+      function alertInitialized(viewer) {
+             document.getElementById("extra_download").remove();
+      }
+
+      google.books.setOnLoadCallback(initialize);
+    </script>
+
+
+
+
+
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Baloo+Tamma|Laila');
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@1,300&display=swap');
+
+        .mine ~ div {
+            width:700px;
+        }
+
+        .info{
+          margin-left:10px;
+          margin-top: 10px;
+          font-size: 0.8rem;
+        }
+
+        .btn{
+            margin:10px;
+        }
+
+        .button_ex {
+        	margin: 40px;
+        	padding: 0 50px;
+        	height: 60px;
+        	border-radius: 15px;
+        	border: none;
+        	color: #fff;
+        	opacity:0.4;
+        	transition: 0.3s ease;
+        	font-size: 24px;
+        	margin-left:20%;
+        }
+
+
+
+        .extra_title{
+            font-family:'Baloo Tamma',cursive;
+            font-size:24px;
+        }
+
+        .extra_auth{
+            font-family:'Baloo Tamma',cursive;
+            font-size:18px;
+        }
+
+        .cover{
+            margin-left:20px;
+        }
+
+        .size_im{
+            height:80%;
+        }
+
+        .main-content .container{
+            margin:20px auto;
+            margin-top:20px;
+            max-width:80vw;
+        }
+
+        .contain{
+        border-radius: 20px;
+        width:65vw;
+        background:#ddd;
+        padding-bottom:20px;
+        padding-top:20px;
+        }
+
+        .button2 {
+        	background-color: green;
+        	opacity:0.6;
+        	box-shadow: 0 10px 20px rgba(184, 184, 255, 0.5);
+        }
+        .button2:hover {
+        	box-shadow: 0 5px 10px rgba(184, 184, 255, 0.4);
+        	transform: translateY(1px);
+        }
+        .button2:active {
+        	box-shadow: 0 5px 5px rgba(184, 184, 255, 0.1);
+        	transform: translateY(4px);
+        }
+        #viewerCanvas{
+            margin-bottom:20px;
+            height:700px;
+        }
+
+
+    </style>
+
+    <style type="text/css">
+       .stars {
+       width: 150px;
+       height: 80px;
+       text-align: center;
+       position: relative;
+        }
+
+    .stars .star {
+       width: 30px;
+       position: absolute;
+       top: 0;
+       font-size: 30px;
+       opacity:0.8;
+       text-shadow: 1px 2px 4px #C3C11C;
+        }
+
+    .stars-ghost {
+       width: 0px;
+       position: relative;
+       float: left;
+       overflow: hidden;
+       height: 100%;
+       z-index: 2;
+        }
+
+    .stars .star:nth-child(1) {
+       left: 0px;
+        }
+
+    .stars .star:nth-child(2) {
+       left: 30px;
+        }
+
+    .stars .star:nth-child(3) {
+       left: 60px;
+        }
+
+    .stars .star:nth-child(4) {
+       left: 90px;
+        }
+
+    .stars .star:nth-child(5) {
+       left: 120px;
+        }
+
+    </style>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load socialaccount %}
 <html lang="en">
   <head>
 
@@ -45,14 +46,14 @@
         border-width: 2px;
       }
 
-      .btn-facebook {
-        background: #405d9d;
+      .btn-google {
+        background: #ea4355;
         border: none;
       }
 
-      .btn-facebook:hover,
-      .btn-facebook:focus {
-        background: #314879;
+      .btn-google:hover,
+      .btn-google:focus {
+        background: #4285f4;
       }
 
       .btn-GitHub {
@@ -62,7 +63,7 @@
 
       .btn-GitHub:hover,
       .btn-GitHub:focus {
-        background: rgb(92, 83, 83);
+        background: black;
       }
 
       body {
@@ -91,9 +92,6 @@
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light py-3">
-        <div class="contributor">
-          <h3>Project made by Mayank | Vivek | Ayush | Anshu.</h3>
-        </div>
       </nav>
     </header>
 
@@ -301,12 +299,12 @@
               </div>
 
               <div class="form-group col-lg-12 mx-auto">
-                <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                  <i class="fa fa-facebook-f mr-2"></i>
-                  <span class="font-weight-bold">Continue with Facebook</span>
+                <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-block py-2 btn-google">
+                  <i class="fa fa-google mr-2"></i>
+                  <span class="font-weight-bold">Continue with Google</span>
                 </a>
-                <a href="#" class="btn btn-primary btn-block py-2 btn-GitHub">
-                  <i class="fa fa-GitHub mr-2"></i>
+                <a href="{% provider_login_url 'github' %}" class="btn btn-primary btn-block py-2 btn-GitHub">
+                  <i class="fa fa-github mr-2"></i>
                   <span class="font-weight-bold">Continue with GitHub</span>
                 </a>
               </div>

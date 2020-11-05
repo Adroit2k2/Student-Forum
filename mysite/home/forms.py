@@ -68,6 +68,34 @@ class EditProfileForm(ModelForm):
 
         return instance
 
+# class TagWidget(forms.MultiWidget):
+#     def __init__(self, *args, **kwargs):
+#         super(PhoneNumberWidget, self).__init__(*args, **kwargs)
+#         self.widgets = [
+#             forms.TextInput(),
+#             forms.TextInput(),
+#             forms.TextInput(),
+#             forms.TextInput(),
+#             forms.TextInput(),
+#         ]
+#     def decompress(self, value):
+#         if value:
+#             return value.split(' ')
+#         return [None, None]
+
+# class TagsField(forms.MultiValueField):
+#     widget = PhoneNumberWidget
+
+#     def __init__(self, *args, **kwargs):
+#         super(PhoneNumberField, self).__init__(*args, **kwargs)
+#         fields = (
+#             forms.CharField(),
+#             forms.CharField()
+#         )
+
+#     def compress(self, data_list):
+#         return ' '.join(data_list)
+
 class CreateInForum(ModelForm):
     class Meta:
         model = forum
@@ -76,9 +104,30 @@ class CreateInForum(ModelForm):
 
 
 class CreateTag(ModelForm):
+
     class Meta:
         model = forum_tags
         fields = ['tags_forum']
+
+class CreateLink(ModelForm):
+    linkedin_link = forms.URLField(max_length=200, help_text='linkedin_link')
+    github_link = forms.URLField(max_length=100, help_text='github_link')
+
+    class Meta:
+        model = Profile
+        fields = ['linkedin_link','github_link']
+
+class CreateBio(ModelForm):
+    bio = forms.CharField(max_length=200, help_text='bio')
+
+    class Meta:
+        model = Profile
+        fields = ['bio']
+
+
+
+
+
 
 class CreateOptions(ModelForm):
     class Meta:
@@ -90,5 +139,8 @@ CreateOptionsFormSet = formset_factory(CreateOptions, extra = 4)
 class CreateInDiscussion(ModelForm):
     class Meta:
         model = Discussion
-        fields = ['discuss']
+        fields = ['discuss','single']
+
+
+
 

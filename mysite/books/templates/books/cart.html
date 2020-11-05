@@ -1,0 +1,126 @@
+{% extends "index.html" %}
+{% block bookview %}
+    {% for book in bookshelf %}
+        <div class='container contain '>
+            <div class="row row-flex">
+                        <div class='cover col-md-3'>
+                    <img src={{book.imagelink}} class='img_size' >
+                </div>
+                <div class="col-sm-8">
+                    <div class="info extra_title">
+                    {{book.title}}
+                    </div>
+                    <div class="info extra_auth">
+                    By - {{book.authors}}
+                    </div>
+                    <div class="info">
+                    {{book.description | safe}}
+                    </div>
+                    <form style="font-size:1rem;" action="{% url 'books:result' book.id %}" method="post" class='form'>
+                    {% csrf_token %}
+                    <input type="text" name="code" value="{{book.id}}" hidden="">
+                     <button type="submit" class="btn btn-primary info">Read Book</button>
+                     </form>
+                </div>
+                <div class='col-sm-11'>
+                    <form style="font-size:1rem;" method="post" class="form" action="{% url 'books:remove' %}">
+                        {% csrf_token %}
+                        <input name="pk" value="{{book.pk}}" hidden="">
+                        <button type="submit" class="btn btn-primary info">Remove from cart</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+<style>
+        @import url('https://fonts.googleapis.com/css?family=Baloo+Tamma|Laila');
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@1,300&display=swap');
+
+        h2 {
+          font-family: "Luckiest Guy", cursive;
+          font-size: 28px;
+          letter-spacing: 5px;
+        }
+
+        .box{
+            border-radius:5px;
+            margin: 0 auto;
+
+        }
+        .searchbtn{
+            padding:5px 5px;
+        	background:#1abc9c;
+        	border-radius:5px;
+
+        	color:white;
+        	cursor:pointer;
+        	-webkit-transition:0.2s ease all;
+        	   -moz-transition:0.2s ease all;
+        	    -ms-transition:0.2s ease all;
+        	     -o-transition:0.2s ease all;
+        	        transition:0.2s ease all;
+        }
+
+        .searchbtn:hover{
+            opacity:0.8;
+        }
+
+        .row-flex {
+		          display: flex;
+		          flex-wrap: wrap;
+		}
+
+        .main-content .container{
+            margin:20px auto;
+            margin-top:10px;
+        }
+
+        .contain{
+        border-radius: 20px;
+        width:80vw;
+        background:#ddd;
+        padding-bottom:20px;
+        padding-top:20px;
+        }
+
+        .info{
+          margin-left:10px;
+          margin-top: 10px;
+          font-size: 0.8rem;
+            overflow-y:hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;  /*...number of lines to show...*/
+            -webkit-box-orient: vertical;
+        }
+
+        .extra_title{
+            font-family:'Baloo Tamma',cursive;
+            font-size:24px;
+        }
+
+        .extra_auth{
+            font-family:'Baloo Tamma',cursive;
+            font-size:18px;
+        }
+
+        .extra_vwbl{
+            font-family: 'Piazzolla', serif;
+            font-size:14px;
+            letter-spacing:2px;
+        }
+
+        .cover{
+            margin-left:20px;
+        }
+        .img_size{
+            width:130px;
+            height:190px;
+        }
+</style>
+
+{% endblock %}

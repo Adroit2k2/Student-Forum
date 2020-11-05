@@ -1,299 +1,541 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="shortcut icon" href="../../static/images/books.gif" type="image/gif">
-    <title>Student Forum</title>
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<title>Student-Forum</title>
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap Js CDN -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="../../static/css/login.css">
-    <style>
-        body {
-            background-image: url(https://www.shipnet.no/wp-content/uploads/2019/04/abstract-background-dark.png);
 
-        }
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,500&family=Sansita+Swashed:wght@300&display=swap');
+		body,html{
+		  font-family: 'Alegreya', serif;
+          font-family: 'Sansita Swashed', cursive;
+		  background: linear-gradient(to right, #141e30, #243b55);
+		  min-width: auto;
+		  padding-top: 0px;
+		  color: white;
+		  height: auto;
+		}
+		.title_1 h1 {
+		            font-size: 70px;
+		            text-align: center;
+		            color: orange;
+		        }
+		.wrap{
+			height: auto;
+		}
 
-
-        input {
-            cursor: default;
-        }
-
-        .row-flex {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-
-        /* vertical spacing between columns */
-
-        [class*="col-"] {
-          margin-bottom: 30px;
-        }
-
-        .content {
-          height: 100%;
-          padding: 50px 50px 10px;
-          color: #fff;
-        }
+	@media (max-width:900px){
+		.button_blabla{
+			display: none;
+		}
 
 
-        /* Demo backgrounds and styling*/
+		.cube {
+		  position:relative;
+		  left: 15%;
+		  height: 65vh;
+		  width: 70vw;
+
+		  animation : spin 40s infinite linear;
+		  transform-style: preserve-3d;
+
+		}
+
+		@keyframes spin {
+		  from { transform: rotateY(0) rotateX(0); }
+		  to   { transform: rotateY(-360deg) rotateX(0); }
+		}
+
+
+		.cube > div {
+		  position: absolute;
+		  height: 65vh;
+		  width: 70vw;
+		  border: 1px solid #333;
+		  opacity: 1;
+
+		}
+
+		.cube > div:hover {
+		  transition: opacity .3s linear;
+		}
+
+		.two, .three , .four , .five {
+			font-size: 1.4em;
+			color: white;
+			border-radius: 5px;
+		}
+
+		.three {
+		  transform: translateZ(35vw);
+
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.two {
+		  transform: rotateY(90deg) translateZ(35vw);
+
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.four {
+		  transform: rotateY(180deg) translateZ(35vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.five {
+
+		  transform: rotateY(-90deg) translateZ(35vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+	}
+
+	@media (min-width: 901px) {
+		.cube {
+		  position:relative;
+		  left: 25%;
+		  height: 65vh;
+		  width: 50vw;
+		  animation : spin 40s infinite linear;
+		  transform-style: preserve-3d;
+		}
+
+		@keyframes spin {
+		  from { transform: rotateY(0) rotateX(0); }
+		  to   { transform: rotateY(-360deg) rotateX(0); }
+		}
+
+
+		.cube > div {
+		  position: absolute;
+		  height: 65vh;
+		  width: 50vw;
+		  border: 1px solid #141e30;
+		  opacity: 1;
+		}
+
+		.cube > div:hover {
+		  transition: opacity .3s linear;
+		}
+
+		.two, .three , .four , .five {
+			font-size: 1.4em;
+			color: white;
+			border-radius: 5px;
+		}
+
+		.three {
+		  transform: translateZ(25vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.two {
+		  transform: rotateY(90deg) translateZ(25vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.four {
+		  transform: rotateY(180deg) translateZ(25vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.five {
+		  transform: rotateY(-90deg) translateZ(25vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+	}
+
+
+	@media (min-width: 1301px) {
+		.cube {
+		  position:relative;
+		  height: 75vh;
+		  width: 70vw;
+		  left: 15%;
+		  animation : spin 45s infinite linear;
+		  transform-style: preserve-3d;
+
+		}
 
 
 
+		@keyframes spin {
+		  from { transform: rotateY(0) rotateX(0); }
+		  to   { transform: rotateY(-360deg) rotateX(0); }
+		}
+
+
+		.cube > div {
+		  height: 70vh;
+		  width: 34vw;
+		  opacity: 1;
+		  border-radius: 15px;
+		  border:solid 2vw #141e30;
+		}
+
+		.cube > div:hover {
+		  transition: opacity .3s linear;
+		}
+
+
+		.one,.six,.two, .three , .four , .five {
+			font-size: 1.4em;
+			color: white;
+			border-radius: 5px;
+		}
+
+
+		.three {
+		  transform: translateZ(17vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+		.three-one {
+		  transform: translateZ(16.99vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+
+		.two {
+		  transform: rotateY(90deg) translateZ(17vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+		.two-one {
+		  transform: rotateY(90deg) translateZ(16.99vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.four {
+		  transform: rotateY(180deg) translateZ(17vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+		.four-one {
+		  transform: rotateY(180deg) translateZ(16.99vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+
+		.five {
+		  transform: rotateY(-90deg) translateZ(17vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+		.five-one {
+		  transform: rotateY(-90deg) translateZ(16.99vw);
+		  background: linear-gradient(to top left, #3a6186, #89253e);
+		}
+	}
+
+		span{
+			color: white;
+		}
 
 
 
-        .content h3 {
-          margin-top: 0px;
-          font-weight: 300;
-        }
+		/* button */
+		.mybutton{
+		 font-weight: bold;
+		 position:relative;
+		 padding:20px;
+		 font-size:36px;
+		 border-radius:50px;
+		  transition:all 1s;
+		  -webkit-transition:all 1s;
+		  color: white;
+		}
+		.header{
+			position: relative;
+		 	width:100%;
+		 	left: 40%;
+		 }
 
+		 .mybutton:hover{
+		 	color: orange;
+		 }
 
-        .title_1 h1 {
-            font-size: 70px;
-            text-align: center;
-            color: black;
-        }
-
-        .subsection_1 p {
-            position: relative;
-            overflow: hidden;
-            height: 95%;
-            font-size: 20px;
-            background-color: black;
-            border-radius: 8px;
-            padding: 10px;
-            color: white;
-            border: 15px solid #B88846;
-            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23B88846' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3Cpath d='M8 8h16v16H8zM51 8h16v16H51zM51 51h16v16H51zM8 51h16v16H8z'/%3E%3C/g%3E%3Cg fill='%23B88846'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='59' cy='16' r='2'/%3E%3Ccircle cx='59' cy='59' r='2'/%3E%3Ccircle cx='16' cy='59' r='2'/%3E%3C/g%3E%3C/svg%3E") 25;
-
-        }
-
-        .subsection_1_link {
-            margin: 0px 0px 15px 180px;
-            padding: 5px;
-            text-decoration: none;
-            transition: 0.6s ease;
-            color: white;
-        }
-
-
-        .subsection_1_link:hover {
-            color: rgb(red, rgb(105, 178, 221), blue);
-            text-decoration: none;
-        }
-
-        .login-btns {
-            position: relative;
-            top: 150px;
-        }
-
-        .login_1 {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .login-btns .btn {
-            border: 2px solid #e55743;
-            padding: 10px 30px;
-            color: black;
-            text-decoration: none;
-            transition: 0.6s ease;
-            align-self: center;
-            margin: 20px 20px;
-        }
-
-        .login-btns .btn:hover {
-            background-color: #fff;
-            color: #000;
-        }
-
-        @media (min-width: 940px) and (max-width: 1140px){
-          .mid_size_1{
-
-
-          }
-          .mid_size_2{
-
-          }
-        }
+		 .para{
+		 	position: relative;
+		 	left:10%;
+		 	width: 80%;
+		 	font-size: 0.65em;
+		 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		 	padding: 1.5em;
+		 }
 
 
 
+		 .button_blabla {
+			-webkit-transition: none;
+			-moz-transition: none;
+			transition: none;
+			margin-bottom: 50px;
+		 }
+		 @media (min-width: 750px){
+		 .pehlabutton{
+		  margin-left: 25%;
+		}
+		 .button_ex {
+		 	position: relative;
+		 	left: 40%;
+			border: 4px solid #226fbe;
+			border-radius: 20px;
+		 }
+		}
+	#button1:hover ~ .cube {
+		animation : smallspina 0.5s linear forwards;
+		transform-style: preserve-3d;
+	}
 
-    </style>
+	#button1:hover ~ .cube > div{
+		background-image: url("https://images.unsplash.com/photo-1543497415-75c0a27177c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80");
+		color:black;
+	}
+
+	@keyframes smallspina {
+		  from { transform: rotateY(180deg) rotateX(0); }
+		  to   { transform: rotateY(0deg) rotateX(0); }
+		}
+	#button2:hover ~ .cube {
+		animation : smallspinb 0.5s linear forwards;
+		transform-style: preserve-3d;
+	}
+	#button2:hover ~ .cube > div{
+		background-image: url("https://socialmediaweek.org/wp-content/blogs.dir/1/files/brand-blog-feature.jpg");
+		color:black;
+	}
+
+
+	@keyframes smallspinb {
+		  from { transform: rotateY( 90deg) rotateX(0); }
+		  to   { transform: rotateY(-90deg) rotateX(0); }
+		}
+
+	#button3:hover ~ .cube {
+		animation : smallspinc 0.6s linear forwards;
+		transform-style: preserve-3d;
+		transition: transform 999s 999s;
+	}
+	#button3:hover ~ .cube > div{
+		background-image: url("https://dfi.wa.gov/sites/default/files/question-mark-16x9.jpg");
+		color:black;
+	}
+
+	@keyframes smallspinc {
+		  from { transform: rotateY(0deg) ; }
+		  to   { transform: rotateY(-180deg) ; }
+		}
+
+	</style>
+
 </head>
+<body>
 
-<body>)
-    <div class="section_1">
-        <div class="container-fluid title_1">
-            <h1>Title_1</h1>
-        </div>
-     <body>
-  <div class="container-fluid">
+<div class="container-fluid">
+<div class="section_1">
+    <div class="container-fluid title_1">
+        <h1>VIANAYMA</h1>
+    </div>
+ </div>
+<div class="row row-flex">
+	<button type="button" class="btn col-md-2 mybutton pehlabutton" id="button1" onclick="location.href = '{% url 'books:search' %}'">Books </button>
 
-    <div class="row row-flex">
-      <div class="col-xs-12 col-md-6 col-xl-4  subsection_1 ">
-        <div class="content colour-1">
-          <h3>What is lorem ipsum?</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+	<button type="button" class="btn col-md-2 mybutton" id='button2' onclick="location.href = '{% url 'books:cart' %}'"> Blogs </button>
 
-        </div>
-         <a href={% url 'home:content' %} class="button btn btn-default navbar-btn col-xs-6">Questions</a>
-      </div>
-      <div class="col-xs-12 col-md-6 col-xl-4 subsection_1 " >
-        <div class="content colour-2">
-          <h3>Why do we use it?</h3>
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+	<button type="button" class="btn col-md-2 mybutton" id='button3' onclick="location.href = '{% url 'home:content' %}'"> Questions </button>
 
-        </div>
-        <a href="#" class="button btn btn-default navbar-btn col-xs-6">Blog</a>
-      </div>
-      <div class="col-xs-12 col-md-12 col-xl-4 subsection_1 ">
-        <div class="content colour-3">
-          <h3>Where does it come from</h3>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-
-        </div>
-        <a href="#" class="button btn btn-default navbar-btn col-xs-6">Books</a>
-          </div>
+	<div class="cube">
 
 
+    <div class="two">
 
-  </div>
-</body>
+    		  <img class="" src="">
+	            <h4 class="header">Blog</h4>
+	            <p class="para">
+                VIANAYMA is a free service for self-expression and communication.
+                We believe Blogger increases the availability of information, encourages healthy debate, and makes possible new connections between people.
+                From detailed posts about almost every variety you could ever imagine, the ability to easily share, publish and express oneself on the web is at the core of VIANAYMA mission.
+                In addition Blogger is responsive on the web,making it easier to use on mobile devices.By working in an improved web platform, it allows the potential for new features in the future.
 
+	            </p>
+	            <button class="btn button_blabla button_ex"  onclick="location.href = '{% url 'books:search' %}' ">
+	                Blogs
+	             </button>
 
-
-
-    <div class="login-btns">
-        <div class="container-fluid">
-            <div class="row login_1">
-                <button type="button" class="button btn btn-default navbar-btn col-xs-6"><a href={% url 'home:signup' %} >Signup </a>
-
-                    <div class="button__horizontal"></div>
-	                <div class="button__vertical"></div>
-                </button>
-
-
-                <button type="button" id="login" class="button btn btn-default navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a>
-                    <div class="button__horizontal"></div>
-	                <div class="button__vertical"></div>
-                </button>
-            </div>
-        </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content ">
+    <div class="three">
 
-            </div>
-        </div>
+	            <img class="" src="">
+	            <h4 class="header">Books</h4>
+	            <p class="para">
+	            	Our goal is to provide a page on the web for every book ever published.
+                    At its heart, VIANAYMA is a catalog
+                    The secondary goal is to get you as close to the actual document you're looking for as we can.
+                    VIANAYMA is a place to download and read thousands of free ebooks.
+                    Our goal is to list every book whether in-print or out-of-print,
+                    available at a bookstore or a library, scanned or typed in as text.
+                    In other words, we provide access to hundreds of thousands of books.
+	            </p>
+	            <button class="btn button_blabla button_ex"  onclick="location.href = '{% url 'books:search' %}' ">
+
+	                Books
+	             </button>
+
     </div>
-    <script>
-        $('.li-modal').on('click',function(e){
-        e.preventDefault();
-        $('#exampleModalCenter').modal('show').find('.modal-content').load($(this).attr('href'));
-        });
-    </script>
+    <div class="four">
+
+    	 <img class="" src="">
+	            <h4 class="header">Questions</h4>
+	            <p class="para">
+                Helping developers and technologists write the script of the future.
+                Our public platform serves millons of people every month, making it one of the most popular websites in the world.
+                Our asynchronous knowledge management and collaboration offering at VIANAYMA , is transforming how people work.
+                Founded in 2020, VIANAYMA public platform is used by nearly everyone who codes to learn, share their knowledge, collaborate, and build their careers.
+                Our products and tools help developers and technologists in life and at work.
+	            </p>
+	            <button class="btn button_blabla button_ex"  onclick="location.href = '{% url 'home:content' %}' ">
+	                Questions
+	            </button>
+
+	</div>
+
+    <div class="five">
+
+    	 <img class="" src="">
+	            <h4 class="header">Brief</h4>
+	            <p class="para">
+	            		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	            </p>
 
 
+	</div>
+	</div>
+</div>
+	<div class="login-btns">
+	<div class="container-fluid">
+	<div class="row login_1">
+	<button type="button" class="button btn btn-default navbar-btn col-xs-6 ml-auto " onclick="location.href={% url 'home:signup' %}">Signup
 
-    <style type="text/css">
+	    <div class="button__horizontal"></div>
+	    <div class="button__vertical"></div>
+	</button>
 
-.button {
-    border-radius:2rem;
+
+	<button type="button" id="login" class="li-modal button btn btn-default navbar-btn col-xs-6 mr-auto" >Sign in
+	    <div class="button__horizontal"></div>
+	    <div class="button__vertical"></div>
+	</button>
+	</div>
+	</div>
+	</div>
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-content ">
+
+	</div>
+	</div>
+	</div>
+
+</div>
+
+	<script>
+	$('.li-modal').on('click',function(e){
+	e.preventDefault();
+	$('#exampleModalCenter').modal('show').find('.modal-content').load('{% url 'home:logins' %}');});
+	</script>
+
+	<style type="text/css">
+
+	.button {
+	border-radius:2rem;
 
 	--offset: 10px;
 	--border-size: 2px;
 
 	display: block;
 	position: relative;
-
+	margin: 50px;
+	font-size: 24px;
 	appearance: none;
 	background: transparent;
-	color: #e55743;
+	border-color: #e55743;
+	color:#007bff;
 	text-transform: uppercase;
 	letter-spacing: .25em;
 	outline: none;
 	cursor: pointer;
 	font-weight: bold;
-	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+	box-shadow: inset 0 0 0 var(--border-size) black;
 	transition: background .8s ease;
 	}
 	.button:hover {
-		background: rgba(100, 0, 0, .03);
+	background: white;
+	color:#007bff;
 	}
 
 	.button__horizontal,
 	.button__vertical {
-		position: absolute;
-		top: var(--horizontal-offset, 0);
-		right: var(--vertical-offset, 0);
-		bottom: var(--horizontal-offset, 0);
-		left: var(--vertical-offset, 0);
-		transition: transform .8s ease;
-		will-change: transform;
-		}
+	position: absolute;
+	top: var(--horizontal-offset, 0);
+	right: var(--vertical-offset, 0);
+	bottom: var(--horizontal-offset, 0);
+	left: var(--vertical-offset, 0);
+	transition: transform .8s ease;
+	will-change: transform;
+	}
 	.button__horizontal::before,
 	.button__vertical::before {
-			content: '';
-			position: absolute;
-			border: inherit;
-		}
+	content: '';
+	position: absolute;
+	border: inherit;
+	}
 
 
 	.button__horizontal {
-		--vertical-offset: calc(var(--offset) * -1);
-		border-top: var(--border-size) dotted #e55743;
-		border-bottom: var(--border-size) dotted #e55743;
-		}
+	--vertical-offset: calc(var(--offset) * -1);
+	border-top: var(--border-size) dotted #e55743;
+	border-bottom: var(--border-size) dotted #e55743;
+	}
 	.button__horizontal::before {
-			top: calc(var(--vertical-offset) - var(--border-size));
-			bottom: calc(var(--vertical-offset) - var(--border-size));
-			left: calc(var(--vertical-offset) * -1);
-			right: calc(var(--vertical-offset) * -1);
-		}
+	top: calc(var(--vertical-offset) - var(--border-size));
+	bottom: calc(var(--vertical-offset) - var(--border-size));
+	left: calc(var(--vertical-offset) * -1);
+	right: calc(var(--vertical-offset) * -1);
+	}
 
 	.button:hover .button__horizontal {
-		transform: scaleX(0);
+	transform: scaleX(0);
 	}
 
 	.button__vertical {
-		--horizontal-offset: calc(var(--offset) * -1);
-		border-left: var(--border-size) dotted #e55743;
-		border-right: var(--border-size) dotted #e55743;
-		}
+	--horizontal-offset: calc(var(--offset) * -1);
+	border-left: var(--border-size) dotted #e55743;
+	border-right: var(--border-size) dotted #e55743;
+	}
 	.button__vertical::before {
-			left: calc(var(--horizontal-offset) - var(--border-size));
-			right: calc(var(--horizontal-offset) - var(--border-size));
-			top: calc(var(--horizontal-offset) * -1);
-			bottom: calc(var(--horizontal-offset) * -1);
-		}
+	left: calc(var(--horizontal-offset) - var(--border-size));
+	right: calc(var(--horizontal-offset) - var(--border-size));
+	top: calc(var(--horizontal-offset) * -1);
+	bottom: calc(var(--horizontal-offset) * -1);
+	}
 
 
 	.button:hover .button__vertical {
-		transform: scaleY(0);
+	transform: scaleY(0);
 	}
 	a:hover{
-	    text-decoration:none;
+	text-decoration:none;
 	}
 
 
-    </style>
-</body>
+	</style>
 
+
+
+</body>
 </html>
