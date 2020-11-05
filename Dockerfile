@@ -6,3 +6,5 @@ COPY . .
 EXPOSE 8000
 # start flask app using Gunicorn
 CMD web: gunicorn mysite/mysite.wsgi --log-file -
+CMD python manage.py runserver
+
