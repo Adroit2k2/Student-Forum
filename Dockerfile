@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 8000
 
 # start flask app using Gunicorn
-CMD gunicorn -w 4 -b :8000 src.app:app
+CMD web: gunicorn mysite/mysite.wsgi --log-file -
