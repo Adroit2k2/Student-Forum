@@ -1,0 +1,39 @@
+{% extends "home/content.html" %}
+
+{% block delete-topic.id %}
+    <script>
+    $(document).ready(function(){
+        $('#delete').modal({backdrop: 'static', keyboard: false});
+        $('#delete').modal('show');
+        // $('#delete').addClass('show');
+        // $('#delete').attr('aria-modal','true');
+        // $('#delete').removeAttr('aria-hidden');
+        // $('#delete').css('display','block');
+    });
+    </script>
+        <div  class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                  <div class="modal-title"><h1>Delete Forum</h1></div>
+                  </div>
+                  <p>Are you sure you want to delete the forum: {{ forum }}?</p>
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Yes, delete.">
+                    <button onclick="window.location.href="{% url 'home:content' %}"">No</button>
+                  </form>
+
+                </div>
+                 </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--        $('#delete').addClass('show');-->
+<!--        $('#delete').attr('aria-modal','true');-->
+<!--        $('#delete').removeAttr('aria-hidden');-->
+<!--        $('#delete').css('display','block');-->
+<!--    </script>-->
+{% endblock %}-->

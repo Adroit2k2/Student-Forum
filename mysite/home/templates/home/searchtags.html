@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block tags %}
+<div class='row mt-5 mb-5 mr-0 ml-0 d-flex justify-content-around'>
+    <div style="font-size:2em;" class="pagination">
+    <span class="step-links">
+        {% if tags.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ tags.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ tags.number }} of {{ tags.paginator.num_pages }}.
+        </span>
+
+        {% if tags.has_next %}
+            <a href="?page={{ tags.next_page_number }}">next</a>
+            <a href="?page={{ tags.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% for tag in tags %}
+<div class="col-5 col-sm-3 col-md-2-5 col-xl-2  mr-2 ml-2 mb-2 " style="border:3px solid black;padding:10px;border-radius:10px">
+
+
+<a style="font-size:15px;" href="{% url 'home:tags_forum'  tag %}">{{tag}}
+</a>
+
+
+
+
+</div>
+
+
+{% endfor %}
+
+</div>
+<style>
+    .main-content .container{
+        max-width:100%;
+    }
+    .profileImage:hover{
+        pointer:cursor;
+
+    }
+    @media (min-width:992px) and (max-width:1200px){
+    .col-md-2-5 { flex:0 0 20.83333%;}
+    }
+</style>
+{% endblock %}

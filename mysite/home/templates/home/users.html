@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+
+{% block users %}
+<div style="font-size:2em;" class="pagination">
+    <span class="step-links">
+        {% if users.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ users.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ users.number }} of {{ users.paginator.num_pages }}.
+        </span>
+
+        {% if users.has_next %}
+            <a href="?page={{ users.next_page_number }}">next</a>
+            <a href="?page={{ users.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<div class='row mt-5 mb-5 mr-0 ml-0 d-flex justify-content-around'>
+{% for profiles in users %}
+<div class="col-5 col-sm-3 col-md-2-5 col-xl-2  mr-2 ml-2 mb-2 " style="border:3px solid black;padding:10px;border-radius:10px">
+<a style="font-size:15px;" href="{% url 'home:searchprofile' profiles.username %}">{{profiles.username}}</a>
+
+
+<div class="image">
+	            <input type="image" id="dp-{{profiles.profile.id}}" src="{%  url 'home:dp' profiles.profile.id  %}" style=" outline:none;
+      height:40px;
+      width:40px;" >
+</div>
+<script>
+    $(document).ready(function () {
+        var img = new Image();
+        img.src=$('#dp-{{profiles.profile.id}}').attr('src');
+        img.onerror=function(){
+            var s="https://ui-avatars.com/api/?name=" + "{{profiles.first_name}}" + "+" + "{{profiles.last_name}}" + "&size=256";
+            $('#dp-{{profiles.profile.id}}').attr("src",s);
+        }
+    });
+</script>
+
+
+
+<span style="font-size:10px;">{{profiles.email}}</span>
+</div>
+
+
+{% endfor %}
+
+</div>
+<style>
+    .main-content .container{
+        max-width:100%;
+    }
+    .profileImage:hover{
+        cursor:pointer;
+
+    }
+    @media (min-width:992px) and (max-width:1200px){
+    .col-md-2-5 { flex:0 0 20.83333%;}
+    }
+</style>
+{% endblock %}

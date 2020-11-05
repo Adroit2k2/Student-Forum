@@ -4,6 +4,7 @@
             z-index: 200;
             position: fixed;
             top: 60px;
+            font-size:1rem;
         }
 
         .login a {
@@ -68,7 +69,8 @@
         }
 
         .login .google {
-            color: #666;
+            background: #ea4355;
+            color: #fff;
             width: 100%;
             height: 40px;
             text-align: center;
@@ -78,7 +80,8 @@
         }
 
         .login .github {
-            color: #666;
+            background: rgb(92, 83, 83,0.3);
+            color: #fff;
             width: 100%;
             height: 40px;
             text-align: center;
@@ -91,7 +94,7 @@
         .login .google:hover {
 
             color: #fff;
-            background-color: lightskyblue;
+            background: #4285f4;
         }
 
         .login .github:hover {

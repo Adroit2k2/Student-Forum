@@ -1,68 +1,260 @@
 {% extends "index.html" %}
 {% block editprofile %}
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&display=swap" rel="stylesheet">
+<style>
+     body {
+            background-color: floralwhite;
+        }
 
-<p>
-  <form action="" method="post" id="upload_form" enctype="multipart/form-data">
-    {% csrf_token %}
-    <!--{{ form.as_table}}-->
+        form {
+            font-size: x-large;
+            font-family: 'Baloo Bhai 2', cursive;
+        }
 
-    <p><label for="id_username">Username:</label> <input type="text" value="{{user.username}}" name="username" maxlength="150" autofocus required id="id_username">
-    <p><label for="id_first_name">First name:</label> <input type="text" value="{{user.profile.first_name}}" name="first_name" maxlength="100" required id="id_first_name">
+        #navComponents .navbar-form .navbtn {
+            font-size: 1em;
+        }
 
-    <p><label for="id_last_name">Last name:</label> <input type="text" value="{{user.profile.last_name}}" name="last_name" maxlength="100" required id="id_last_name">
 
-    <p><label for="id_email">Email:</label> <input type="email"  value="{{user.profile.email}}" name="email" maxlength="150" required id="id_email">
+        .submit,
+        .file_to_upload{
+            text-align: center;
+        }
 
-    <p><label for="id_password1">Password:</label> <input type="password" value="{{user.profile.password1}}" name="password1" autocomplete="new-password" required id="id_password1">
-    <p><label for="id_password2">Password confirmation:</label> <input type="password" value="{{user.profile.password2}}" name="password2" autocomplete="new-password" required id="id_password2">
-    <p><label for="id_phone">Phone:</label> <input type="number" name="phone" step="any" value="{{user.profile.phone}}" required id="id_phone">
-    <p><label for="id_picture">File to Upload &lt;= 2.0MB:</label>
-    <input type="file" name="picture" id="id_picture">
-    <div style="background:url({% url 'home:dp' user.profile.id %});" id="p"></div>
+        input {
+            border-radius: 8px;
+        }
 
-    <input type="image" id="profileImage" src="{% url 'home:dp' user.profile.id  %}" alt="Select an image"
-    style="border-radius: 50%;
-      border: 3px solid black;
-      background: #512DA8;
-      font-size: 7em;
-      color: #fff;
-      text-align: center;
-      outline:none;
-      height:206px;
-      width:206px;" onclick="document.getElementById('overlay').css('display','block');>
-     <!--onclick="document.getElementById('overlay').css('display','block');-->
+        label {
+            font-weight: 499;
+        }
 
-    <input type="submit" value="Submit">
-    <input type="submit" value="Cancel" onclick="window.location.href='{% url 'home:content' %}';return false;">
-  </form>
-</p>
-<script>
-$("#upload_form").submit(function() {
-    console.log('Checking file size');
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-      var file = $('#id_picture')[0].files[0];
-      if (file && file.size > {{ form.max_upload_limit }} ) {
-          alert("File " + file.name + " of type " + file.type + " must be < {{ form.max_upload_limit_text }}");
-      return false;
-    }
-  }
+        .submit input:hover {
+            background: transparent;
+        }
+
+
+        .submit {
+            position: relative;
+        }
+
+        .submit input{
+            margin-top:13px;
+        }
+
+
+        .block2 {
+            padding-left: 15px;
+        }
+
+        .first_name,
+        .last_name,
+        .email,
+        .username {
+            display: inline;
+        }
+
+
+        input {
+            width: 100%;
+        }
+        .myrow_1{
+            margin-right:0px;
+            margin-left:0px;
+        }
+        .myrow_1 .activity_bar {
+          background-color: rgb(133, 163, 133, 0.4);
+          position: relative;
+          height: 100px;
+          bottom: 95px;
+        }
+
+         .myrow_1 .activity_bar li {
+          list-style: none;
+          display: inline-block;
+          margin: 0px 10px 5px 10px;
+        }
+        .myrow_1 .activity_bar ul {
+
+        position: absolute;
+        bottom: 0px;
+        margin-bottom: 0;
+        }
+        .myrow_1 .col {
+          padding: 0px;
+        }
+
+        .myrow_1 .activity_bar li a {
+          text-decoration: none;
+          color: black;
+          font-size: 1.2rem;
+          transition: 0.6s ease-in;
+          padding: 0px 8px 4px 8px;
+          border-radius: 4px;
+          float: left;
+          position: relative;
+          top: 2px;
+        }
+
+        .myrow_1 .activity_bar li a:hover {
+          color: white;
+          background-color: black;
+        }
+
+        .myrow_1 .activity_bar li a:active {
+          color: orange;
+        }
+        #id_picture{
+            margin: auto;
+            display: block;
+            width: 310px;
+        }
+  </style>
+  <script>
+    $(document).ready(function () {
+            var img = new Image();
+            img.src=$('#profileImage').attr('src');
+            img.onerror=function(){
+                var s="https://ui-avatars.com/api/?name=" + "{{prof.first_name}}" + "+" + "{{prof.last_name}}" + "&size=256&rounded=true";
+                $('#profileImage').attr("src",s);
+            }
+        });
+        $(document).ready(function () {
+       var url=window.location.href.split('/');
+       var Links=document.getElementsByClassName('activity_bar')[0].getElementsByClassName('click');
+       var i=0;
+       var current=url[url.length-2];
+       console.log(current);
+
+       for(i=0;i<Links.length;i++){
+            var ln=Links[i].href.split('/');
+            console.log(ln[ln.length-2]);
+            if( ln[ln.length-2]==current ){
+
+            Links[i].className+=(' active');
+            }
+        }
+
+
 });
-
-
-    $(document).ready(function(){
-      var firstName = $('#id_first_name').text();
-      var lastName = $('#id_last_name').text();
-      var intials = $('#id_first_name').text().charAt(0) + $('#id_last_name').text().charAt(0);
-      var img = $('#p');
-    // //     style = img.currentStyle || window.getComputedStyle(img, false),
-    // //     bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
-    // //   alert(bi);
-    //   if($('#p').css('background-image') == "none"){
-
-    //         // $('#p').html(intials);
-    //   }
-    });
-
 </script>
 
+
+    <div class="pt-1 row myrow_1">
+				<div class="col activity_bar">
+					<ul>
+					  <li><a class="click" href="{% url 'home:searchprofile' user.get_username %}">Profile</a></li>
+					  <li><a class="click" href="#">Activity</a></li>
+					  <section id="CurrentUser" style="display:inline-block;">
+					        <li><a class="click" href="{% url "home:editprofile" user.profile.id %}">Edit Profile</a></li>
+					        <li><a class="click"  href="{% url "home:change_password" %}">Edit Password</a></li>
+					  </section>
+
+
+					</ul>
+				</div>
+
+	</div>
+
+    <form action="" method="post" id="upload_form" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-4 ">
+
+                    <input type="image" id="profileImage" src="{% url 'home:dp' user.profile.id  %}"  style="border-radius: 50%;
+                        border: 3px solid black;
+                        background: black;
+                        color: #fff;
+                        text-align: center;
+                        outline:none;
+                        height:200px;
+                        width:200px;
+                        display:block;
+                        margin:auto;" onclick="document.getElementById('overlay').css('display','block');">
+
+                    <div class="file_to_upload ">
+                        <label for="id_picture">File to Upload &lt;= 2MB:</label>
+                        <input type="file" name="picture" id="id_picture"class="choose_file">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-8 align-self-center">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <p class="first_name"><label for="id_first_name">First name:</label> <br><input
+                                        type="text" value="{{user.first_name}}" name="first_name"
+                                        maxlength="100" required id="id_first_name"></p>
+                                <br>
+                                <p class="last_name"><label for="id_last_name">Last name:</label> <br><input type="text"
+                                        value="{{user.last_name}}" name="last_name" maxlength="100" required
+                                        id="id_last_name"></p>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <p class="username"><label class="username_1" for="id_username">Username:</label><br>
+                                    <input type="text" value="{{user.get_username}}" name="username" maxlength="150"
+                                        autofocus required id="id_username">
+                                </p>
+                                <br>
+                                <p class="email"><label for="id_email" class="email_1">Email address:</label><br> <input
+                                        type="email" value="{{user.email}}" name="email" maxlength="150"
+                                        required id="id_email">
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row flex-wrap-reverse block2">
+                <div class=" col-md-12 col-lg-4 align-self-center text-align-center ">
+                    <p class="submit">
+                        <input type="submit" value="Submit">
+                        <input type="submit" value="Cancel" onclick="window.location.href='/home/';return false;">
+                    </p>
+                </div>
+
+                <div class=" col-md-12 col-lg-4">
+                    <p class="password"><label for="id_password1">Password:</label><br><input type="password" value=""
+                            name="password1" autocomplete="new-password" required id="id_password1"></p>
+                </div>
+                <div class=" col-md-12 col-lg-4">
+                    <p class="phone"><label for="id_phone">Phone:</label><br><input type="number" name="phone"
+                            class="phone_1" step="any" value="{{user.profile.phone}}" required id="id_phone"></p>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        $("#upload_form").submit(function () {
+            console.log('Checking file size');
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                var file = $('#id_picture')[0].files[0];
+                if (file && file.size > {{ form.max_upload_limit }} ) {
+            alert("File " + file.name + " of type " + file.type + " must be < {{ form.max_upload_limit_text }}");
+            return false;
+        }
+              }
+            });
+
+
+        $(document).ready(function () {
+            var firstName = $('#id_first_name').text();
+            var lastName = $('#id_last_name').text();
+            var intials = $('#id_first_name').text().charAt(0) + $('#id_last_name').text().charAt(0);
+            var img = $('#p');
+            // //     style = img.currentStyle || window.getComputedStyle(img, false),
+            // //     bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+            // //   alert(bi);
+            //   if($('#p').css('background-image') == "none"){
+
+            //         // $('#p').html(intials);
+            //   }
+        });
+
+    </script>
 {% endblock %}

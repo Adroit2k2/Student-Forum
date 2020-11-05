@@ -5,14 +5,18 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    font-size:0.40vw;
-    background: #fafafa;
+    font-size:5px ;
+    min-height:100%;
+    background-color: rgb(241, 242, 242);
     overflow-x: hidden;/*To hide scrollbar for small screen size*/
 }
-@media(max-width:768px){
-    body{
-    font-size:0.75vw;
-    }
+/*@media(max-width:768px){*/
+/*    body{*/
+/*    font-size:3px ;*/
+/*    }*/
+/*}*/
+.btn{
+    font-size:inherit;
 }
 a:hover{
 	text-decoration: none;
@@ -22,19 +26,19 @@ a:hover{
     /*padding-top: 90px;*/
     z-index: 125;
 }
-p {
-    font-size: 1.2em;
-    line-height: 1.8em;
-    font-weight: 300;
-    color: #555;
-    margin: 30px 0 0;
-}
-span{
-    font-size:3em;
-}
-h5{
-    font-size:4em;
-}
+/*p {*/
+/*    font-size: 1.2em;*/
+/*    line-height: 1.8em;*/
+/*    font-weight: 300;*/
+/*    color: #555;*/
+/*    margin: 30px 0 0;*/
+/*}*/
+/*span{*/
+/*    font-size:3em;*/
+/*}*/
+/*h5{*/
+/*    font-size:4em;*/
+/*}*/
 
 strong {
     font-weight: 600;
@@ -56,7 +60,7 @@ strong {
         Navbar Styles
    ==========================================================*/
 .navbar {
-    padding:25px 10px;
+    padding:20px 10px;
     background: #333;
     color: #333;
     transition: all 0.3s;
@@ -66,7 +70,28 @@ strong {
 	background:#333;
 }
 #navComponents{
+
     justify-content:flex-end;
+}
+#navComponents .row{
+    margin-right:0;
+    margin-left:0;
+
+}
+#navComponents .navbar-form {
+    margin-top:10px;
+}
+#navComponents .navbar-form .form-group{
+
+    margin-bottom:0;
+    display:inline-block;
+}
+#navComponents .navbar-form .navbtn{
+    font-size:3em;
+}
+.navbar-right a{
+
+    font-size:3em ;
 }
 
 @media(min-width: 768px){
@@ -83,7 +108,10 @@ border: none;
 border-radius: 15px;
 box-shadow: 0 2px #999;
 }
+/*.navbar-right a{*/
 
+/*    font-size:3em ;*/
+/*}*/
 }
 #content .navbar-brand .abtn{
     color: #fff !important;
@@ -127,6 +155,7 @@ box-shadow: 0 2px #999;
     background-color: transparent;
     box-shadow: 0px 1px 14px 0px #999;
 }
+
 
 .navbar .navbar-header button:hover{
     background-color: #333;
@@ -189,7 +218,7 @@ box-shadow: 0 2px #999;
 /*}*/
 
 
-#content .compressed {
+#content .compressed{
     padding-top: 10px;
     padding-bottom: 10px;
     background: #6dcc7c;
@@ -201,8 +230,7 @@ box-shadow: 0 2px #999;
 /*.navbar-inverse .navbar-nav>li>a{*/
 /*	color: #fff;*/
 /*}*/
-@media(max-width:1058px)
-{
+@media(max-width:1058px){
 /*    #navComponents .navbar-form{*/
 
 /*        width:100%*/
@@ -217,9 +245,19 @@ box-shadow: 0 2px #999;
 
 /*    }*/
 }
-@media(max-width:768px)
-
-{
+@media(min-width:768px){
+    .navbar-header{
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+    .navbar-brand{
+        position: absolute;
+        left: 50px;
+        top: -3px;
+    }
+}
+@media(max-width:768px){
     .navbar-brand,.navbar-header{
         width:100%;
         margin-left:auto;
@@ -363,7 +401,15 @@ box-shadow: 0 2px #999;
     font-size: 3em;
     display: block;
 }
-#sidebar ul li a:hover,#sidebar ul li .active {
+@media(max-width:768px){
+    #sidebar ul li a {
+
+    font-size: 2em;
+
+}
+
+}
+#sidebar ul li a:hover,#sidebar ul li .active,.activity_bar .active {
     color: #7386D5 ;
     font-weight: bolder;
     background: #fff;
@@ -379,21 +425,9 @@ box-shadow: 0 2px #999;
     position: relative;
 }
 
-#sidebar a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-#sidebar a[aria-expanded="true"]::before {
-    content: '\e260';
-}
-
 
 #sidebar ul ul a {
-    font-size: 3em !important;
+
     color: white;
     font-weight: bolder;
     padding-left: 30px !important;
@@ -407,7 +441,7 @@ box-shadow: 0 2px #999;
 
 #sidebar ul.CTAs a {
     text-align: center;
-    font-size: 0.9em !important;
+    font-size: 5em !important;
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -419,9 +453,9 @@ box-shadow: 0 2px #999;
 footer
 {
 	background:black;
-	padding: -20px;
+    justify-content: end;
     margin: auto;
-
+    margin-bottom: 0;
 }
 footer li{
 	list-style: none;
@@ -453,7 +487,11 @@ footer li>a:hover{
 
     color: black;
     width: 100%;
-    margin: 0px;
+
+
+}
+.main-content .container{
+    margin: 20px auto ;
 }
 .current{
     display:block ;
@@ -469,16 +507,16 @@ footer li>a:hover{
     FORM DROPDOWN STYLE
 ----------------------------------------------------- */
 
-.bootstrap-select .bs-ok-default::after {
-    width: 0.3em;
-    height: 0.6em;
-    border-width: 0 0.1em 0.1em 0;
-    transform: rotate(45deg) translateY(0.5rem);
-}
+/*.bootstrap-select .bs-ok-default::after {*/
+/*    width: 0.3em;*/
+/*    height: 0.6em;*/
+/*    border-width: 0 0.1em 0.1em 0;*/
+/*    transform: rotate(45deg) translateY(0.5rem);*/
+/*}*/
 
-.selectpicker:focus {
-    outline: none !important;
-}
+/*.selectpicker:focus {*/
+/*    outline: none !important;*/
+/*}*/
 
 
 

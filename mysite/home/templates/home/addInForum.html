@@ -1,24 +1,26 @@
-<div class="modal-body">
+<!--<div class="modal-body">-->
+{% extends "index.html" %}
 
-    <form action="{% url 'home:addForum'  %}" method="POST">
+{% block forum %}
+    <form action="{% url 'home:addForum'  %}" method="POST" id="addforum" onsubmit="submitform()" onchange="changetag()" style="font-size:1rem;padding-left:8%;">
         {% csrf_token %}
 
-        <label for="id_type_code">What type of question you wish to ask?</label>
-        <select  type="text" required="" id="id_type_code" name="type_code" maxlength="1"  data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="form-control">
+        <label for="id_type_code " class="pl-0 col-7 col-lg-9" >What type of question you wish to ask?</label>
+        <select  type="text" required="" id="id_type_code" name="type_code" maxlength="1" class='col-4 col-lg-2'  style="display:inline-block;" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="form-control">
             <option type="text" value="1" >MCQ</option>
             <option type="text" value="2"  >One Word</option>
             <option type="text" value="3"  >Long Answer</option>
         </select>
 
-            <div><label for="id_topic">Topic:</label> <input type="text" name="topic" maxlength="300" required="" id="id_topic"></div>
+            <div><label for="id_topic " class="pl-0 col-3 col-md-1">Topic:</label> <input type="text" class="col-8 col-md-10" name="topic" maxlength="300" required="" id="id_topic"></div>
 
             <div>
-                <label for="id_description">Description:</label>
-                <textarea type="text" name="description" maxlength="1000" required="" id="id_description" rows="10" cols="50" style="resize:none;"></textarea>
+                <label for="id_description" style="display:block;">Description:</label>
+                <textarea type="text" name="description" maxlength="1000" required="" id="id_description" rows="20" class="col-11" style="resize:none;"></textarea>
             </div>
             <div id="ask">
-                <label for="id_ask">How many options you want to give?</label>
-                <input type="number"name="ask"  maxlength="1" id="id_ask"></div>
+                <label for="id_ask" class="pl-0 col-7  col-lg-9">How many options you want to give?</label>
+                <input type="number"name="ask" class="col-4  col-lg-2" maxlength="1" id="id_ask"></div>
             <div>
 
 
@@ -29,20 +31,28 @@
                             var result=id.options[id.selectedIndex].value;
 
                             if(result !="1"){
-                                var option = $('.mcq');
-                                for (var i=0;i<option.length;i+=1){
-                                  option[i].style.display = 'none';
-                                }
+                                // var option = $('.mcq');
+                                // for (var i=0;i<option.length;i+=1){
+                                //   option[i].style.display = 'none';
+                                // }
+                                // var option_label = $('.mcq_label');
+                                // for (var i=0;i<option_label.length;i+=1){
+                                //   option_label[i].style.display = 'none';
+                                // }
                                 var ask = $('#ask');
                                 for (var i=0;i<ask.length;i+=1){
                                   ask[i].style.display = 'none';
                                 }
                             }
                             if(result =="1"){
-                                var option = $('.mcq');
-                                for (var i=0;i<option.length;i+=1){
-                                  option[i].style.display = 'inline-block';
-                                }
+                                // var option = $('.mcq');
+                                // for (var i=0;i<option.length;i+=1){
+                                //   option[i].style.display = 'block';
+                                // }
+                                // var option_label = $('.mcq_label');
+                                // for (var i=0;i<option_label.length;i+=1){
+                                //   option_label[i].style.display = 'inline-block';
+                                // }
                                 var ask = $('#ask');
                                 for (var i=0;i<ask.length;i+=1){
                                   ask[i].style.display = 'inline-block';
@@ -53,6 +63,7 @@
 
                             var id=document.getElementById('id_ask');
                             var result=id.value;
+                            console.log(result);
                             var i=0;
                             if(result>4 || result<0){
                                 id.value=4;
@@ -60,11 +71,14 @@
                                 alert("Only 4 options are allowed!")
                             }
                             var option = $('.mcq');
+                            var label = $('.mcq_label')
                                 for (i;i<result;i+=1){
-                                  option[i].style.display = 'inline-block';
+                                  option[i].style.display = 'block';
+                                  label[i].style.display = 'inline-block';
                                 }
                                 for(i;i<option.length;i+=1){
                                     option[i].style.display = 'none';
+                                    label[i].style.display = 'none';
                                 }
 
 
@@ -74,7 +88,8 @@
 
                     {% for form in form3 %}
                     {% with i=forloop.counter %}
-                        <input class='mcq' type="text" name="form-{{i|add:"-1"}}-option" maxlength="300" id="id_form-{{i|add:"-1"}}-option">
+                        <label class='mcq_label' style="display:none;">Option {{i}}  </label>
+                        <input  class='mcq ' style="display:none;" type="text" name="form-{{i|add:"-1"}}-option" maxlength="300" id="id_form-{{i|add:"-1"}}-option">
                     {% endwith %}
                     {% endfor %}
 
@@ -87,39 +102,54 @@
             </datalist>
 
             <label class="screen-reader-text" for="id_tags_forum">Enter some tags</label>
+            <div id="input_tag">
 
-            <input type="text" id="id_tags_forum" name="tags_forum" list="tags">
-                    <div>
-                        <span>Tags:</span>
-                            {%for tag in viewtags.access.all %}
-                                <span> {{tag.tags_forum}} </span>
-                            {% endfor %}
-                    </div>
+                <input type="text" id="id_tags_forum" onkeypress="press(event)" name="tags_forum" class="col-11" list="tags">
+                <br><span>Tags:</span>
+            </div>
+            <br><br>
+
             <button type="submit" class="btn btn-success">Submit Question</button>
 
     </form>
+    <script>
+            var input = document.getElementById("id_tags_forum");
+            var viewtag = document.getElementById("input_tag");
+            var a=[];
+            function press(e) {
+                if (e.keyCode === 13 ) {
+                    e.preventDefault();
+                    a.push(input.value);
+                    var tag = document.createElement('span')
+                    tag.innerHTML=input.value+"  ";
+                    viewtag.appendChild(tag);
+                    input.value="";
+                }
 
+            }
+            function changetag(){
+                    a.push(input.value);
+                    var tag = document.createElement('span')
+                    tag.innerHTML=input.value+"  ";
+                    viewtag.appendChild(tag);
+                    input.value="";
+                }
 
-    <!--<div class="modal fade" id="Option" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">-->
-    <!--    <div class="modal-dialog modal-dialog-centered" role="document">-->
-    <!--        <div class="modal-content ">-->
+            function submitform(){
+                var filtered = a.filter(function (el) {
+                    return el != "";
+                });
 
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
+                var s=filtered.join(',')
+                input.value=s;
 
-    <!--<script>-->
+            }
+    </script>
+    <style>
+        #addforum .col{
+            margin-left:0px;
+        }
+    </style>
 
-    <!--//     $('.option-modal').on('click',function(e){-->
-    <!--//     e.preventDefault();-->
-    <!--//     var data_id = $(this).attr("data-id");-->
-    <!--//     var url=$('.option-modal').href;-->
-    <!--//     console.log(data_id);-->
-    <!--//     url=url+'/'+data_id;-->
-    <!--//     $('.option-modal').attr.href=url;-->
-    <!--//     console.log($('.option-modal').attr.href);-->
-    <!--//     $('#Option').modal('show').find('.modal-content').load($(this).attr('href'));-->
+{% endblock %}
 
-    <!--// });-->
-    <!--// </script>-->
-</div>

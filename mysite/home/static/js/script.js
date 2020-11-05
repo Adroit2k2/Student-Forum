@@ -31,14 +31,16 @@ $(document).ready(function () {
        var url=window.location.href.split('/');
        var Links=document.getElementsByClassName('list-unstyled components')[0].getElementsByClassName('click');
        var i=0;
-       var current=url[url.length-1];
+       var current=url[url.length-2];
+
        for(i=0;i<Links.length;i++){
-        var ln=Links[i].href.split('/');
-        if(ln[ln.length-1]==current){
+            var ln=Links[i].href.split('/');
+
+            if( ln[ln.length-2]==current ){
 
             Links[i].className+=(' active');
+            }
         }
-       }
 
 
 });
