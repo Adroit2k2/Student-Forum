@@ -1,5 +1,5 @@
 # set web server root as working dir
-WORKDIR /Student-Forum/
+WORKDIR /mysite/
 # copy all files
 COPY . .
 
