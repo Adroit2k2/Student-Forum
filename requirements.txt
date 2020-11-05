@@ -477,5 +477,4 @@ zope.testbrowser==5.3.3
 zope.testing==4.7
 zope.traversing==4.3.1
 zope.viewlet==4.2.1
-gunicorn==19.9.0
-psycopg2==2.8.4
+
