@@ -2,12 +2,18 @@
         General Demo Styles [not related to navbar]
    ==========================================================*/
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,500&family=Sansita:wght@300&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
     font-family: 'Alegreya', serif;
       font-family: 'Sansita', serif;
+=======
+
+body {
+    font-family: 'Poppins', sans-serif;
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     font-size:5px ;
     min-height:100%;
     background-color: rgb(241, 242, 242);
@@ -50,7 +56,10 @@ strong {
 
 .main-content {
     padding: 0px 0;
+<<<<<<< HEAD
     min-height:82vh;
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
  }
 
 .line {
@@ -503,9 +512,12 @@ footer li>a:hover{
 .none{
     display: none;
 }
+<<<<<<< HEAD
 .pagination{
     font-size:3em;
 }
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 
 

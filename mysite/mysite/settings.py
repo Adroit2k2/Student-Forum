@@ -186,6 +186,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 }
 
+<<<<<<< HEAD
 
 
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
@@ -194,6 +195,8 @@ SECURE_SSL_REDIRECT = True
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 SITE_ID = 1

@@ -14,7 +14,11 @@ urlpatterns = [
     path("login/", views.login_request, name="logins"),
     path("logout/", views.logout_request, name="logout"),
     path('addForum/', views.addInForum.as_view(), name='addForum'),
+<<<<<<< HEAD
     path('Comment/<int:pk>/', views.addInDiscussion.as_view(), name='comment'),
+=======
+    path('Comment/<int:pk>', views.addInDiscussion.as_view(), name='comment'),
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     path('tags/<int:pk>', views.addInTag.as_view(), name='tags'),
     path('option/<int:pk>', views.addInOption.as_view(), name='option'),
     path('EditProfile/<int:pk>', views.EditProfile.as_view(), name='editprofile'),
@@ -30,6 +34,9 @@ urlpatterns = [
     path('tags/<str:pk>', views.ForumTagsView.as_view(), name='tags_forum'),
     path('forum/<int:pk>/favorite',views.AddFavoriteView.as_view(), name='forum_favorite'),
     path('forum/<int:pk>/unfavorite',views.DeleteFavoriteView.as_view(), name='forum_unfavorite'),
+<<<<<<< HEAD
     path('contact/', views.Contact.as_view(), name='contact'),
     path('construct/', views.Construct.as_view(), name='construct'),
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 ]

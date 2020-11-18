@@ -43,7 +43,11 @@ class HomeView(View):
 
 class ContentView(View):
     def get(self, request) :
+<<<<<<< HEAD
 
+=======
+        # print("ANSHU_Chu?")
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         print(request.get_host())
         host = request.get_host()
         islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
@@ -127,6 +131,7 @@ class addInForum(LoginRequiredMixin, View):
             form.save(commit=False).option_access=forum
             form.save(commit=False).save()
         s=form2.cleaned_data.get('tags_forum')
+<<<<<<< HEAD
         try:
             tags1=list(set(s.split(",")))
             tags=[]
@@ -141,6 +146,18 @@ class addInForum(LoginRequiredMixin, View):
 
         except:
             pass
+=======
+        tags1=list(set(s.split(",")))
+        tags=[]
+        for j in tags1:
+            tags.append(j.lstrip().rstrip())
+
+        for j in tags:
+            tag = forum_tags()
+            tag.tags_forum = j
+            tag.tags_access = forum
+            tag.save()
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 
 
@@ -191,6 +208,7 @@ class addInDiscussion(LoginRequiredMixin, View):
     form = CreateInDiscussion()
     def get(self,request, pk):
         form =  CreateInDiscussion()
+<<<<<<< HEAD
 
         topic=forum.objects.get(pk=pk)
         favorites = list()
@@ -203,6 +221,11 @@ class addInDiscussion(LoginRequiredMixin, View):
 
         context = { 'form': form, 'urls': url, 'pk': pk,  'topic':topic, 'favorites': favorites}
 
+=======
+        topic=forum.objects.get(pk=pk)
+
+        context = { 'form': form, 'pk': pk,'topic':topic, }
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         return render(request, 'home/addInDiscussion.html', context)
 
 
@@ -408,6 +431,7 @@ class ForumTagsView(View):
     def get(self,request,pk):
         tags = forum_tags.objects.filter(tags_forum=pk)
 
+<<<<<<< HEAD
 
 
 
@@ -426,11 +450,15 @@ class ForumTagsView(View):
             favorites = [ row['id'] for row in rows ]
 
         return render(request, 'home/TagsForum.html', {'tags': page_obj,'favorites':favorites})
+=======
+        return render(request, 'home/TagsForum.html', {'tags': tags})
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 
 class ProfileSearchView(View):
     def get(self,request,pk):
         prof=User.objects.get(username=pk)
+<<<<<<< HEAD
         objects = forum.objects.filter(owner=prof.id).order_by('-updated_at')[:]
 
 
@@ -449,6 +477,12 @@ class ProfileSearchView(View):
             # favorites = [2, 4, ...] using list comprehension
             favorites = [ row['id'] for row in rows ]
         context = {'prof':prof,'forums':page_obj,'form':form,'form2':form2,'favorites':favorites}
+=======
+        objects = forum.objects.filter(owner=prof.id).order_by('-updated_at')[:15]
+        form = CreateLink()
+        form2=CreateBio()
+        context = {'prof':prof,'forums':objects,'form':form,'form2':form2}
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
         return render(request, 'home/searchprofile.html', context)
 
@@ -461,9 +495,17 @@ class ProfileSearchView(View):
             github_link=""
             linkedin_link = form.cleaned_data.get('linkedin_link')
             github_link = form.cleaned_data.get('github_link')
+<<<<<<< HEAD
             user=User.objects.get(username=pk)
             user.profile.linkedin_link= linkedin_link
             user.profile.github_link= github_link
+=======
+            bio=form2.cleaned_data.get('bio')
+            user=User.objects.get(username=pk)
+            user.profile.linkedin_link= linkedin_link
+            user.profile.github_link= github_link
+            user.profile.bio=bio
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
             user.save()
 
@@ -518,6 +560,7 @@ class EditProfile(LoginRequiredMixin, View):
             return render(request, 'home/editprofile.html', {'form': form})
 
 
+<<<<<<< HEAD
 
 
 class Contact(View):
@@ -531,6 +574,8 @@ class Construct(View):
         return render(request, 'home/construct.html')
 
 
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 def stream_file(request, pk) :
     profile = get_object_or_404(Profile, id=pk)
     response = HttpResponse()

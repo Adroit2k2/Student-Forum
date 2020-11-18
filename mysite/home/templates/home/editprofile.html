@@ -185,6 +185,7 @@
                         <div class="row">
                             <div class="col-md-12 col-lg-6">
                                 <p class="first_name"><label for="id_first_name">First name:</label> <br><input
+<<<<<<< HEAD
                                         type="text" {% if user.profile.phone %}
                                                         value="{{user.profile.first_name}}"
                                                     {% else %}
@@ -200,6 +201,13 @@
                                                         value="{{user.last_name}}"
                                                     {% endif %}
                                         name="last_name" maxlength="100" required
+=======
+                                        type="text" value="{{user.first_name}}" name="first_name"
+                                        maxlength="100" required id="id_first_name"></p>
+                                <br>
+                                <p class="last_name"><label for="id_last_name">Last name:</label> <br><input type="text"
+                                        value="{{user.last_name}}" name="last_name" maxlength="100" required
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                                         id="id_last_name"></p>
                             </div>
                             <div class="col-md-12 col-lg-6">
@@ -209,11 +217,15 @@
                                 </p>
                                 <br>
                                 <p class="email"><label for="id_email" class="email_1">Email address:</label><br> <input
+<<<<<<< HEAD
                                         type="email" {% if user.profile.phone %}
                                                         value="{{user.profile.email}}"
                                                     {% else %}
                                                         value="{{user.email}}"
                                                     {% endif %} name="email" maxlength="150"
+=======
+                                        type="email" value="{{user.email}}" name="email" maxlength="150"
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                                         required id="id_email">
                                 </p>
 

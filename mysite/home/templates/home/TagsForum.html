@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 
 {% block tags_forum %}
+<<<<<<< HEAD
 <div style="" class="pagination">
     <span class="step-links" >
 
@@ -20,6 +21,10 @@
         {% endif %}
     </span>
 </div>
+=======
+<button type="button" id="addForum" class=" btn btn-default col-xs-6"><h3><a href={% url 'home:addForum' %} class="forum-modal">Add Forum</a></h3></button>
+    <br><br>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 <div style="float:right">
 
@@ -31,6 +36,7 @@
 </div>
 {% for tag in tags %}
 {% with topic=tag.tags_access %}
+<<<<<<< HEAD
 <div class="forum container-fluid" id="forum-{{topic.id}}">
         <div class="row myrow_1">
             <div class="col-8">
@@ -165,20 +171,94 @@
 
 
     </div>
+=======
+<div class="mb-5" style="border:3px solid black;padding:10px;">
+    <form method="POST" >
+            {% csrf_token %}
+            <h4><a  style="display:inline-block; color:black;"  type='submit' href={%  url 'home:comment' topic.id %}>{{topic.topic}}</a></h4>
+    </form>
+
+<p>{{topic.description}}</p>
+<h5>Answers:{{topic.discuss_access.count}}</h5>
+    <h5 style="display:inline;">Tags: </h5>
+    {%for tag in topic.tag_access.all%}
+        {% if tag.tags_forum != null %}
+            <span>{{tag.tags_forum}}>> </span>
+        {% else %}
+            <span>No Tags Available</span>
+        {% endif %}
+
+
+    {% endfor %}
+
+
+    <br>
+
+    <hr>
+    <form  action="{% url 'home:upvote' topic.id %}" method="POST" class="form">
+
+    {% csrf_token %}
+
+
+        <button type="submit" id="uv" class="btn btn-primary">+</button>
+        <button type="submit"id="dv" formaction="{% url 'home:downvote' topic.id %}" class="btn btn-primary">-</button>
+        <script>
+
+        </script>
+    <span style="float:right;">{{topic.total}} Posted By-{{topic.owner}} on {{topic.date_created}}</span>
+     </form>
+
+       <form method="POST" >
+            {% csrf_token %}
+            <button class=" mr-2 btn btn-success"><a data-id="{{topic.id}}"  style="color:white;" class="tag-modal" type='submit' href={%  url 'home:tags' topic.id %}>Add Tags</a></button>
+        </form>
+        {% if topic.owner == user %}
+
+
+
+            <button class=" mr-2 btn btn-success" ><a style="color:white;"  class=" delete-modal" href="{% url 'home:delete_forum' topic.id %}" >Delete</a>
+
+            <button class=" mr-2 btn btn-success" ><a style="color:white;"  class=" delete-modal" href="{% url 'home:forum_update' topic.id %}" >Update</a>
+
+            </button>
+        {% endif %}
+        <hr>
+
+
+    <br>
+</div>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 {% endwith %}
 {% endfor %}
 
 
 
 
+<<<<<<< HEAD
 <div class="modal fade" id="Tag" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">
+=======
+<div class="modal fade" id="Forum" tabindex="-1" role="dialog" aria-labelledby="ForumTitle" aria-hidden="true">
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content ">
 
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 <div class="modal fade" id="loginuse" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+=======
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content ">
+            {% block delete-topic.id %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Tag" tabindex="-1" role="dialog" aria-labelledby="TagTitle" aria-hidden="true">
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content ">
 
@@ -186,6 +266,7 @@
         </div>
     </div>
     <script>
+<<<<<<< HEAD
         $('.loi-modal').on('click',function(e){
         e.preventDefault();
         console.log("{% url 'home:logins' %}");
@@ -194,6 +275,8 @@
   </script>
 
     <script>
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
         $('.tag-modal').on('click',function(e){
         e.preventDefault();
@@ -205,6 +288,7 @@
         console.log($('.tag-modal').attr.href);
         $('#Tag').modal('show').find('.modal-content').load($(this).attr('href'));
     });
+<<<<<<< HEAD
     </script>
     <script>
         function validate(id,url) {
@@ -647,4 +731,20 @@
             }
         }
     </style>
+=======
+
+    </script>
+    <script>
+
+        $('.forum-modal').on('click',function(e){
+        e.preventDefault();
+        console.log($('.forum-modal').attr('href'));
+        // window.location.href=$('.forum-modal').attr('href');
+        $('#Forum').modal('show').find('.modal-content').load($('.forum-modal').attr('href'));
+
+
+    });
+
+    </script>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 {% endblock %}

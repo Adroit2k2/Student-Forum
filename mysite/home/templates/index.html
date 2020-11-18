@@ -73,11 +73,19 @@
                             <li><a class="click" href="{% url 'books:search' %}">Search</a></li>
                             <li><a class="click" href="{% url 'books:cart' %}">Book Cart</a></li>
                         </ul>
+<<<<<<< HEAD
                         <a class="click" href="{% url 'home:construct' %}">About Us</a>
                     </li>
 
                     <li>
                         <a class="click" href="{% url 'home:contact' %}">Contact Us</a>
+=======
+                        <a class="click" href="#">About Us</a>
+                    </li>
+
+                    <li>
+                        <a class="click" href="#">Contact Us</a>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </li>
                 </ul>
 
@@ -101,6 +109,7 @@
                         <div class="navbar-header">
 
                             <!-- Toggle Button [handles opening sidebar menu]-->
+<<<<<<< HEAD
                             <button type="button" id="sidebarCollapse" style="border:none;padding:0;" class="btn btn-info navbar-btn">
                                 <i class="fa fa-5x fa-bars" aria-hidden="true"></i>
 
@@ -108,6 +117,15 @@
                             <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
                             <button type="button" class="navbar-toggler collapsed btn btn-info navbar-btn" data-toggle="collapse" data-target="#navComponents" style="border:none;padding:0;" aria-expanded="false">
                                 <i class="fa fa-5x fa-bars" aria-hidden="true"></i>
+=======
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+
+                            </button>
+                            <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
+                            <button type="button" class="navbar-toggler collapsed btn btn-info navbar-btn" data-toggle="collapse" data-target="#navComponents" aria-expanded="false">
+                                <i class="glyphicon glyphicon-align-center"></i>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                             </button>
 
                             <!-- Navbar Brand -->
@@ -124,8 +142,13 @@
                             <div class="d-md-flex  flex-md-row">
                                 <div id="info" class="navbar-right">
                                 	<div class="row">
+<<<<<<< HEAD
                                         <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:construct' %}">About Us</a></button>
                                         <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:contact' %}">Contact Us</a></button>
+=======
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="">About Us</a></button>
+                                        <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href="">Contact Us</a></button>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                                 	</div>
                                 </div>
 
@@ -158,7 +181,11 @@
                                     {% endif %}
                                     >
                                 </div>
+<<<<<<< HEAD
                                 <button type="submit" class="btn navbtn btn-default"><i class="fa fa-search " style="color:white;">Search</i></button>
+=======
+                                <button type="submit" class="btn navbtn btn-default"><i class="fa fa-search">Search</i></button>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                             </form>
                             </div>
                         </div>
@@ -169,7 +196,11 @@
                 </nav><!--End of navbar-->
 
                 <!-- Page Content Holder -->
+<<<<<<< HEAD
                 <div class="main-content d-flex flex-column" >
+=======
+                <div class="main-content d-flex flex-column" style="min-height:82vh;">
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     <div class="container">
                         {% block content %}
                         {% endblock %}
@@ -196,10 +227,13 @@
                         {% endblock %}
                     {% block editprofile %}
                         {% endblock %}
+<<<<<<< HEAD
                     {% block contact %}
                         {% endblock %}
                     {% block construct %}
                     {% endblock %}
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 </div><!-- End of class="main-content" -->
                  <!--End of Page content-->
 
@@ -211,6 +245,7 @@
 	                		<a href="">Student Forum</a>
 
 	                		<li>
+<<<<<<< HEAD
 	                			<a href="{% url 'home:content' %}">Forum</a>
 	                		</li>
 	                		<li>
@@ -224,15 +259,35 @@
 	                		</li>
 	                		<li>
 	                			<a href="{% url 'books:cart' %}">Book Cart</a>
+=======
+	                			<a href="">Forum</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Tags</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Users</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Search</a>
+	                		</li>
+	                		<li>
+	                			<a href="">Book Cart</a>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 	                		</li>
 	                	</ul>
 
 	                	<ul class="col-xs-6 col-sm-4">
+<<<<<<< HEAD
 	                		<a href="{% url 'home:construct' %}">About Us</a>
+=======
+	                		<a href="">About Us</a>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 	                		<li>
 	                			<a href="https://github.com/Adroit2k2/Student-Forum">GitHub Repository</a>
 	                		</li>
 	                		<li>
+<<<<<<< HEAD
 	                			<a id="Facebookc" href="{% url 'home:construct' %}">Facebook Profiles</a>
 	                		</li>
 	                		<li>
@@ -246,13 +301,34 @@
 	                		</li>
 	                		<li>
 	                			<a id="Owners" href="{% url 'home:construct' %}" >Owners' Profiles</a>
+=======
+	                			<a id="Facebookc" >Facebook Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="Instagramc" >Instagram Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="GitHubc" >GitHub Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="LinkedInc" >LinkedIn Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="Ownersc" >Owners' Profiles</a>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 	                		</li>
 	                	</ul >
 
 	                	<ul class="col-xs-6 col-sm-4">
+<<<<<<< HEAD
 	                		<a href="{% url 'home:contact' %}">Contact Us</a>
 	                		<li>
 	                			<a href="href="{% url 'home:construct' %}"">E-Mail</a>
+=======
+	                		<a href="">Contact Us</a>
+	                		<li>
+	                			<a href="">E-Mail</a>
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 	                		</li>
 	                	</ul>
 	                </div>

@@ -44,6 +44,7 @@ $(document).ready(function () {
 
 
 });
+<<<<<<< HEAD
 function Copytext(link)
     {
         var url = document.createElement("textarea");
@@ -69,6 +70,8 @@ const copyToClipboard = str => {
   console.log(b);
   document.body.removeChild(el);
 };
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 
 

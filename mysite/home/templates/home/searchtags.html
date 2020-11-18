@@ -1,8 +1,13 @@
 {% extends "index.html" %}
 
 {% block tags %}
+<<<<<<< HEAD
 
     <div class="pagination">
+=======
+<div class='row mt-5 mb-5 mr-0 ml-0 d-flex justify-content-around'>
+    <div style="font-size:2em;" class="pagination">
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     <span class="step-links">
         {% if tags.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -19,7 +24,10 @@
         {% endif %}
     </span>
 </div>
+<<<<<<< HEAD
 <div class='row mt-1 mb-5 mr-0 ml-0 d-flex justify-content-around'>
+=======
+>>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 {% for tag in tags %}
 <div class="col-5 col-sm-3 col-md-2-5 col-xl-2  mr-2 ml-2 mb-2 " style="border:3px solid black;padding:10px;border-radius:10px">
 
