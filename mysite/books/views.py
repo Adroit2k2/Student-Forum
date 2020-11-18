@@ -64,11 +64,7 @@ def api(request):
             for each in lst_auth[1:]:
                 fnl_lst_auth.append(each[2:-1])
             d['authors']=", ".join(fnl_lst_auth)
-<<<<<<< HEAD
             if d['authors'].strip() == 'Descripti':
-=======
-            if d['authors'] == 'Descripti':
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 d['authors']='Author Not Found'
             arr.append(d)
             books=1

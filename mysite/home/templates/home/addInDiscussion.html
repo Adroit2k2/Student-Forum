@@ -80,11 +80,7 @@
                   height:30px;
                   width:30px;" >
                 <div class="blah">
-<<<<<<< HEAD
                     <a href="{% url 'home:searchprofile' topic.owner.username %}">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
-=======
-                    <a href="#">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 </div>
             </div>
 
@@ -100,11 +96,7 @@
 
                     <span>
 
-<<<<<<< HEAD
                     <i class="fa fa-star fa-5x" style="color: orange;" ></i>
-=======
-                    <i class="fa fa-star-o fa-5x"  ></i>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </span>
 
             </a>
@@ -118,11 +110,7 @@
 
                     <span>
 
-<<<<<<< HEAD
                     <i class="fa fa-star-o fa-5x" ></i>
-=======
-                    <i class="fa fa-star fa-5x" style="color: orange;"></i>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </span>
 
             </a>
@@ -136,15 +124,9 @@
             <div class="vote roundrect">
                     <form  method="POST" class="form">
                         {% csrf_token %}
-<<<<<<< HEAD
                         <div class="increment up" onclick="vote('{% url 'home:upvote' topic.id %}',{{topic.id}});"
                                 id="uv"></div>
                         <div class="increment down" id="dv" onclick="vote('{% url 'home:downvote' topic.id %}',{{topic.id}});" ></div>
-=======
-                        <div class="increment up" onclick="vote('{% url 'home:upvote' topic.id %}',{{vote}},{{topic.id}});"
-                                id="uv"></div>
-                        <div class="increment down" id="dv" onclick="vote('{% url 'home:downvote' topic.id %}',{{vote}},{{topic.id}});" ></div>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                         <div class="count " id="count-{{topic.id}}">{{topic.total}}</div>
                     </form>
             </div>
@@ -154,11 +136,7 @@
     </div>
 <h2>Answers</h2>
 {% for discuss in topic.discuss_access.all %}
-<<<<<<< HEAD
 <div class="mb-2" style="border:1px solid #dee0e1;background-color:white;padding:10px;">
-=======
-<div class="mb-2" style="border:3px solid black;padding:10px;">
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
     {% with topic.option_access.all|first as fir %}
                {% if fir.option != null%}
@@ -169,7 +147,6 @@
                 <h5>One Word Answer:{{discuss.single}}</h5><br>
     {% endif %}
         <h6>{{discuss.discuss}}</h6>
-<<<<<<< HEAD
         <div class="answerby mr-5 d-flex flex-row-reverse " >
                 <div class="blah d-flex flex-column-reverse ml-2" style="font-size:2em">
                     <a href="{% url 'home:searchprofile' discuss.creator.username %}">{{discuss.creator}}</a>
@@ -178,17 +155,11 @@
                   height:30px;
                   width:30px;" >
             </div>
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
 </div>
 {% endfor %}
 <h2>Your Answer Here:</h2>
-<<<<<<< HEAD
 <div class="mb-5 answer" style="border:3px solid black;padding:10px;">
-=======
-<div class="mb-5" style="border:3px solid black;padding:10px;">
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
     <form action="" method="POST">
         {% csrf_token %}
@@ -198,14 +169,9 @@
                {% endif %}
             {% endwith %}
             {% for options in topic.option_access.all %}
-<<<<<<< HEAD
 
                 {% if options.option != null %}
                     <input class='mcq' type="radio" name="single" id="id_single" value="{{options.option}}"><span style="font-size:3em;margin-left:5px;">{{options.option}}</span><br>
-=======
-                {% if options.option != null %}
-                    <input class='mcq' type="radio" name="single" id="id_single" value="{{options.option}}">{{options.option}}<br>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 {% endif %}
             {% endfor %}
             <br>
@@ -224,11 +190,7 @@
             {% if topic.type_code == '3' %}
                 <textarea type="text" name="discuss" id="id_discuss" rows="20" cols="300" placeholder="Your Answer Here"></textarea><br>
             {% endif %}<br>
-<<<<<<< HEAD
         <input type="submit" style="font-size:3em;" class="btn btn-success" value="submit">
-=======
-        <input type="submit" class="btn btn-success" value="submit">
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     </form>
 </div>
 
@@ -241,15 +203,9 @@
                       type: "GET",
                       url:url,
                       success:function(){
-<<<<<<< HEAD
                           var u={% url 'home:content' %}
                           u+="?page="+"{{pk2}}";
                         window.location="{{urls}}";
-=======
-                        var u = history.go(-1);
-                        u += “?param=refresh”;
-                        document.location = u;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                       }
                     });
                     return false;
@@ -274,11 +230,7 @@
         $('body').click(function(e) {
             target = $(e.target);
         });
-<<<<<<< HEAD
         function vote(url,id){
-=======
-        function vote(url,vote,id){
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             var token =  $('input[name="csrfmiddlewaretoken"]').attr('value');
 
             $.ajax({
@@ -294,11 +246,7 @@
     </script>
 <style>
     textarea{
-<<<<<<< HEAD
         width:100%;
-=======
-        width:95%;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         font-size:14px;
         height:max(200px,20vh);
     }
@@ -577,11 +525,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-<<<<<<< HEAD
              /* number of lines to show */
-=======
-            -webkit-line-clamp: 2; /* number of lines to show */
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             -webkit-box-orient: vertical;
         }
 
@@ -682,11 +626,8 @@
                 margin: 0px 1.25rem 17px 1.25rem;
             }
         }
-<<<<<<< HEAD
         .answer label{
             font-size:2.6em;
         }
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 </style>
 {% endblock %}

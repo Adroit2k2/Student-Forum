@@ -3,15 +3,10 @@
 {% block content %}
 <button type="button" id="addForum" class=" btn btn-default col-xs-6"><h3><a href={% url 'home:addForum' %} >Add Forum</a></h3></button>
     <br><br>
-<<<<<<< HEAD
 <div  class="pagination">
     <span class="step-links" >
 
 
-=======
-<div style="font-size:2em;" class="pagination">
-    <span class="step-links">
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         {% if forums.has_previous %}
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ forums.previous_page_number }}">previous</a>
@@ -22,13 +17,8 @@
         </span>
 
         {% if forums.has_next %}
-<<<<<<< HEAD
             <a href="?page={{ forums.next_page_number }}" >next</a>
             <a href="?page={{ forums.paginator.num_pages }}" >last &raquo;</a>
-=======
-            <a href="?page={{ forums.next_page_number }}">next</a>
-            <a href="?page={{ forums.paginator.num_pages }}">last &raquo;</a>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         {% endif %}
     </span>
 </div>
@@ -39,10 +29,7 @@
             <div class="col-8">
                 <form method="POST" >
                 {% csrf_token %}
-<<<<<<< HEAD
 
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     <h2 class="forum_topic" ><a type='submit' href="{%  url 'home:comment' topic.id %}"><b>{{topic.topic}}</b></a></h2>
                 </form>
             </div>
@@ -54,11 +41,7 @@
                 </i></button>
                 <div id="myDropdown{{topic.id}}" class="dropdown-content drop_{{topic.id}}" style="display: none;font-size: 0.8rem;position: absolute;
                     right: 40px;top:5px;">
-<<<<<<< HEAD
                     <a data-toggle="modal" data-target="#link{{topic.id}}"><i class="fa fa-facebook" style="color: #3B5998;margin: 0px 16px 0px 0px;"></i>Share
-=======
-                    <a href="#"><i class="fa fa-facebook" style="color: #3B5998;margin: 0px 16px 0px 0px;"></i>Share
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                         Link
                     </a>
                     <a href="#"><i class="fa fa-flag" style="margin: 0px 10px 0px 0px;
@@ -66,7 +49,6 @@
                     "></i>Report Question</a>
                 </div>
             </div>
-<<<<<<< HEAD
 
             <div class="modal fade" id="link{{topic.id}}" tabindex="-1" role="dialog" aria-labelledby="linklabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -87,8 +69,6 @@
                 </div>
               </div>
             </div>
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             <script>
                 $('#dropbtn{{topic.id}}').on('click',function() {
                     $("#myDropdown{{topic.id}}").toggle();
@@ -108,11 +88,7 @@
 
 
         <div class="row ">
-<<<<<<< HEAD
             <div style="margin-left:15px" class="col">
-=======
-            <div class="col">
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 {%for tag in topic.tag_access.all%}
                     {% if tag.tags_forum != "" %}
                         <a href="#" class="tag">
@@ -121,11 +97,7 @@
                         </a>
 
                     {% else %}
-<<<<<<< HEAD
                         <span style="font-size:2em;">No Tags Available</span>
-=======
-                        <span>No Tags Available</span>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     {% endif %}
                 {% endfor %}
             </div>
@@ -151,11 +123,7 @@
                   height:30px;
                   width:30px;" >
                 <div class="blah">
-<<<<<<< HEAD
                     <a href="{% url 'home:searchprofile' topic.owner.username %}">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
-=======
-                    <a href="#">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 </div>
             </div>
 
@@ -171,11 +139,7 @@
 
                     <span>
 
-<<<<<<< HEAD
                     <i class="fa fa-star fa-5x"  style="color: orange;"></i>
-=======
-                    <i class="fa fa-star-o fa-5x"  ></i>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </span>
 
             </a>
@@ -189,11 +153,7 @@
 
                     <span>
 
-<<<<<<< HEAD
                     <i class="fa fa-star-o fa-5x" ></i>
-=======
-                    <i class="fa fa-star fa-5x" style="color: orange;"></i>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </span>
 
             </a>
@@ -228,11 +188,7 @@
             <div class="col-8">
                 <form method="POST" >
                 {% csrf_token %}
-<<<<<<< HEAD
                     <h2 class="forum_topic" ><a type='submit' href="{%  url 'home:comment' topic.id%}"><b>{{topic.topic}}</b></a></h2>
-=======
-                    <h2 class="forum_topic" ><a type='submit' href="{%  url 'home:comment' topic.id %}"><b>{{topic.topic}}</b></a></h2>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                 </form>
             </div>
             <div class="dropdown col ">
@@ -272,11 +228,7 @@
         <div class="row ">
             <div class="col">
                 {%for tag in topic.tag_access.all%}
-<<<<<<< HEAD
                     {% if tag.tags_forum  %}
-=======
-                    {% if tag.tags_forum != "" %}
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                         <a href="#" class="tag">
                             <span class="arrow"></span>
                             {{tag.tags_forum}}
@@ -724,7 +676,6 @@
             margin: 12px 0px 0px 30px;
             color: white;
             font-size: 1rem;
-<<<<<<< HEAD
 
         }
         .forum .forum_topic b{
@@ -739,14 +690,6 @@
             font-size: larger;
             margin: 0px 30px 0px 30px;
             font-size: 0.7rem;
-=======
-        }
-
-        .forum .description {
-            font-size: larger;
-            margin: 0px 30px 0px 30px;
-            font-size: 0.9rem;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             overflow-x:hidden;
             overflow: hidden;
             text-overflow: ellipsis;

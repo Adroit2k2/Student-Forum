@@ -70,7 +70,6 @@
 
 	        <div class="details ml-2 ">
 	          <div class="name">
-<<<<<<< HEAD
 	            <h4><span id="firstName">{% if user.profile.phone %}
                                             {{prof.profile.first_name}}
                                         {% else %}
@@ -80,9 +79,6 @@
                                         {% else %}
                                             {{prof.last_name}}
                                         {%endif %}</span><a class="col" href=""> @{{prof.get_username}}</a></h4>
-=======
-	            <h4><span id="firstName">{{prof.first_name}}</span> <span id="lastName">{{prof.last_name}}</span><a class="col" href=""> @{{prof.get_username}}</a></h4>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 	          </div>
 	         <div class="occupation">
 	            <h5>Student</h5>
@@ -158,15 +154,11 @@
                   <ul style="font-size:2em; list-style:none" type="square">
                     <li >
                         <i class="fa fa-envelope"></i>
-<<<<<<< HEAD
                       {% if user.profile.phone %}
                                             {{prof.profile.email}}
                                         {% else %}
                                             {{prof.email}}
                                         {%endif %}
-=======
-                      {{prof.email}}
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
                     </li>
 
                     <li>
@@ -178,7 +170,6 @@
             </div>
             <div class="Community ">
             	<h2>Community</h2>
-<<<<<<< HEAD
             	<h3>Work in Progress...</h3>
             	<!--<ul style="font-size:3em; list-style:none" type="square">-->
              <!-- 		  <a href="#">-->
@@ -194,28 +185,11 @@
 			          <!--  <li>BK-4</li>-->
 			          <!--</a>-->
             	<!--</ul>-->
-=======
-            	<ul style="font-size:3em; list-style:none" type="square">
-              		  <a href="#">
-                		<li>BK-1</li>
-		              </a>
-			          <a href="#">
-			            <li>BK-2</li>
-			          </a>
-			          <a href="#">
-			            <li>BK-3</li>
-			          </a>
-			          <a href="#">
-			            <li>BK-4</li>
-			          </a>
-            	</ul>
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             </div>
         </div>
 <div class="flex-grow-1 forum-view pl-md-1 ml-md-2">
     <h3>Forums</h3>
 {% for topic in forums%}
-<<<<<<< HEAD
         <div class="forum container-fluid" id="forum-{{topic.id}}">
         <div class="row myrow_1">
             <div class="col-8">
@@ -371,139 +345,6 @@
         {% endif %}
     </span>
 </div>
-=======
-        <div class="forum container-fluid">
-                <div class="row myrow_1">
-                    <div class="col-8">
-                        <form method="POST" >
-                        {% csrf_token %}
-                            <h2 class="forum_topic" ><a type='submit' href="{%  url 'home:comment' topic.id %}"><b>{{topic.topic}}</b></a></h2>
-                        </form>
-                    </div>
-                    <div class="dropdown col ">
-                        <button  id="dropbtn{{topic.id}}" class="dropbtn"><i class="fa fa-align-justify" style="
-                            position: absolute;
-                            right: 15px;top:5px;">
-
-                        </i></button>
-                        <div id="myDropdown{{topic.id}}" class="dropdown-content drop_{{topic.id}}" style="display: none;font-size: 0.8rem;position: absolute;
-                            right: 40px;top:5px;">
-                            <a href="#"><i class="fa fa-facebook" style="color: #3B5998;margin: 0px 16px 0px 0px;"></i>Share
-                                Link
-                            </a>
-                            <a href="#"><i class="fa fa-flag" style="margin: 0px 10px 0px 0px;
-                                color: red;
-                            "></i>Report Question</a>
-                        </div>
-                    </div>
-                    <script>
-                        $('#dropbtn{{topic.id}}').on('click',function() {
-                            $("#myDropdown{{topic.id}}").toggle();
-                        });
-                    </script>
-                </div>
-                <br>
-                <div class="row myrow_3">
-                    <div class="col">
-                        <p class="description">
-                            {{topic.description}}
-                        </p>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row ">
-                    <div class="col">
-                        {%for tag in topic.tag_access.all%}
-                            {% if tag.tags_forum != null %}
-                                <a href="#" class="tag">
-                                    <span class="arrow"></span>
-                                    {{tag.tags_forum}}
-                                </a>
-
-                            {% else %}
-                                <span>No Tags Available</span>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="col-5 col-md-3">
-                        <div class="vote roundrect">
-                            <form  method="POST" class="form">
-                                {% csrf_token %}
-                                <div class="increment up" onclick="javascript:this.parentNode.action='{% url 'home:upvote' topic.id %}';this.parentNode.submit();" id="uv"></div>
-                                <div class="increment down" id="dv" onclick="javascript:this.parentNode.action='{% url 'home:downvote' topic.id %}';this.parentNode.submit();" ></div>
-                                <div class="count">{{topic.total}}</div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex flex-row-reverse myrow_4 ">
-
-<script>
-    $(document).ready(function () {
-        var img2 = new Image();
-        img2.src=$('#dp2').attr('src');
-        img2.onerror=function(){
-            var s2="https://ui-avatars.com/api/?name=" + "{{prof.first_name}}" + "+" + "{{prof.last_name}}" + "&size=256";
-            $('#dp2').attr("src",s2);
-        }
- });
-</script>
-                    <div class="askedby mr-5 " >
-                        <input type="image" class='photo' id="dp2" src="{%  url 'home:dp' topic.owner.profile.id  %}" style=" outline:none;
-                          height:30px;
-                          width:30px;" >
-                        <div class="blah">
-                            <a href="#">{{topic.owner}}</a><br><a href="#" class="time">{{topic.date_created}}</a>
-                        </div>
-                    </div>
-
-                    <div class='extra mr-5'>
-                    {% if user.is_authenticated %}
-                    <!-- Two hrefs with two stacked icons each - one showing and one hidden -->
-                    <a  href="#" onclick=
-                        "favPost('{% url 'home:forum_unfavorite' topic.id %}', {{ topic.id }} );return false;"
-                        id="favorite_star_{{topic.id}}"
-                        {% if topic.id not in favorites %}
-                            style="display:none;"
-                        {% endif %}>
-
-                            <span>
-
-                            <i class="fa fa-star-o fa-5x"  ></i>
-                            </span>
-
-                    </a>
-                    <!-- the second href -->
-                    <a href="#" onclick=
-                         "favPost('{% url 'home:forum_favorite' topic.id %}', {{ topic.id }} );return false;"
-                        id="unfavorite_star_{{topic.id}}"
-                        {% if topic.id in favorites %}
-                            style="display:none;"
-                        {% endif %}>
-
-                            <span>
-
-                            <i class="fa fa-star fa-5x" style="color: orange;"></i>
-                            </span>
-
-                    </a>
-                    {% endif %}
-                    <h5 style="display:inline-block;margin-left:10px;">{{topic.discuss_access.count}}</h5>
-                    {% if topic.owner == user %}
-                        <a href="{% url 'home:delete_forum' topic.id %}" style="display:inline-block;margin-left:10px;color:black"><i class="fa fa-trash fa-5x"></i></a>
-                        <a href="{% url 'home:forum_update' topic.id %}" style="display:inline-block;margin-left:10px;color:black"><i class="fa fa-edit fa-5x"></i></a>
-                    {% endif %}
-                    </div>
-                </div>
-
-
-            </div>
-    {% endfor %}
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     </div>
     </div>
 
@@ -592,7 +433,6 @@
                         alert('Url failed with '+xhr.status+' '+url);
                         });
                 }
-<<<<<<< HEAD
                 function vote(url,id){
             var token =  $('input[name="csrfmiddlewaretoken"]').attr('value');
 
@@ -606,8 +446,6 @@
             });
             return false;
         }
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             </script>
 
 
@@ -717,12 +555,9 @@
       font-size:2em;
 
     }
-<<<<<<< HEAD
     .profile .extra i {
         font-size:5em;
     }
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
     @media(min-width: 576px){
     	.profile .details{
     		margin-top: 115px;
@@ -926,13 +761,8 @@
         .forum .roundrect .count {
             border-radius: 50%;
             position: absolute;
-<<<<<<< HEAD
             left: 37%;
             top: 33%;
-=======
-            left: 40%;
-            top: 37%;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         }
 
 
@@ -941,13 +771,8 @@
             position: relative;
             flex-direction: column;
             font-family: "Noto Sans";
-<<<<<<< HEAD
             width: 2.5rem;
             height: 2.5rem;
-=======
-            width: 3.5rem;
-            height: 3.55rem;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
 
             margin: 0rem 1.25rem;
         }
@@ -1027,7 +852,6 @@
             margin: 12px 0px 0px 30px;
             color: white;
             font-size: 1rem;
-<<<<<<< HEAD
 
         }
         .forum .forum_topic b{
@@ -1037,20 +861,13 @@
             display: -webkit-box;
             -webkit-line-clamp: 1; /* number of lines to show */
             -webkit-box-orient: vertical;
-=======
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
         }
 
         .forum .description {
             font-size: larger;
-<<<<<<< HEAD
             padding-left:15px;
             margin: 0px 30px 0px 30px;
             font-size: 0.7rem;
-=======
-            margin: 0px 30px 0px 30px;
-            font-size: 0.9rem;
->>>>>>> 2110909865447a397e1179d0cc638f7e2999a5b7
             overflow-x:hidden;
             overflow: hidden;
             text-overflow: ellipsis;
