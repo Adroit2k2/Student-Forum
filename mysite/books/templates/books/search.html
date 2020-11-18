@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% block booksearch %}
+    <style>
+        .box{
+            border: 4px solid black;
+            margin: 0 auto;
+        }
+        form input {
+        	clear:all;
+        }
+
+        form input {
+        	margin:15px 15px;
+        	padding:15px 10px;
+        	width:40%;
+        	outline:none;
+        	border:2px solid green;
+        	border-radius:20px;
+        	display:inline-block;
+        	-webkit-box-sizing:border-box;
+        	   -moz-box-sizing:border-box;
+        	        box-sizing:border-box;
+            -webkit-transition:0.2s ease all;
+        	   -moz-transition:0.2s ease all;
+        	    -ms-transition:0.2s ease all;
+        	     -o-transition:0.2s ease all;
+        	        transition:0.2s ease all;
+        }
+
+        form input{
+        	border-color:cornflowerblue;
+        }
+        input[type=submit] {
+        	padding:15px 50px;
+        	width:auto;
+        	background:#1abc9c;
+        	border:none;
+        	color:white;
+        	cursor:pointer;
+        	display:block;
+        	margin-left:35%;
+        	margin-top:20px;
+        	clear:right;
+        	-webkit-transition:0.2s ease all;
+        	   -moz-transition:0.2s ease all;
+        	    -ms-transition:0.2s ease all;
+        	     -o-transition:0.2s ease all;
+        	        transition:0.2s ease all;
+        }
+
+        input[type=submit]:hover {
+        	opacity:0.8;
+        }
+    </style>
+
+
+<form style="font-size:1rem;"  action="{% url 'books:api' %}" method="POST" class="form">
+
+{% csrf_token %}
+
+    <input type="text" name="name" placeholder="name" value="">
+    <input type="text" name="author" placeholder="author" value="" >
+    <input type="text" name="publisher" placeholder="publisher" value="">
+    <input type="text" name="isbn" placeholder="ISBN / any other code" value="">
+    <input type="submit" name="submit" value='Search Book'/>
+
+</form>
+{% endblock %}

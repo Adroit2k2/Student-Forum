@@ -1,0 +1,144 @@
+{% extends "index.html" %}
+
+{% block contact %}
+<div class="contact container-fluid">
+        <div class="row row_1">
+            <div class="col">
+                <h1 class="d-none d-lg-block contact_us">CONTACT</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h2 class="getintouch">GET IN TOUCH</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+            </div>
+            <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="side">
+                    DON'T BE SHY
+                </div>
+                <br>
+                <h6>Feel free to get in touch with us. We are always open to discussing new projects, creative ideas or
+                opportunities to be part of your visions</h6>
+                <br>
+                <br>
+                <i class="fa fa-envelope icon" style="font-size: 2rem; color:#f1c50e ;"></i>
+                <i class="fa fa-phone" style="font-size: 2rem; margin-left: 1rem;color: #f1c50e;"></i>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 info info_1 ">
+                            Vivek Bhadola
+                            <br>
+                            7454095413
+                            <br>
+                            vivek.bhadola.mat19@itbhu.ac.in
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6  info  info_1 info_4">
+                            Anshu Jha
+                            <br>
+                            6204410949
+                            <br>
+                            anshu.krjha.mat19@itbhu.ac.in
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 info info_2 info_4">
+                            Ayush Singh
+                            <br>
+                            6207036096
+                            <br>
+                            ayush.singh.mat19@itbhu.ac.in
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6  info info_3">
+                            Mayank Singh
+                            <br>
+                            9335779074
+                            <br>
+                            mayank.singh.mat19@itbhu.ac.in
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+            </div>
+        </div>
+    </div>
+    <style>
+    #content{
+        background-color:black;
+    }
+        .contact {
+            background-color: black;
+            color: white;
+            border-bottom:1px white dotted;
+            padding-bottom:15px;
+        }
+
+        .contact_us {
+            text-align: center;
+            font-size: 12.5rem;
+            color: #404040;
+            margin: 18px 0px 0px 0px;
+        }
+
+        .getintouch {
+            font-size: 4.5rem;
+            color: #f1c50e;
+            margin: -195px 0px 0px 0px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .contact .row_1 {
+            min-height: 300px;
+        }
+
+        .contact .side {
+            font-size: 2.5rem;
+        }
+
+        .contact .info {
+            text-align: center;
+            font-size: 1.4rem;
+
+        }
+
+        .contact .info_1 {
+            margin-top: 1rem;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .contact .info_2 {
+                margin-top: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .contact .info_3 {
+                margin-top: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 1388px) and (min-width: 1200px) {
+            .contact .info_4 {
+                position: relative;
+                left: 9%;
+            }
+        }
+
+
+        .main-content .container {
+    margin: 0px auto;
+}
+        .main-content{
+            min-height:0vh;
+        }
+    </style>
+{% endblock %}

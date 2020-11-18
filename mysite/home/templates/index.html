@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="../../static/images/books.gif" type="image/gif">
+        <title>Student Forum</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="../../static/css/style.css">
+        <link rel="stylesheet" href="../../static/css/login.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="../../static/css/jquery.mCustomScrollbar.min.css">
+        <!-- jQuery CDN -->
+        <script  src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="../../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- POPPER JS CDN -->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+`       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap Js CDN -->
+        <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Our Custom JS -->
+        <script  async src="../../static/js/script.js"></script>
+        <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+
+
+
+
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3></h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <h2>Dummy Heading</h2>
+
+                    <li>
+                        <a class="click" href="{% url 'home:content' %}">Home</a>
+                    </li>
+
+                    <li >
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Public
+                        <i class="fa fa-sort-down " style="position:absolute;right:20px;" ></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a class="click" href="{% url 'home:content' %}">Forum</a></li>
+                            <li><a class="click" href="{% url 'home:searchtags' %}">Tags</a></li>
+                            <li><a class="click" href="{% url 'home:users' %}">Users</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Find A Book
+                        <i class="fa fa-sort-down " style="position:absolute;right:20px;"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a class="click" href="{% url 'books:search' %}">Search</a></li>
+                            <li><a class="click" href="{% url 'books:cart' %}">Book Cart</a></li>
+                        </ul>
+                        <a class="click" href="{% url 'home:construct' %}">About Us</a>
+                    </li>
+
+                    <li>
+                        <a class="click" href="{% url 'home:contact' %}">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="" class="download">Download source</a></li>
+                </ul>
+            </nav>
+            <!-- End of sidebar-->
+
+
+            <div id="content" >
+
+                <div class="overlay2"></div><!--For sidebar overlay-->
+
+                <!--Sidebar Holder-->
+                <nav class="navbar navbar-expand-md navbar-inverse fixed-top  pb-md-3 pb-sm-5 pt-sm-4">
+
+                    <div class="container-fluid">
+
+                    <!-- Navbar Header [collects both toggle button and navbar brand] -->
+                        <div class="navbar-header">
+
+                            <!-- Toggle Button [handles opening sidebar menu]-->
+                            <button type="button" id="sidebarCollapse" style="border:none;padding:0;" class="btn btn-info navbar-btn">
+                                <i class="fa fa-5x fa-bars" aria-hidden="true"></i>
+
+                            </button>
+                            <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
+                            <button type="button" class="navbar-toggler collapsed btn btn-info navbar-btn" data-toggle="collapse" data-target="#navComponents" style="border:none;padding:0;" aria-expanded="false">
+                                <i class="fa fa-5x fa-bars" aria-hidden="true"></i>
+                            </button>
+
+                            <!-- Navbar Brand -->
+                            <div class="navbar-brand text-center ">
+                                <a class="abtn" href={% url 'home:content' %}>Student Forum</a>
+                            </div>
+                        </div>
+
+
+                        <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
+                        <div class="collapse d-md-flex flex-md-column align-items-sm-end navbar-collapse" id="navComponents">
+
+                            <!-- Navbar Links -->
+                            <div class="d-md-flex  flex-md-row">
+                                <div id="info" class="navbar-right">
+                                	<div class="row">
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:construct' %}">About Us</a></button>
+                                        <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:contact' %}">Contact Us</a></button>
+                                	</div>
+                                </div>
+
+                            <!-- Navbar Button -->
+                            {% if user.is_authenticated %}
+                                <div id="user" class="navbar-right">
+                                	<div class="row">
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href="{% url 'home:searchprofile' user.get_username %}">{{ user.get_username }}</a></button>
+                                        <button type="button"class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logout' %}>Logout</a></button>
+                                	</div>
+                                </div>
+                            {% else %}
+                                <div id="signup" class="navbar-right">
+                                	<div class="row">
+                                        <button type="button" class="btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:signup' %} >Sign Up</a></button>
+
+                                        <button type="button" id="login" class=" btn btn-default navbtn navbar-btn col-xs-6"><a href={% url 'home:logins' %} class="li-modal">Sign in</a></button>
+                                	</div>
+                                </div>
+                            {% endif %}
+                            </div>
+                            <!-- Navbar Form -->
+                            <div>
+                            <form action="#" class="navbar-form navbar-right">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search" name="search"
+                                    {% if search %}
+                                        value="{{ search }}"
+                                    {% endif %}
+                                    >
+                                </div>
+                                <button type="submit" class="btn navbtn btn-default"><i class="fa fa-search " style="color:white;">Search</i></button>
+                            </form>
+                            </div>
+                        </div>
+
+
+                    </div><!--End of container-fluid-->
+
+                </nav><!--End of navbar-->
+
+                <!-- Page Content Holder -->
+                <div class="main-content d-flex flex-column" >
+                    <div class="container">
+                        {% block content %}
+                        {% endblock %}
+                        {% block discuss %}
+                        {% endblock %}
+                        {% block users %}
+                        {% endblock %}
+                        {% block tags %}
+                        {% endblock %}
+                        {% block tags_forum %}
+                        {% endblock %}
+                        {% block forum %}
+                        {% endblock %}
+                        {% block booksearch %}
+                        {% endblock %}
+                        {% block books %}
+                        {% endblock %}
+                        {% block bookview %}
+                        {% endblock %}
+                    </div>
+                    {% block profile %}
+                        {% endblock %}
+                    {% block password %}
+                        {% endblock %}
+                    {% block editprofile %}
+                        {% endblock %}
+                    {% block contact %}
+                        {% endblock %}
+                    {% block construct %}
+                    {% endblock %}
+                </div><!-- End of class="main-content" -->
+                 <!--End of Page content-->
+
+                <!--Footer Holder-->
+                <footer class="container-fluid">
+	                <div class="row">
+	                	<ul class="col-xs-6 col-sm-4">
+
+	                		<a href="">Student Forum</a>
+
+	                		<li>
+	                			<a href="{% url 'home:content' %}">Forum</a>
+	                		</li>
+	                		<li>
+	                			<a href="{% url 'home:searchtags' %}">Tags</a>
+	                		</li>
+	                		<li>
+	                			<a href="{% url 'home:users' %}">Users</a>
+	                		</li>
+	                		<li>
+	                			<a href="{% url 'books:search' %}">Book Search</a>
+	                		</li>
+	                		<li>
+	                			<a href="{% url 'books:cart' %}">Book Cart</a>
+	                		</li>
+	                	</ul>
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="{% url 'home:construct' %}">About Us</a>
+	                		<li>
+	                			<a href="https://github.com/Adroit2k2/Student-Forum">GitHub Repository</a>
+	                		</li>
+	                		<li>
+	                			<a id="Facebookc" href="{% url 'home:construct' %}">Facebook Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="Instagramc" href="{% url 'home:construct' %}">Instagram Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="GitHubc" href="{% url 'home:construct' %}" >GitHub Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="LinkedInc" href="{% url 'home:construct' %}">LinkedIn Profiles</a>
+	                		</li>
+	                		<li>
+	                			<a id="Owners" href="{% url 'home:construct' %}" >Owners' Profiles</a>
+	                		</li>
+	                	</ul >
+
+	                	<ul class="col-xs-6 col-sm-4">
+	                		<a href="{% url 'home:contact' %}">Contact Us</a>
+	                		<li>
+	                			<a href="href="{% url 'home:construct' %}"">E-Mail</a>
+	                		</li>
+	                	</ul>
+	                </div>
+
+                	<p style="  margin-bottom: 0;
+                                padding-bottom: 2em;
+                                font-size: 2em;
+                                ">Copyright &copy; 2020</p>
+                </footer>
+                <!--End of footer-->
+
+            </div><!--End of id="content"-->
+        </div><!--End of class="wrapper"-->
+
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.li-modal').on('click',function(e){
+        e.preventDefault();
+        console.log($(this).attr('href'));
+        $('#exampleModalCenter').modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+  </script>
+
+    </body>
+</html>
+
